@@ -41,19 +41,21 @@ $(function()
      var correct=0;
      var test_id = $('div[name="test"]').attr('id');
      var class_id = $('div[name="test"]').attr('class_id');
-     //alert(class_id);
+     var is_todo = $('div[name="test"]').attr('is_todo');
+     alert(is_todo);
     $.each($(this).serializeArray(), function(index, value) {
       var check = value.name.match(/\d/)[0],
        $q = $("#q" + check);
-
       if (JSON.parse(data)[check].answer === value.value) {correct++;} 
       });
       if (correct===0)
       {
        setTimeout('Redirect()',1000);
         swal("Oh...no!", "Your correct answers: "+ correct + ". Try again!", "error");
-        SaveResult(correct, test_id, class_id);
-
+        if (is_todo === 'todo') 
+        {
+         SaveResult(correct, test_id, class_id);
+        }
       }
       else
       {
@@ -62,12 +64,13 @@ $(function()
           title: "Sweet!",
           text: "Correct answers " + correct
           });
-        SaveResult(correct, test_id, class_id);
+        if (is_todo === 'todo') 
+          {
+           SaveResult(correct, test_id, class_id);
+          }
       }
-      
     });  
     });
-  
     }
 });
 })
@@ -123,7 +126,7 @@ function SaveResult(correct_answer, test_id, class_id) {
                 "num_question": num_question,
                 "times": times},
         success: function (response) {
-         //  alert(response);
+           alert(response);
         }
       });
 }
