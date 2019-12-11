@@ -13,14 +13,14 @@
 <td>CLASS NAME</td>
 <td>INFOMATION</td>
 <td>BEGIN</td>
-<td>FINISH</td> 
+<td>END</td> 
 </tr> ';
     foreach ($result as $row) {
         echo '<tr><td><a href=./index.php?click=mn-listStudent&id=' . $row["CLASS_ID"] . '>' . $row["CLASS_ID"] . '</td>
         <td>' . $row["CLASS_NAME"] . '</td>
         <td>' . $row["INFO"] . '</td>
         <td>' . $row["BEGIN"] . '</td>
-        <td>' . $row["FINISH"] . '</td></tr>';
+        <td>' . $row["END"] . '</td></tr>';
     }
 
     ?>

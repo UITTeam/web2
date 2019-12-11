@@ -1,5 +1,5 @@
 
-    <link rel="stylesheet" type="text/css" href="css/user-manage.css">
+    <link rel="stylesheet" type="text/css" href="css/user-managecopy.css">
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"> 
 <div class="container">
@@ -20,7 +20,7 @@
   			  <li>
        			 <div class="ch-item ch-img-3">
          		    <div class="ch-info">
-            		     <a href="#"><h3>Test</h3></a>
+            		     <a href="./index.php?click=mn-test&id=14"><h3>Test</h3></a>
              		     <p> 20 tests </p>
            		 	</div>
       			 </div>

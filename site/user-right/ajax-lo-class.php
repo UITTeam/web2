@@ -98,6 +98,10 @@
             }   
         }
         if($count===0)  echo '<td> 0 </td><td> 0 </td><td> 0 </td><td> 0 </td><td> 0 </td>';
+        else if($count===1)  echo '<td> 0 </td><td> 0 </td><td> 0 </td><td> 0 </td>';
+        else if($count===2)  echo '<td> 0 </td><td> 0 </td><td> 0 </td>';
+        else if($count===3)  echo '<td> 0 </td><td> 0 </td>';
+        else if($count===4)  echo '<td> 0 </td>';
         echo '</tr>';   
     }
     ?>

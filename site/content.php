@@ -50,6 +50,11 @@
             include ('site/user-left/user-menu.php');
             include ('site/user-right/user-manage-class.php');
         }
+        else if ($temp == 'mn-test')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/user-right/user-manage-test.php');
+        }
         else if ($temp == 'mn-listStudent')
         {
             include ('site/user-left/user-menu.php');

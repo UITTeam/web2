@@ -43,7 +43,7 @@
 					<ul class="us-item">
 						<li><a href="./index.php?click=mn-class&id=<?php echo $row['username'] ?>">Class</a></li>
 
-						<li><a href="#">Test</a></li>
+						<li><a href="./index.php?click=mn-test&id=<?php echo $row['username'] ?>">Test</a></li>
 					</ul>
 				</li>
 				

@@ -37,7 +37,7 @@ $username = $_SESSION['login'];
                     <td>CLASS NAME</td>
                     <td>INFOMATION</td>
                     <td>BEGIN</td>
-                    <td>FINISH</td>
+                    <td>END</td>
                 </tr>
             </table>
 
