@@ -9,7 +9,7 @@
     $sql3 = "SELECT * FROM `class` , `study`
             WHERE class.CLASS_ID = study.CLASS_ID
             AND study.USERNAME = '$username'";
-            
+    
     $result = $conn->query($sql);
     $result2 = $conn->query($sql2);
     $result3 = $conn->query($sql3);
@@ -22,6 +22,20 @@
                         group by USERNAME, TEST_ID";
     $result_check_times = $conn->query($sql_check_times);
     $row_check_times = $result_check_times->fetch_assoc();
+
+    $class_id = $row3['CLASS_ID'];
+    $sql_test_todo = "SELECT TYPE
+	                    FROM `test` 
+	                    WHERE test.TEST_ID = $id
+                        AND TYPE = 'todo'";
+    $result_test_todo = $conn->query($sql_test_todo);
+    $row_test_todo = mysqli_num_rows($result_test_todo);
+    $is_todo = 'free';
+    if ( $row_test_todo > 0)
+    {
+        $is_todo = 'todo';
+    }
+ 
 ?>
 
 <link rel="stylesheet" href="./css/test-detail.css">
@@ -29,10 +43,11 @@
 <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
-<script src="./js/doing-test-2.js"></script>
+<script src="./js/doing-test.js"></script>
 <div style='display: none' name='times' value="<?php echo $row_check_times['A']?>" ></div>
 <div id='test-detail' class = 'content container '>
-    <div name='test' id='<?php echo $row['TEST_ID'];?>' class_id='<?php echo $row3['CLASS_ID'];?>' class="test-detail row">
+    <div name='test' id='<?php echo $row['TEST_ID'];?>' class_id='<?php echo $row3['CLASS_ID'];?>' 
+         is_todo = "<?php echo $is_todo; ?>" class="test-detail row">
         <div clas='col-md-12 text-center'>
             <h4 class="test-title " style="font-size: 20px;""><?php echo $row['TEST_NAME'];?></h4>
              

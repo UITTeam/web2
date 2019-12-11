@@ -1,8 +1,17 @@
 $(function()
 {
   $('#DoTest').click(function(){
-     // alert('click');
-     start();
+    //  alert('click');
+     var times = $('div[name="times"]').attr('value');
+    // alert(times);
+    if (times >= 2)
+    {
+        //alert('Het so lan lam');
+        swal("Oh...no!", "You can't do this test!", "error");
+    }
+    else
+    {
+        start();
      $('#test-detail').hide();
      $('#testing').show();
      var id = $('div[name="test"]').attr('id');
@@ -30,28 +39,40 @@ $(function()
   $form.on("submit", function(e) {
     e.preventDefault();
      var correct=0;
+     var test_id = $('div[name="test"]').attr('id');
+     var class_id = $('div[name="test"]').attr('class_id');
+     var is_todo = $('div[name="test"]').attr('is_todo');
+     //alert(is_todo);
     $.each($(this).serializeArray(), function(index, value) {
       var check = value.name.match(/\d/)[0],
        $q = $("#q" + check);
-      // alert(check);
       if (JSON.parse(data)[check].answer === value.value) {correct++;} 
       });
       if (correct===0)
       {
-        setTimeout('Redirect()',2000);
+       setTimeout('Redirect()',1000);
         swal("Oh...no!", "Your correct answers: "+ correct + ". Try again!", "error");
+        if (is_todo === 'todo') 
+        {
+         SaveResult(correct, test_id, class_id);
+        }
       }
       else
       {
-        setTimeout('Redirect()',2000);
+        setTimeout('Redirect()',1000);
         swal({
           title: "Sweet!",
           text: "Correct answers " + correct
           });
+        if (is_todo === 'todo') 
+          {
+           SaveResult(correct, test_id, class_id);
+          }
       }
     });  
     });
-  });
+    }
+});
 })
 
 function Redirect() {
@@ -69,8 +90,6 @@ function start()
     seconds = 59;
   }
      
-    //  alert(minutes);
-     // seconds = 0;
       if (seconds == -1){
           minutes -= 1;
          seconds = 59;
@@ -90,7 +109,24 @@ function start()
       }, 1000);
 }
 
-
 function stop(){
   clearTimeout(timeout);
+}
+
+function SaveResult(correct_answer, test_id, class_id) {
+      //Save ket qua doi voi hoc vien
+      var num_question = $('span[name="num_question"]').attr('value');
+      var times = $('div[name="times"]').attr('value');
+      $.ajax({
+        type: "POST",
+        url: "./js/SaveResult_ajax.php",
+        data: {"correct" : correct_answer,
+                "test_id": test_id,
+                "class_id": class_id,
+                "num_question": num_question,
+                "times": times},
+        success: function (response) {
+           alert(response);
+        }
+      });
 }

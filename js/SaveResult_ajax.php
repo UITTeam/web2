@@ -19,10 +19,32 @@
        if ($times >= 1) {
          $insert_times = 2;
        }
+        $count_test = 0; //so luong cac bai test cua hoc vien theo lop hien tai
+        $sql_count = "SELECT COUNT(DISTINCT(test.TEST_ID))  AS B
+                          FROM `class`,`test` 
+                          WHERE class.CLASS_ID = test.CLASS_ID AND
+                           class.CLASS_ID='$class_id' AND
+                          TYPE = 'todo' 
+                          GROUP BY class.CLASS_ID"; //Dem so bai test type todo da lam
+        $result_count = $conn->query($sql_count);
+        $row_count = $result_count->fetch_assoc();
+        $count_test = $row_count['B'];
+        $sum_avg_test = 0; // diem trung binh cua tung bai test     
         $sql = "INSERT INTO `result` VALUES ('$username', $test_id, $insert_times,$point)";
         if (mysqli_query($conn, $sql)) 
         {
-           $sql2 = "UPDATE `study` SET  `RESULT` = (RESULT + $point)/$insert_times
+          
+          $sql_avg = "SELECT AVG(POINT) AS A 
+                     FROM  `result`
+                     WHERE USERNAME='$username' 
+                     GROUP BY  USERNAME,TEST_ID";
+           $result_avg = $conn->query($sql_avg);
+           while ($row_avg = $result_avg->fetch_assoc()){
+            $sum_avg_test += $row_avg['A'];
+          }
+          
+           $result_point = $sum_avg_test/$count_test;   
+           $sql2 = "UPDATE `study` SET  `RESULT` = $result_point
                     WHERE `USERNAME`='$username'";
             if (mysqli_query($conn, $sql2)) {
                 $rank = '';
@@ -55,7 +77,8 @@
                   AND `CLASS_ID` = '$class_id'";
                 if (mysqli_query($conn, $sql_update_rank))
                 {
-                    echo 'Your result have been saved';
+                   // echo 'Your result have been saved';
+                   echo $sum_avg_test;
                 }
             }
             else {
