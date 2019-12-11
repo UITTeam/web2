@@ -45,10 +45,25 @@
             include ('site/user-left/user-menu.php');
             include ('site/user-right/user-manage.php');
         }
+        else if ($temp == 'mn-class')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/user-right/user-manage-class.php');
+        }
+        else if ($temp == 'mn-listStudent')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/user-right/user-manage-list-std.php');
+        }
         else if ($temp == 'lo')
         {
             include ('site/user-left/user-menu.php');
             include ('site/user-right/user-lo.php');
+        }
+        else if ($temp == 'lo-listStudent')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/user-right/user-lo-list-std.php');
         }
         else {
             include ('site/home.php');

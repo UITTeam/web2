@@ -12,7 +12,7 @@
    			  <li>
        			 <div class="ch-item ch-img-2">
         		    <div class="ch-info">
-               			 <a href="#"><h3>Class</h3></a>
+               			 <a href="./index.php?click=mn-class&id=13"><h3>Class</h3></a>
               			 <p> 8 classes </p>
            			</div>
        			 </div>
@@ -25,14 +25,7 @@
            		 	</div>
       			 </div>
    			  </li>
-   			  <li>
-      			 <div class="ch-item ch-img-4">
-           			<div class="ch-info">
-               			 <a href="#"><h3>Student</h3></a>
-               			 <p> 160 students </p>
-           			</div>
-      			 </div>
-   			  </li>
+   			  
 			</ul>
 	
 			

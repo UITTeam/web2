@@ -1,36 +1,68 @@
+<?php
+include('admin/modules/result/connection.php');
+//include('admin/connect.php');
+//	session_start();
+$username = $_SESSION['login'];
 
-    <link rel="stylesheet" type="text/css" href="css/user-lo.css">
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"> 
+?>
+<link rel="stylesheet" type="text/css" href="css/user-locopy.css">
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 <div class="container">
 	<div class="row">
 		<div class="col-md-4"></div>
-		<div class="col-md-6 info_">
-        <div class="s_tittle"><i>Learning Outcome</i></div>
-			<ul class="ch-grid">
-  			  
-   			  <li>
-       			 <div class="ch-item ch-img-2">
-        		    <div class="ch-info">
-               			 <a href="#"><h3>Class</h3></a>
-              			 <p> 8 classes </p>
-           			</div>
-       			 </div>
-   			  </li>
-  			  
-   			  <li>
-      			 <div class="ch-item ch-img-4">
-           			<div class="ch-info">
-               			 <a href="#"><h3>Student</h3></a>
-               			 <p> 160 students </p>
-           			</div>
-      			 </div>
-   			  </li>
-			</ul>
-	
-			
-		</div>
+		<div class="col-md-8 info_">
+			<div class="s_tittle"><i>Learning Outcome</i></div>
 
-		<div class="clearfix"></div>
+			<div class="choose">
+				<label for="">Course</label>
+				<select name="course" id="course">
+					<option data-tchr="" value="">--choose course--</option>
+					<?php
+					$sql = "SELECT * FROM COURSE,CLASS WHERE COURSE.COURSE_ID=CLASS.COURSE_ID AND CLASS.TEACHER='$username'";
+					$query = $conn->prepare($sql);
+					$query->execute();
+					$result = $query->fetchAll(PDO::FETCH_ASSOC);
+					foreach ($result as $row) {
+						echo '<option data-tchr="' . $username . '" value="' . $row["COURSE_ID"] . '">' . $row["COURSE_NAME"] . '</option>';
+					}
+					?>
+				</select>
+			</div>
+			<div class="table-std">
+				<table id='list-class'>
+					<tr>
+						<td>CLASS ID</td>
+						<td>CLASS NAME</td>
+						<td>EXCELLENT</td>
+						<td>GOOD</td>
+						<td>AVERAGE</td>
+						<td>BELOW AVERAGE</td>
+						<td>WEAK</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<script>
+			$(document).ready(function($) {
+				$('#course').change(function(event) {
+					courseId = $('#course').val();
+					teacherId = $('#course').find(':selected').data('tchr');
+					$.post('site/user-right/ajax-lo-class.php', {
+						"courseid": courseId,
+						"teacherid": teacherId
+					}, function(data) {
+						$('#list-class').html(data);
+					})
+				})
+
+			})
+		</script>
+
+
+
+	</div>
+
+	<div class="clearfix"></div>
 </div>
 </div>

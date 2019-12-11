@@ -41,20 +41,14 @@
 				
 				<li class="list"><a href="./index.php?click=manage&id=<?php echo $row['username'] ?>"><b>Manage</b></a>
 					<ul class="us-item">
-						<li><a href="#">Class</a></li>
-
-						<li><a href="#">Student</a></li>
+						<li><a href="./index.php?click=mn-class&id=<?php echo $row['username'] ?>">Class</a></li>
 
 						<li><a href="#">Test</a></li>
 					</ul>
 				</li>
 				
 				<li class="KQ"><a href="./index.php?click=lo&id=<?php echo $row['username']?>"><b>Learning Outcome</b></a>
-					<ul class="us-item">
-						<li><a href="#">Class</a></li>
-						
-						<li><a href="#">Student</a></li>
-					</ul>
+					
 				</li>
 				
 				<li class="logout"><a href="./index.php?click=info&ac=logout"><b>Log Out</b></a></li>
