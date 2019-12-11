@@ -56,7 +56,7 @@
         $row = mysqli_num_rows($result);
         if ($row > 0) 
         {
-            $_SESSION['login'] = $username;
+            $_SESSION['login_admin'] = $username;
             header('location:index.php');
             echo $row;
         }

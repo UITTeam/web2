@@ -11,11 +11,20 @@
 	}
 	else if ($row_role['role_id'] == 'student') {
 		$sql = "SELECT * 
-			FROM test,  study, class
-			WHERE test.CLASS_ID = class.CLASS_ID 
+				FROM test,  study, class
+				WHERE test.CLASS_ID = class.CLASS_ID 
 					AND class.CLASS_ID = study.CLASS_ID
-					and study.USERNAME = '$username'"; 
+					and study.USERNAME = '$username'
+				"; 
 	}
+	//Hien thi danh sach cai bai test ma giao vien dang day
+	else if ($row_role['role_id'] == 'teacher') {
+		$sql = "SELECT * 
+				FROM test, class
+				WHERE test.CLASS_ID = class.CLASS_ID 
+				and TEACHER = '$username'"; 
+	}
+
 	else {
 		$sql = "SELECT * 
 				FROM test, class
