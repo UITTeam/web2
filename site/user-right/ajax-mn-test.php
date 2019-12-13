@@ -27,13 +27,13 @@
         <td>' . $row["TIMELIMMIT"] . '</td>
         <td >  
             <button stlyle="border-radius:10px" name="btnEditTest">
-                <a stlyle="color:#7eb9be" href="./index.php?click=editTest&ac=edit&id=' . $row['TEST_ID'] . '">
+                <a stlyle="color:#7eb9be" href="./index.php?click=mn-test-edit&ac=edit&id=' . $row['TEST_ID'] . '&name='.$row["TEST_NAME"].'">
                     Edit
                 </a></button>                    
         </td>
         <td>
             <button stlyle="border-radius:10px" name="btnDelTest">
-                    <a stlyle="color:#7eb9be" href="./modules/test/controlTest.php?id=' . $row['TEST_ID'] . '">
+                    <a stlyle="color:#7eb9be" href="./modules/test/controlTest.php?id=' . $row['TEST_ID'] . '&name='.$row["TEST_NAME"].'">
                         Delete
                     </a></button>
         </td>

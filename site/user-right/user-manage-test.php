@@ -33,6 +33,9 @@ $username = $_SESSION['login'];
                     <option value="">--choose class--</option>
                 </select>
             </div>
+            <a href="./index.php?click=mn-test-add&ac=add">
+                <button name='btnAddTest'>ADD NEW TEST</button>
+            </a><br><br>
             <div id="list-test" class="listTest">
                 <table>
                     <tr>

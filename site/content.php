@@ -55,6 +55,16 @@
             include ('site/user-left/user-menu.php');
             include ('site/user-right/user-manage-test.php');
         }
+        else if ($temp == 'mn-test-edit')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/user-right/user-manage-test-edit.php');
+        }
+        else if ($temp == 'mn-test-add')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/user-right/user-manage-addTest.php');
+        }
         else if ($temp == 'mn-listStudent')
         {
             include ('site/user-left/user-menu.php');
