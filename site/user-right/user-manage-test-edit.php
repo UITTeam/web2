@@ -51,18 +51,10 @@ $test_id = $_GET['id'];
                     <tr>
                         <td>Course</td>
                         <td>
-                            <select name="selCourse" id="selCourse" onchange=CourseChanged(this)>
+                            <select disabled="disabled" name="selCourse" id="selCourse">
 
                                 <?php
-                                //  include('modules/result/connection.php');
-                                $query2 = $conn->prepare($sql2);
-                                $query2->execute();
-                                $result2 = $query2->fetchAll(PDO::FETCH_ASSOC);
-                                foreach ($result2 as $row2) {
-                                    echo '<option ';
-                                    if ($row2["COURSE_ID"] === $row1["COURSE_ID"]) echo 'selected="selected"';
-                                    echo ' value="' . $row2["COURSE_ID"] . '">' . $row2["COURSE_NAME"] . '</option>';
-                                }
+                                echo '<option value="' . $row1["COURSE_ID"] . '">' . $row1["COURSE_NAME"] . '</option>';
                                 ?>
                             </select></td>
                     </tr>
@@ -70,7 +62,7 @@ $test_id = $_GET['id'];
                         <td>Class</td>
                         <td>
                             <div id='listClass'>
-                                <select name="selClass" id="selClass">
+                                <select disabled="disabled" name="selClass" id="selClass">
                                     <option value="<?php echo $row1["CLASS_ID"] ?>"><?php echo $row1["CLASS_NAME"] ?></option>
                             </div>
                         </td>
@@ -98,34 +90,7 @@ $test_id = $_GET['id'];
                     </tr>
                 </table>
             </form>
-            <script>
-                function CourseChanged(obj) {
-                    var value = obj.value;
-                    $.ajax({
-                        type: "POST",
-                        dataType: "json",
-                        url: "admin/modules/test/showClass_ajax.php",
-                        data: 'string=' + value,
-                        cache: false,
-                        success: function(result) {
-                            var html = '';
-                            html += '<select name ="selClass" id="selClass">';
-                            $.each(result, function(key, item) {
-                                //  alert(item['CLASS_ID']);
-                                html += '<option value="' + item['CLASS_ID'] + '">';
-                                html += item['CLASS_NAME'];
-                                html += '</option>';
-                                // console.log(result); 
-                            });
-                            html += '</select>';
-                            $('#listClass').html(html);
-                        },
-                        error: function(e) {
-                            console.log(e.message);
-                        }
-                    });
-                }
-            </script>
+            
         </div>
 
         <div class="clearfix"></div>

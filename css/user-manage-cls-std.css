@@ -33,12 +33,13 @@ select {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  width: 150px;
 }
 
 td {
   border: 1px solid #7eb9be;
   max-width: max-content;
-  text-align: center;
+  /* text-align: center; */
   padding: 8px;
 }
 table {

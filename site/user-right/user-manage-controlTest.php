@@ -1,6 +1,7 @@
 <?php
 include('../../admin/modules/connect.php');
 require_once '../../admin/modules/PHPExcel/Classes/PHPExcel.php';
+session_start();
 $username = $_SESSION['login'];
 $txtCreatedBy = $username;
 $txtTestName = $_POST['txtTestName'];
@@ -11,12 +12,12 @@ $selClass = $_POST['selClass'];
 $txtTimeLimit = $_POST['txtTimeLimit'];
 $imgTest = $_FILES['imgTest']['name'];
 $imgTest_tmp = $_FILES['imgTest']['tmp_name'];
-move_uploaded_file($imgTest_tmp, '../imgTest/' . $imgTest);
+move_uploaded_file($imgTest_tmp, '../../admin/modules/imgTest/' . $imgTest);
 
 $fileExcel = $_FILES['fileExcel']['name'];
 $fileExcel_tmp = $_FILES['fileExcel']['tmp_name'];
-move_uploaded_file($fileExcel_tmp, '../fileExcel/' . $fileExcel);
-$linkFile = "../fileExcel/$fileExcel";
+move_uploaded_file($fileExcel_tmp, '../../admin/modules/fileExcel/' . $fileExcel);
+$linkFile = "../../admin/modules/fileExcel/$fileExcel";
 
 if (isset($_POST['btnEdit'])) {
     $id = $_GET['id'];
@@ -44,7 +45,7 @@ if (isset($_POST['btnEdit'])) {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 
-    if (mysqli_query($conn, $sql) &&  $fileExcel != '') {
+    if (mysqli_query($conn, $sql) ) {
         $sql3 = "DELETE FROM `question` WHERE TEST_ID=$id";
         if (mysqli_query($conn, $sql3)) {
             //  $id_inserted =  $conn->insert_id;
@@ -131,7 +132,7 @@ if (isset($_POST['btnEdit'])) {
         $sql2 = "DELETE FROM `test` WHERE TEST_ID=$id";
         if (mysqli_query($conn, $sql1)) {
             if (mysqli_query($conn, $sql2)) {
-                header('location:../../index.php?click=mn-test');
+               header('location:../../index.php?click=mn-test');
             } else {
                 echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
             }

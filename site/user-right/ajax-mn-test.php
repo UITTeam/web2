@@ -33,7 +33,7 @@
         </td>
         <td>
             <button stlyle="border-radius:10px" name="btnDelTest">
-                    <a stlyle="color:#7eb9be" href="./modules/test/controlTest.php?id=' . $row['TEST_ID'] . '&name='.$row["TEST_NAME"].'">
+                    <a stlyle="color:#7eb9be" href="./site/user-right/user-manage-controlTest.php?id=' . $row['TEST_ID'] . '&name='.$row["TEST_NAME"].'">
                         Delete
                     </a></button>
         </td>

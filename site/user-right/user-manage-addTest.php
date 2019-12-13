@@ -14,13 +14,16 @@ $username = $_SESSION['login'];
             <div class="s_tittle"><i>Manage > Test > Add</i></div>
 
             <?php
-            //require_once('modules/PHPExcel/Classes/PHPExcel.php');
-            $sql1 = "SELECT * FROM `test`";
-            $sql3 = "SELECT * FROM `course`";
-            $result1 = $conn->query($sql1);
-            $result3 = $conn->query($sql3);
+            // include('../connect.php');
+
+            $sql = "SELECT * FROM `course`";
+            $result = $conn->prepare($sql);
+            $result->execute();
+            $result = $result->fetchAll(PDO::FETCH_ASSOC);
+
             ?>
-            <form class="form-add-class" method='POST' enctype="multipart/form-data" action='./modules/test/controlTest.php'>
+           
+            <form class="form-add-test" action='site/user-right/user-manage-controlTest.php' enctype="multipart/form-data" method='POST'>
                 <!---action='./modules/test/controlTest.php' -->
                 <table id='tblTest'>
                     <tr>
@@ -42,14 +45,11 @@ $username = $_SESSION['login'];
                             <select name="selCourse" id="selCourse" onchange=CourseChanged(this)>
                                 <option value="">---Choose course---</option>
                                 <?php
-                                while ($row3 = $result3->fetchAll(PDO::FETCH_ASSOC)) {
-                                    ?>
-                                    <option value="<?php echo $row3['COURSE_ID']; ?>"><?php echo $row3['COURSE_NAME']; ?></option>
-                                <?php
+                                foreach ($result as $row) {
+                                    echo '<option value="' . $row["COURSE_ID"] . '">' . $row["COURSE_NAME"] . '</option>';
                                 }
                                 ?>
-                            </select>
-                        </td>
+                            </select></td>
                     </tr>
                     <tr>
                         <td>Class</td>
@@ -110,6 +110,7 @@ $username = $_SESSION['login'];
                     });
                 }
             </script>
+
         </div>
 
         <div class="clearfix"></div>
