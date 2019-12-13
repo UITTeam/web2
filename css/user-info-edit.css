@@ -84,6 +84,8 @@ margin: 20px;
     clear: both;
   }
 
-
+a {
+text-decoration: none;
+}
 
 

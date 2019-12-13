@@ -37,7 +37,7 @@
 		<div class="col-md-6 info_">
 			<form class="edit-profile" method=POST 
 			action='site/user-right/control/edit_Info.php?id=<?php echo $row['username'];?>'>
-				<div class="s_tittle"><i>Edit Profile</i></div>
+				<div class="s_tittle"><i><a style="color: #7eb9be" href="./index.php?click=info">Profile</a> > Edit </i></div>
 				<div class="ul_basic_info">
 					<div class="label_ul"><span class="label_list">Basic Infomation</span></div>
 					<ul class="ul_info">

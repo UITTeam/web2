@@ -84,6 +84,11 @@
         {
             include ('site/tempResult.php');
         }
+        else if ($temp == 'lo-student')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/user-right/user-lo-std.php');
+        }
         else {
             include ('site/home.php');
         }

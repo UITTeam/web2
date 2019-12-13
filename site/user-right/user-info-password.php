@@ -8,7 +8,7 @@
 		<div class="col-md-4"></div>
 		<div class="col-md-6 info_">
         <form class="change-pass" method =POST action='site/user-right/control/changePass.php?id=<?php echo $row['username'];?>'>
-			<div class="s_tittle"><i>Change Password</i></div>
+			<div class="s_tittle"><i><a style="color: #7eb9be" href="./index.php?click=info">Profile</a> > Change Password</i></div>
 				<div class="label_ul"><span class="label_notice">It's a good idea to use a strong password that you don't use elsewhere</span></div>
 				<ul class="ul_pass">
 					<li class="li_current row">
