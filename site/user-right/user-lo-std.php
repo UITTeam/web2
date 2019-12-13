@@ -2,7 +2,8 @@
     include('admin/modules/result/connection.php');
     //include('admin/connect.php');
     //	session_start();
-        $tittle = $_GET['id'];
+        $tittle = $_GET['id-class'];
+        $id_std = $_GET['id-std'];
         $username = $_SESSION['login'];
         $sql_role = "SELECT * FROM `account` WHERE username = '$username'";
         $query_role = $conn->prepare($sql_role);
@@ -13,7 +14,7 @@
                     WHERE STUDY.CLASS_ID='$tittle' 
                     AND STUDY.USERNAME = RESULT.USERNAME
                     AND RESULT.TEST_ID = TEST.TEST_ID
-                    AND STUDY.USERNAME='$username'";
+                    AND STUDY.USERNAME = '$id_std'";
         $query_std = $conn->prepare($sql_std);
         $query_std->execute();
         $result_std = $query_std->fetchAll(PDO::FETCH_ASSOC);
@@ -27,15 +28,16 @@
         <div class="col-md-6 info_">
 <?php
            
-            echo '<div class="s_tittle"><i><a style="color: #7eb9be; text-decoration: none" href="./index.php?click=lo">Learning Outcome</a> > ' . $tittle . '</i></div>';
+            echo '<div class="s_tittle"><i><a style="color: #7eb9be; text-decoration: none" href="./index.php?click=lo">Learning Outcome</a> > 
+            <a style="color: #7eb9be; text-decoration: none" href="./index.php?click=lo-listStudent&id=' . $tittle .'">' . $tittle . '</a> > '.$id_std.'</i></div>';
             
-            if ($row['role_id'] == 'student')
+            if ($row['role_id'] != 'student')
             {
                 ?>
                      <div class="table-std">
                 <table id='list-student'>
                     <tr>
-                        <td>TEST NAME </td>
+                        <td>TEST NAME</td>
                         <td>TIMES</td>
                         <td>RESULT</td>                   
                     </tr>
@@ -54,40 +56,7 @@
 
                 <?php
             }
-else {
-?>
-        <div class="table-std">
-                <table id='list-student'>
-                    <tr> 
-                        <td>USERNAME</td>
-                        <td>FULL NAME</td>
-                        <td>RESULT</td>
-                        <td>RANK</td>                    
-                    </tr>
 
-                    <?php
-                    include('admin/modules/result/connection.php');
-                    $sql = "SELECT * FROM STUDY,STUDENT 
-                    WHERE STUDY.CLASS_ID='$tittle' 
-                    AND STUDY.USERNAME=STUDENT.USERNAME";
-                    $query = $conn->prepare($sql);
-                    $query->execute();
-                    $result = $query->fetchAll(PDO::FETCH_ASSOC);
-                    
-                    foreach ($result as $row) {
-                        echo '<tr>
-                            <td><a href=./index.php?click=lo-student&id-std='.$row["USERNAME"].'&id-class='.$tittle.'>' . $row["USERNAME"] . '</td>
-                            <td>' . $row["FULLNAME"] . '</td>
-                            <td>' . $row["RESULT"] . '</td>
-                            <td>' . $row["RANK"] . '</td>
-                            </tr>';
-                    }
-
-                    ?>
-                </table>
-            </div>
-    <?php
-}
 ?>
             
         </div>

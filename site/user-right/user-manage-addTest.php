@@ -11,7 +11,8 @@ $username = $_SESSION['login'];
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-7 info_">
-            <div class="s_tittle"><i>Manage > Test > Add</i></div>
+            <div class="s_tittle"><i><a style="color: #7eb9be; text-decoration: none" href="./index.php?click=manage">Manage</a> >
+            <a style="color: #7eb9be; text-decoration: none" href="./index.php?click=mn-test">Test</a> > Add</i></div>
 
             <?php
             // include('../connect.php');

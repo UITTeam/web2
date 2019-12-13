@@ -7,7 +7,8 @@
         <div class="col-md-8 info_">
             <?php
             $tittle = $_GET['id'];
-            echo '<div class="s_tittle"><i>Manage > class > ' . $tittle . '</i></div>';
+            echo '<div class="s_tittle"><i><a style="color: #7eb9be; text-decoration: none" href="./index.php?click=manage">Manage</a> >
+            <a style="color: #7eb9be; text-decoration: none" href="./index.php?click=mn-class">Class</a> > ' . $tittle . '</i></div>';
             ?>
             <div class="table-std">
                 <table id='list-student'>

@@ -80,6 +80,11 @@
             include ('site/user-left/user-menu.php');
             include ('site/user-right/user-lo-list-std.php');
         }
+        else if ($temp == 'lo-student')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/user-right/user-lo-std.php');
+        }
         else {
             include ('site/home.php');
         }

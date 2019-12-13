@@ -12,7 +12,7 @@ $username = $_SESSION['login'];
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-6 info_">
-            <div class="s_tittle"><i>Manage > class</i></div>
+            <div class="s_tittle"><i><a style="color: #7eb9be; text-decoration: none" href="./index.php?click=manage">Manage</a> > class</i></div>
 
             <div class="choose">
                 <label for="">Course</label>

@@ -14,7 +14,8 @@ $test_id = $_GET['id'];
         <div class="col-md-4"></div>
         <div class="col-md-7 info_">
             <?php
-            echo '<div class="s_tittle"><i>Manage > Test > Edit >' . $test_name . ' </i></div>';
+            echo '<div class="s_tittle"><i><a style="color: #7eb9be; text-decoration: none" href="./index.php?click=manage">Manage</a> >
+            <a style="color: #7eb9be; text-decoration: none" href="./index.php?click=mn-test">Test</a> > Edit ' . $test_name . ' </i></div>';
             ?>
 
             <?php
