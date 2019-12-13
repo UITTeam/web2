@@ -74,13 +74,13 @@
         $is_todo = 'todo';
     }
 ?>
-
+ 
 <link rel="stylesheet" href="./css/test-detail.css">
 <link rel="stylesheet" type="text/css" href="./css/doing-test.css">
 <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
-<script src="./js/doing-test-2.js"></script>
+<script src="./js/doing-test.js"></script>
 <div name='user_role' user_role='<?php echo $user_role ?>'></div>
 <div style='display: none' name='times' value="<?php echo $row_check_times['A']?>" ></div>
 <div id='test-detail' class = 'content container '>
@@ -123,8 +123,10 @@
   					<div id="answers">						  
 					  </div>
  					 <hr>
- 					 <div class="text-center"><input id="checkResult" class="btn btn-success" type="submit" value="Submit" />
-                     
+ 					 <div class="text-center">
+                          <a href="index.php?click=tempResult&id=<?php echo $row['TEST_ID']; ?>">
+                            <input name='btnSubmit' id="checkResult" class="btn btn-success" type="submit" value="Submit" />
+                          </a>
                       </div>
  					 <br>
 				</form>

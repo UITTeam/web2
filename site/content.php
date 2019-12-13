@@ -80,6 +80,10 @@
             include ('site/user-left/user-menu.php');
             include ('site/user-right/user-lo-list-std.php');
         }
+        else if ($temp == 'tempResult')
+        {
+            include ('site/tempResult.php');
+        }
         else {
             include ('site/home.php');
         }

@@ -74,7 +74,6 @@
     foreach ($result1 as $row1) {
         echo '<tr><td><a href=./index.php?click=lo-listStudent&id=' . $row1["CLASS_ID"] . '>' . $row1["CLASS_ID"] . '</td>
         <td>' . $row1["CLASS_NAME"] . '</td>';
-       
         $count=0;
         foreach ($result as $row) {
             if($row["CLASS_ID"]===$row1["CLASS_ID"])

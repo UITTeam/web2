@@ -5,7 +5,8 @@
 	$row = $result->fetch_assoc();
 	if ($row['role_id'] == 'student') {
 		$sql2 = "SELECT * FROM `student` WHERE username = '$username'";
-	} else {
+	} 
+	else {
 		$sql2 = "SELECT * FROM `teacher` WHERE username = '$username'";
 	}
 
@@ -37,7 +38,7 @@
 				</li>
 
 				<?php
-				if ($row['role_id'] == 'teacher') {
+				if ($row['role_id'] == 'teacher' || $row['role_id'] =='admin') {
 					?>
 					<li class="list"><a href="./index.php?click=manage&id=<?php echo $row['username'] ?>"><b>Manage</b></a>
 						<ul class="us-item">

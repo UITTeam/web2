@@ -10,9 +10,14 @@
     <header style="padding: 40px">
             <div class="row banner">
                     <div class="col-md-3"><img src="./img/banner.png"></div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <h1 >English Online</h1>
                         <p>Hotline: 012345678 <br>Email: eng@gmail.com</p>
+                    </div>
+                    <div class="col-md-1">
+                       <a id='tempResult' href='./index.php?click=tempResult'
+                       class="btn btn-outline-dark btn-rounded" 
+                       >Result</a>
                     </div>
 
                     <?php
@@ -21,7 +26,7 @@
     ?>
                     <div id='signed' class="col-md-2">
                     <a id='btnLogin' href='./index.php?click=info&username=<?php echo $_SESSION['login'];?>'
-                       class="btn btn-outline-dark btn-rounded mb-4" 
+                       class="btn btn-outline-dark btn-rounded" 
                        ><?php echo $_SESSION['login']; ?></a>
                     </div>
 <?php
@@ -30,12 +35,13 @@
           ?>
                   <div id='signed' class="col-md-2">
                     <a id='btnLogin' 
-                       class="btn btn-outline-dark btn-rounded mb-4" 
+                       class="btn btn-outline-dark btn-rounded" 
                        data-toggle="modal" data-target="#modalLoginForm">Login</a>
                     </div>
           <?php
         }
 ?>
+                  
                     </div>    
                 </div>
                 <div class="row"> 

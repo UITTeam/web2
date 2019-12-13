@@ -56,7 +56,13 @@ $(function()
         swal("Oh...no!", "Your correct answers: "+ correct + ". Try again!", "error");
         if (is_todo === 'todo' && user_role == 'student' ) 
         {
+          
          SaveResult(correct, test_id, class_id);
+         
+        }
+        else
+        {
+          //SaveTemp(test_id, correct);
         }
       }
       else
@@ -70,15 +76,39 @@ $(function()
           {
            SaveResult(correct, test_id, class_id);
           }
+          else
+          {
+            // Luu tam ket qua 
+          }
       }
     });  
     });
     }
 });
-})
-
+}) 
+function SaveTemp(test_id, correct) {
+ // alert('ham save temp');
+      var num_question = $('span[name="num_question"]').attr('value');
+     // var times = $('div[name="times"]').attr('value');
+  
+      $.ajax({
+        type: "POST",
+        url: "site/tempResult.php",
+        data: {
+                 "correct" : correct,
+                 "test_id": test_id,        
+                 "num_question": num_question,        
+              },
+        success: function (response) {
+           alert(response);
+        }
+      });
+  
+}
 function Redirect() {
-  window.location="index.php";
+  var test_id = $('div[name="test"]').attr('id');
+    window.location="index.php?click=tempResult&id="+test_id;
+ 
 }
 
 var timeout = null;
@@ -131,4 +161,6 @@ function SaveResult(correct_answer, test_id, class_id) {
           // alert(response);
         }
       });
+
+
 }

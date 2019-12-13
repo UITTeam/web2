@@ -58,6 +58,10 @@ $(function()
         {
          SaveResult(correct, test_id, class_id);
         }
+        else
+        {
+          //Luu tam ket qua
+        }
       }
       else
       {
@@ -70,6 +74,10 @@ $(function()
           {
            SaveResult(correct, test_id, class_id);
           }
+          else
+          {
+            // Luu tam ket qua 
+          }
       }
     });  
     });
@@ -78,7 +86,7 @@ $(function()
 })
 
 function Redirect() {
-  window.location="index.php";
+  window.location="index.php?click=lo";
 }
 
 var timeout = null;
