@@ -1,11 +1,17 @@
 <?php
 	//include('admin/connect.php');
-	$username = $_SESSION['login'];
+	$username = '';
+	if (isset($_SESSION['login']))
+	{
+		$username = $_SESSION['login'];
+	}
 	$sql_role = "SELECT * FROM `account` WHERE username = '$username'";
 	$result_role = $conn->query($sql_role);
 	$row_role = $result_role->fetch_assoc();
+	$user_role ='';
 	if ($row_role['role_id'] == 'admin')
 	{
+		$user_role ='admin';
 		$sql = "SELECT * 
 			FROM test"; 
 	}
@@ -14,8 +20,8 @@
 				FROM test,  study, class
 				WHERE test.CLASS_ID = class.CLASS_ID 
 					AND class.CLASS_ID = study.CLASS_ID
-					and study.USERNAME = '$username'
-				"; 
+					and study.USERNAME = '$username'"; 
+		$user_role ='student';
 	}
 	//Hien thi danh sach cai bai test ma giao vien dang day
 	else if ($row_role['role_id'] == 'teacher') {
@@ -23,13 +29,13 @@
 				FROM test, class
 				WHERE test.CLASS_ID = class.CLASS_ID 
 				and TEACHER = '$username'"; 
+		$user_role ='teacher';
 	}
 
 	else {
 		$sql = "SELECT * 
-				FROM test, class
-				WHERE test.CLASS_ID = class.CLASS_ID 
-					and class.TEACHER = '$username'"; 
+				FROM test
+				WHERE TYPE='free';"; 
 	}
 	$result = $conn->query($sql);
 ?>
@@ -39,6 +45,7 @@
 	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
 	<script type="text/javascript" src="./js/js_test.js"></script>
 <div class='content' style='margin-top: 0px'>
+	<div name='user_role' user_role='<?php echo $user_role ?>'></div>
     <ul class="menu"> 
 			<li data-type="free">Free Tests</li>
 			<li data-type="todo">Todo Tests</li>

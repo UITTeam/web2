@@ -3,16 +3,38 @@
     include('../../admin/modules/result/connection.php');
     $teacherid = $_POST["teacherid"];
     $courseid = $_POST["courseid"];
-    $sql = "SELECT CLASS.CLASS_ID, CLASS.CLASS_NAME, STUDY.RANK, COUNT(STUDY.USERNAME) AS QUANTITY 
-            FROM CLASS,STUDY 
-            WHERE CLASS.CLASS_ID=STUDY.CLASS_ID AND CLASS.COURSE_ID = '$courseid' AND CLASS.TEACHER ='$teacherid'
-            GROUP BY STUDY.RANK, CLASS.CLASS_ID
-            ORDER BY CLASS.CLASS_ID ASC, STUDY.RANK ASC";
+
+    if ($teacherid == 'admin') 
+    {
+        $sql = "SELECT CLASS.CLASS_ID, CLASS.CLASS_NAME, STUDY.RANK, COUNT(STUDY.USERNAME) AS QUANTITY 
+                FROM CLASS,STUDY 
+                WHERE CLASS.CLASS_ID=STUDY.CLASS_ID 
+                AND CLASS.COURSE_ID = '$courseid' 
+                GROUP BY STUDY.RANK, CLASS.CLASS_ID
+                ORDER BY CLASS.CLASS_ID ASC, STUDY.RANK ASC";
+        $sql1 = "SELECT * FROM CLASS 
+                WHERE COURSE_ID = '$courseid' 
+                
+                ORDER BY CLASS_ID ASC";
+    }
+    else 
+     {
+        $sql = "SELECT CLASS.CLASS_ID, CLASS.CLASS_NAME, STUDY.RANK, COUNT(STUDY.USERNAME) AS QUANTITY 
+                FROM CLASS,STUDY 
+                WHERE CLASS.CLASS_ID=STUDY.CLASS_ID AND CLASS.COURSE_ID = '$courseid' 
+                AND CLASS.TEACHER ='$teacherid'
+                GROUP BY STUDY.RANK, CLASS.CLASS_ID
+                ORDER BY CLASS.CLASS_ID ASC, STUDY.RANK ASC";
+        $sql1 = "SELECT * FROM CLASS 
+                 WHERE COURSE_ID = '$courseid' 
+                 AND TEACHER ='$teacherid' 
+                 ORDER BY CLASS_ID ASC";
+     }
+
     $query = $conn->prepare($sql);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    $sql1 = "SELECT * FROM CLASS WHERE COURSE_ID = '$courseid' AND TEACHER ='$teacherid' ORDER BY CLASS_ID ASC";
     $query1 = $conn->prepare($sql1);
     $query1->execute();
     $result1 = $query1->fetchAll(PDO::FETCH_ASSOC);

@@ -1,7 +1,51 @@
 <?php
     include('admin/connect.php');
+    $username = '';
+	if (isset($_SESSION['login']))
+	{
+		$username = $_SESSION['login'];
+	}
     $id = $_GET['id'];
-    $username = $_SESSION['login'];
+  
+    $sql_role = "SELECT * FROM `account` WHERE username = '$username'";
+	$result_role = $conn->query($sql_role);
+	$row_role = $result_role->fetch_assoc();
+	$user_role ='';
+	if ($row_role['role_id'] == 'admin')
+	{
+		$user_role ='admin';
+		$sql_ = "SELECT * 
+			FROM test"; 
+	}
+	else if ($row_role['role_id'] == 'student') {
+		$sql_ = "SELECT * 
+				FROM test,  study, class
+				WHERE test.CLASS_ID = class.CLASS_ID 
+					AND class.CLASS_ID = study.CLASS_ID
+					and study.USERNAME = '$username'
+				"; 
+        $user_role ='student';
+        $sql_check_times = "SELECT COUNT(TIMES) AS A FROM `result` WHERE USERNAME = '$username'
+                        AND TEST_ID = $id
+                        group by USERNAME, TEST_ID";
+         $result_check_times = $conn->query($sql_check_times);
+         $row_check_times = $result_check_times->fetch_assoc();
+	}
+	//Hien thi danh sach cai bai test ma giao vien dang day
+	else if ($row_role['role_id'] == 'teacher') {
+		$sql_ = "SELECT * 
+				FROM test, class
+				WHERE test.CLASS_ID = class.CLASS_ID 
+				and TEACHER = '$username'"; 
+		$user_role ='teacher';
+	}
+
+	else {
+		$sql_ = "SELECT * 
+				FROM test;"; 
+	}
+    $result_ = $conn->query($sql_);
+    
     $sql = "SELECT * FROM `test` WHERE TEST_ID = $id";
     $sql2 = "SELECT COUNT(QUESTION_ID) AS A FROM `question` 
              WHERE TEST_ID = $id
@@ -17,12 +61,6 @@
     $row2 = $result2->fetch_assoc();
     $row3 = $result3->fetch_assoc();
 
-    $sql_check_times = "SELECT COUNT(TIMES) AS A FROM `result` WHERE USERNAME = '$username'
-                        AND TEST_ID = $id
-                        group by USERNAME, TEST_ID";
-    $result_check_times = $conn->query($sql_check_times);
-    $row_check_times = $result_check_times->fetch_assoc();
-
     $class_id = $row3['CLASS_ID'];
     $sql_test_todo = "SELECT TYPE
 	                    FROM `test` 
@@ -35,7 +73,6 @@
     {
         $is_todo = 'todo';
     }
- 
 ?>
 
 <link rel="stylesheet" href="./css/test-detail.css">
@@ -43,7 +80,8 @@
 <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
-<script src="./js/doing-test.js"></script>
+<script src="./js/doing-test-2.js"></script>
+<div name='user_role' user_role='<?php echo $user_role ?>'></div>
 <div style='display: none' name='times' value="<?php echo $row_check_times['A']?>" ></div>
 <div id='test-detail' class = 'content container '>
     <div name='test' id='<?php echo $row['TEST_ID'];?>' class_id='<?php echo $row3['CLASS_ID'];?>' 

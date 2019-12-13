@@ -42,7 +42,9 @@ $(function()
      var test_id = $('div[name="test"]').attr('id');
      var class_id = $('div[name="test"]').attr('class_id');
      var is_todo = $('div[name="test"]').attr('is_todo');
-     alert(is_todo);
+     var user_role = $('div[name="user_role"]').attr('user_role');
+    // alert(user_role);
+    
     $.each($(this).serializeArray(), function(index, value) {
       var check = value.name.match(/\d/)[0],
        $q = $("#q" + check);
@@ -52,7 +54,7 @@ $(function()
       {
        setTimeout('Redirect()',1000);
         swal("Oh...no!", "Your correct answers: "+ correct + ". Try again!", "error");
-        if (is_todo === 'todo') 
+        if (is_todo === 'todo' && user_role == 'student' ) 
         {
          SaveResult(correct, test_id, class_id);
         }
@@ -64,7 +66,7 @@ $(function()
           title: "Sweet!",
           text: "Correct answers " + correct
           });
-        if (is_todo === 'todo') 
+        if (is_todo === 'todo' && user_role == 'student' ) 
           {
            SaveResult(correct, test_id, class_id);
           }
@@ -126,7 +128,7 @@ function SaveResult(correct_answer, test_id, class_id) {
                 "num_question": num_question,
                 "times": times},
         success: function (response) {
-           alert(response);
+          // alert(response);
         }
       });
 }

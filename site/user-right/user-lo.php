@@ -2,8 +2,30 @@
 include('admin/modules/result/connection.php');
 //include('admin/connect.php');
 //	session_start();
-$username = $_SESSION['login'];
+	$username = $_SESSION['login'];
+	$sql_role = "SELECT * FROM `account` WHERE username = '$username'";
+	$query_role = $conn->prepare($sql_role);
+	$query_role->execute();
+	$result_role = $query_role->fetch(PDO::FETCH_ASSOC);
 
+	if ($result_role['role_id'] == 'student') {
+		//$sql = "SELECT * FROM `student` WHERE username = '$username'";
+
+	}
+	else if ($result_role['role_id'] == 'teacher')
+	{
+		$sql = "SELECT * FROM COURSE,CLASS 
+				WHERE COURSE.COURSE_ID=CLASS.COURSE_ID 
+				AND CLASS.TEACHER='$username'";
+	}
+	else 
+	{
+		$sql = "SELECT * FROM COURSE";
+	}
+		$query = $conn->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+	
 ?>
 <link rel="stylesheet" type="text/css" href="css/user-locopy.css">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
@@ -13,23 +35,27 @@ $username = $_SESSION['login'];
 		<div class="col-md-4"></div>
 		<div class="col-md-8 info_">
 			<div class="s_tittle"><i>Learning Outcome</i></div>
-
-			<div class="choose">
-				<label for="">Course</label>
-				<select name="course" id="course">
-					<option data-tchr="" value="">--choose course--</option>
+		<?php
+		if ($row['role_id'] == 'student')
+		{
+		?>
+				
+		<?php
+		}
+		else if ($row['role_id'] == 'teacher') {
+			?>
+				<div class="choose">
+					<label for="">Course</label>
+					<select name="course" id="course">
+						<option data-tchr="" value="">--choose course--</option>
 					<?php
-					$sql = "SELECT * FROM COURSE,CLASS WHERE COURSE.COURSE_ID=CLASS.COURSE_ID AND CLASS.TEACHER='$username'";
-					$query = $conn->prepare($sql);
-					$query->execute();
-					$result = $query->fetchAll(PDO::FETCH_ASSOC);
 					foreach ($result as $row) {
 						echo '<option data-tchr="' . $username . '" value="' . $row["COURSE_ID"] . '">' . $row["COURSE_NAME"] . '</option>';
 					}
-					?>
+				?>
 				</select>
-			</div>
-			<div class="table-std">
+				</div>
+				<div class="table-std">
 				<table id='list-class'>
 					<tr>
 						<td>CLASS ID</td>
@@ -42,7 +68,37 @@ $username = $_SESSION['login'];
 					</tr>
 				</table>
 			</div>
-		</div>
+				<?php
+		}	
+		else {
+			?>
+				<div class="choose">
+				<label for="">Course</label>
+				<select name="course" id="course">
+					<option data-tchr="" value="">--choose course--</option>
+					<?php
+					foreach ($result as $row) {
+						echo '<option data-tchr="' . $username . '" value="' . $row["COURSE_ID"] . '">' . $row["COURSE_NAME"] . '</option>';
+					}
+					?>
+				</select>
+				</div>
+				<div class="table-std">
+				<table id='list-class'>
+					<tr>
+						<td>CLASS ID</td>
+						<td>CLASS NAME</td>
+						<td>EXCELLENT</td>
+						<td>GOOD</td>
+						<td>AVERAGE</td>
+						<td>BELOW AVERAGE</td>
+						<td>WEAK</td>
+					</tr>
+				</table>
+			</div>
+			<?php
+		}
+		?>
 		<script>
 			$(document).ready(function($) {
 				$('#course').change(function(event) {
@@ -53,13 +109,12 @@ $username = $_SESSION['login'];
 						"teacherid": teacherId
 					}, function(data) {
 						$('#list-class').html(data);
+						//alert(data);
 					})
 				})
 
 			})
 		</script>
-
-
 
 	</div>
 

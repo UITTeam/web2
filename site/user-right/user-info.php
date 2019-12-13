@@ -4,7 +4,7 @@
 	$username = $_SESSION['login'];
 	$sql = "SELECT * FROM `account` WHERE username = '$username'";
 	$result = $conn->query($sql);
-	 $row = $result->fetch_assoc();
+	$row = $result->fetch_assoc();
 	if ($row['role_id'] == 'student') {
 		$sql2 = "SELECT * FROM `student` WHERE username = '$username'";
 	}
