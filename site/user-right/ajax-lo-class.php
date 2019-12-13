@@ -3,8 +3,8 @@
     include('../../admin/modules/result/connection.php');
     $teacherid = $_POST["teacherid"];
     $courseid = $_POST["courseid"];
-
-    if ($teacherid == 'admin') 
+    $role = $_POST["role"];
+    if ($role == 'admin') 
     {
         $sql = "SELECT CLASS.CLASS_ID, CLASS.CLASS_NAME, STUDY.RANK, COUNT(STUDY.USERNAME) AS QUANTITY 
                 FROM CLASS,STUDY 
@@ -16,6 +16,13 @@
                 WHERE COURSE_ID = '$courseid' 
                 
                 ORDER BY CLASS_ID ASC";
+    }
+    else if ($role == 'student') 
+    {
+        $sql ="SELECT * FROM STUDY, CLASS
+                WHERE STUDY.USERNAME = '$teacherid'
+                    AND STUDY.CLASS_ID = CLASS.CLASS_ID";
+        $sql1 ="SELECT * FROM STUDY";
     }
     else 
      {
@@ -38,7 +45,24 @@
     $query1 = $conn->prepare($sql1);
     $query1->execute();
     $result1 = $query1->fetchAll(PDO::FETCH_ASSOC);
-    echo ' <tr>
+    if ($role == 'student') 
+    {
+        echo '<tr>
+                <td>CLASS ID</td>
+                <td>CLASS NAME</td>
+                <td>RESULT</td>
+                <td>RANK</td>
+             </tr>';
+        foreach ($result as $row)
+        {
+            echo '<tr><td><a href=./index.php?click=lo-listStudent&id=' . $row["CLASS_ID"] . '>' . $row["CLASS_ID"] . '</td>
+                 <td>' . $row["CLASS_NAME"] . '</td>';
+            echo '<td>'.$row["RESULT"].'</td>';
+            echo '<td>'.$row["RANK"].'</td>';
+        }
+    }
+    else {
+        echo ' <tr>
             <td>CLASS ID</td>
             <td>CLASS NAME</td>            
             <td>AVERAGE</td>
@@ -126,5 +150,6 @@
         else if($count===4)  echo '<td> 0 </td>';
         echo '</tr>';   
     }
+    echo '</table>';
+    }
     ?>
-</table>
