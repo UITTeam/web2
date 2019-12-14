@@ -20,7 +20,7 @@
     <td colspan=2>CONTROL</td> 
 </tr> ';
     foreach ($result as $row) {
-        echo '<tr><td><a href=./index.php?click=mn-listStudent&id=' . $row["TEST_ID"] . '>' . $row["TEST_ID"] . '</td>
+        echo '<tr><td><a href=./index.php?click=mn-detail-test&id=' . $row["TEST_ID"] . '>' . $row["TEST_ID"] . '</td>
         <td>' . $row["TEST_NAME"] . '</td>
         <td>' . $row["IMG"] . '</td>
         <td>' . $row["CLASS_ID"] . '</td>
