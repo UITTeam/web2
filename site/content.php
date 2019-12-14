@@ -18,6 +18,9 @@
         else if ($temp == 'about'){
             include ('site/about.php');
         }
+        else if ($temp == 'course'){
+            include ('site/course.php');
+        }
         else if ($temp == 'doing-test') {
             include ('site/doing-test.php');
         }
