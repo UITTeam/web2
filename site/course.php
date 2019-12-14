@@ -5,6 +5,7 @@
 <?php
     $sql = "SELECT * FROM COURSE";
     $result = $conn->query($sql);
+
     $id = $_GET['id'];
 
 ?>
