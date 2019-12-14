@@ -47,9 +47,16 @@
 <div class='content' style='margin-top: 0px'>
 	<div name='user_role' user_role='<?php echo $user_role ?>'></div>
     <ul class="menu"> 
+			<?php
+			if ($user_role == 'admin' || $user_role == 'student' || $user_role == 'teacher' )
+			{
+					?>
 			<li data-type="free">Free Tests</li>
 			<li data-type="todo">Todo Tests</li>
 			<li data-type="all">All</li>
+					<?php
+			}
+			?>
 		</ul>
 	<div class="test-list">	
 <?php

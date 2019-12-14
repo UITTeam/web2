@@ -32,6 +32,10 @@
             <td style='font-size: 15px; padding: 5px'>Accept .txt file only</td>
         </tr>
         <tr>
+            <td>BENCHMARK</td>
+            <td><input type="number" step=0.01 name='txtBenchMark' placeholder='ex: 3.0' required></td>
+        </tr>
+        <tr>
             <td></td>
             <td colspan=2>
                 <button name='btnSubmitAdd'><strong>Submit</strong></button></td>

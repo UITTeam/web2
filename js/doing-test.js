@@ -77,13 +77,13 @@ $(function () {
           //alert(correct);
           $('div[name="correct_ans"]').attr('value', correct); // luu lai ket qua
         });
-      
+
       });
     }
   });
 })
 function SaveTemp(test_id, correct) {
-  alert('ham save temp');
+  // alert('ham save temp');
   var num_question = $('span[name="num_question"]').attr('value');
   // var times = $('div[name="times"]').attr('value');
   $.ajax({
@@ -95,16 +95,15 @@ function SaveTemp(test_id, correct) {
       "num_question": num_question,
     },
     success: function (response) {
-     // alert(response);
-      $('#testing').html(response);
+      // alert(response);
+      // $('#testing').html(response);
     }
   });
 
 }
 function Redirect() {
   var test_id = $('div[name="test"]').attr('id');
- // window.location = "index.php?click=tempResult&id=" + test_id;
-
+  window.location = "index.php?click=tempResult&id=" + test_id;
 }
 
 var timeout = null;
@@ -157,6 +156,4 @@ function SaveResult(correct_answer, test_id, class_id) {
       // alert(response);
     }
   });
-
-
 }
