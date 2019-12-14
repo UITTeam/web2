@@ -29,6 +29,12 @@
                 <input type="file" name='fileDesc' accept="text/plain">
             </td>
         </tr>
+
+        <tr>
+            <td>BENCHMARK</td>
+            <td><input type="number" step=0.01 name='txtBenchMark' value='<?php echo $row['BENCHMARK']?>' required></td>
+        </tr>
+
         <tr>
             <td></td>
             <td style='font-size: 15px; padding: 5px'>Accept .txt file only</td>

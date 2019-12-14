@@ -80,7 +80,7 @@
 <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
-<script src="./js/doing-test-2.js"></script>
+<script src="./js/doing-test.js"></script>
 <div name='user_role' user_role='<?php echo $user_role ?>'></div>
 <div style='display: none' name='times' value="<?php echo $row_check_times['A']?>" ></div>
 <div id='test-detail' class = 'content container '>

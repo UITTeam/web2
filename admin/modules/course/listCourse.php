@@ -21,6 +21,7 @@
             <td>COURSE_NAME</td>
             <td>FEE</td>
             <td>DESCRIPTION</td>
+            <td>BENCHMARK</td>
             <td colspan=2>CONTROL</td>
         </tr>
         <?php
@@ -33,7 +34,7 @@
             <td><?php echo $row['COURSE_NAME'] ?></td>
             <td><?php echo $row['FEE'] ?></td>
             <td><?php echo $row['DESCRIPTION'] ?></td>
-            
+            <td><?php echo $row['BENCHMARK'] ?></td>
             <td style='display: flex'>  
                 <a href="./index.php?click=editCourse&ac=edit&id=<?php echo $row['COURSE_ID']?>">
                     <button name='btnEditStudent'>Edit</button>
