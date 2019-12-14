@@ -180,7 +180,11 @@ p {
 <div class='suggest-course-info'>
           
         <h4 class="title1" style="font-size: 20px;">For more information about courses: 
-        <a href="index.php?click=course&&id=<?php echo $course_id[0];?> "><?php echo json_encode($course_name[0]); ?></a></h4>
+        <a href="index.php?click=course&&id=<?php echo $course_id[0];?> "
+            >
+        <?php echo json_encode($course_name[0]); ?>
+         
+        </a></h4>
         
 </div>
 

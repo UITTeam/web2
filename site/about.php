@@ -34,8 +34,6 @@
         $('.title1').click(function(){
             $('.title1 ~ div').toggle(500,'swing');
         })
-        $('.title2').click(function(){
-            $('.title2 ~ div').toggle(500,'swing');
-        })
+        
     })
 </script>
