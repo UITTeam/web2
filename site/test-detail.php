@@ -80,7 +80,7 @@
 <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
-<script src="./js/doing-test.js"></script>
+<script src="./js/doing-test-2.js"></script>
 <div name='user_role' user_role='<?php echo $user_role ?>'></div>
 <div style='display: none' name='times' value="<?php echo $row_check_times['A']?>" ></div>
 <div id='test-detail' class = 'content container '>
@@ -119,13 +119,16 @@
 		<div class="row" >
 			<div class="col-md-3"></div>
 			<div class="col-md-6" style="background: white; border-radius: 15px">
-				 <form id="q_a">
-  					<div id="answers">						  
+				 <form  id="q_a"  method=POST >  
+                     <div name='correct_ans' value=''></div>    
+  					<div name='listQuestion'  id="answers">						  
 					  </div>
  					 <hr>
  					 <div class="text-center">
                           <a href="index.php?click=tempResult&id=<?php echo $row['TEST_ID']; ?>">
-                            <input name='btnSubmit' id="checkResult" class="btn btn-success" type="submit" value="Submit" />
+                            <input name='btnSubmit' id="checkResult" class="btn btn-success" 
+                            type="submit" value="Submit" 
+                            />
                           </a>
                       </div>
  					 <br>

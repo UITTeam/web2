@@ -1,16 +1,63 @@
-
 <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="css/result.css">
 <link rel="stylesheet" type="text/css" href="css/animate.css">
 <div class='content'>
-<?php
+    <?php
+    // include('admin/connect.php');
+    //session_destroy();
+    if (isset($_POST['test_id']) && isset($_POST['correct'])) {
+        session_start();
+        include('../admin/connect.php');
+        $test_id =  $_POST['test_id'];
+        $correct = $_POST['correct'];
+        
+        $sql = "SELECT * FROM `test`
+                WHERE TEST_ID = $test_id";
+        $sql_count = "SELECT COUNT(*) AS A FROM `question`
+                    WHERE TEST_ID = $test_id
+                    GROUP BY TEST_ID";
 
-   $test_id = $_GET['id'];
-   @$_SESSION['result_'.$test_id] += 1;
- //  echo $test_id;
-   
-?>
-<div class="limiter">
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        $result_count = $conn->query($sql_count);
+        $row_count = $result_count->fetch_assoc();
+        if (!isset($_SESSION["result_"])) //Lan dau tien lam bai
+        {
+            $result_ = array();
+            $result_[$test_id] = array(
+                "test_name" => $row['TEST_NAME'],
+                "num_ques" => $row_count['A'],
+                "correct" => $correct,
+                "times" => @$_SESSION["result_"] += 1
+            );
+        } 
+        else 
+            {
+            $result_ = $_SESSION["result_"];
+            if (is_array($result_) && array_key_exists($test_id, $result_)) // Lam lai bai test da lam thi tang times len 1
+            {
+                $result_[$test_id] = array(
+                    "test_name" => $row['TEST_NAME'],
+                    "num_ques" => $row_count['A'],
+                    "correct" => $correct,
+                    "times" =>  (int) $result_[$test_id]['times'] + 1
+                );
+            } else {
+                
+                //$result_ = array(); 
+                $result_[$test_id] = array(
+                    "test_name" => $row['TEST_NAME'],
+                    "num_ques" => $row_count['A'],
+                    "correct" => $correct,
+                    "times" => (int) $result_[$test_id]['times'] + 1
+                );
+            }
+        }
+        $_SESSION["result_"] = $result_;
+    }
+  //  print_r($_SESSION["result_"]);
+    ?>
+    <div class="limiter">
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="table">
@@ -22,51 +69,46 @@
                             Times
                         </div>
                         <div class="cell">
+                            Correct answers
+                        </div>
+                        <div class="cell">
                             Point
-                        </div>  
+                        </div>
                     </div>
 
-                    <div class="row">
- <?php
-     include('admin/connect.php');
-    foreach($_SESSION as $name => $value) 
-    {
-      // echo $name.' '.$value.'<br>'; // echo bai test A lam lan thu n
-       if ($value > 0)  
-       {
-           if (substr($name, 0, 5) == 'result_')
-           { 
-               $test_id = substr($name, 5, strlen($name=5));
-
-               $sql = "SELECT * FROM `test` WHERE TEST_ID=$test_id";
-               $result = $conn->query($sql);
-               while ($row = $result->fetch_assoc())
-               {
-                   ?>
-                 <div class="cell" data-title="Full Name">
-                   <?php echo $row['TEST_NAME'];?>
-                 </div>
-                <div class="cell" data-title="Full Name">
-                   <?php echo $row['TEST_NAME']; ?>
-                 </div>
-             <?php
-               }  
-           }
-       }
-    }
- 
- ?>
-                       
-                        
-                    </div> 
-
-                    </div>
+                    <?php
+                    if (isset($_SESSION['result_'])) {
+                                foreach ($_SESSION['result_'] as $key => $value) 
+                                {
+                                    ?>
+                                <div class="row">
+                                <div class="cell" >
+                                    <?php echo $value["test_name"] ?>
+                                </div>
+                                <div class="cell" >
+                                     <?php echo $value["times"]  ?>
+                                </div>
+                                <div class="cell" >
+                                     <?php echo $value["correct"]  ?>
+                                </div>
+                                <div class="cell" >
+                                     <?php echo round((10/$value["num_ques"])*$value["correct"],2,PHP_ROUND_HALF_EVEN) ?>
+                                </div>
+                                </div>
+                            <?php
+                                }
+                    } else {
+                        ?>
+                        <div class="row">
+                            You haven't do anything yet.
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-    <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
-
-    
+</div>
+<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
