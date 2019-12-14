@@ -42,8 +42,8 @@
            while ($row_avg = $result_avg->fetch_assoc()){
             $sum_avg_test += $row_avg['A'];
           }
-          
-           $result_point = $sum_avg_test/$count_test;   
+        
+           $result_point = round($sum_avg_test/$count_test,2,PHP_ROUND_HALF_EVEN) ;   
            $sql2 = "UPDATE `study` SET  `RESULT` = $result_point
                     WHERE `USERNAME`='$username'";
             if (mysqli_query($conn, $sql2)) {

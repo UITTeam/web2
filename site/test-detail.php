@@ -74,7 +74,7 @@
         $is_todo = 'todo';
     }
 ?>
-
+ 
 <link rel="stylesheet" href="./css/test-detail.css">
 <link rel="stylesheet" type="text/css" href="./css/doing-test.css">
 <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
@@ -119,12 +119,17 @@
 		<div class="row" >
 			<div class="col-md-3"></div>
 			<div class="col-md-6" style="background: white; border-radius: 15px">
-				 <form id="q_a">
-  					<div id="answers">						  
+				 <form  id="q_a"  method=POST >  
+                     <div name='correct_ans' value=''></div>    
+  					<div name='listQuestion'  id="answers">						  
 					  </div>
  					 <hr>
- 					 <div class="text-center"><input id="checkResult" class="btn btn-success" type="submit" value="Submit" />
-                     
+ 					 <div class="text-center">
+                          <a href="index.php?click=tempResult&id=<?php echo $row['TEST_ID']; ?>">
+                            <input name='btnSubmit' id="checkResult" class="btn btn-success" 
+                            type="submit" value="Submit" 
+                            />
+                          </a>
                       </div>
  					 <br>
 				</form>
