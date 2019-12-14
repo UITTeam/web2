@@ -58,6 +58,11 @@
             include ('site/user-left/user-menu.php');
             include ('site/user-right/user-manage-test.php');
         }
+        else if ($temp == 'mn-detail-test')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/user-right/user-manage-test-detail.php');
+        }
         else if ($temp == 'mn-test-edit')
         {
             include ('site/user-left/user-menu.php');
