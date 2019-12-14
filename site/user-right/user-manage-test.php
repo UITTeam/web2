@@ -11,7 +11,7 @@ $username = $_SESSION['login'];
 <div class="container">
     <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-7 info_">
+        <div class="col-md-8 info_">
             <div class="s_tittle"><i><a style="color: #7eb9be; text-decoration: none" href="./index.php?click=manage">Manage</a> > Test</i></div>
 
             <div class="choose">
@@ -36,7 +36,7 @@ $username = $_SESSION['login'];
             <a href="./index.php?click=mn-test-add&ac=add">
                 <button name='btnAddTest'>ADD NEW TEST</button>
             </a><br><br>
-            <div id="list-test" class="listTest">
+            <div id="list-test" class="listTest" style="margin-bottom: 10px; overflow: auto; height: 400px;">
                 <table>
                     <tr>
                         <td>TEST ID</td>

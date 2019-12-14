@@ -76,8 +76,9 @@ if (isset($_POST['btnEdit'])) {
     } else {
         ?>
         <script>
+
             alert('That test is taken. Try another!');
-            window.location = "../../index.php?click=mn-test-edit";
+            window.location = "../../index.php";
         </script>
     <?php
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);

@@ -52,10 +52,10 @@ $test_id = $_GET['id'];
                     <tr>
                         <td>Course</td>
                         <td>
-                            <select disabled="disabled" name="selCourse" id="selCourse">
+                            <select  name="selCourse" id="selCourse">
 
                                 <?php
-                                echo '<option value="' . $row1["COURSE_ID"] . '">' . $row1["COURSE_NAME"] . '</option>';
+                                echo '<option selected="selected" value="' . $row1["COURSE_ID"] . '">' . $row1["COURSE_NAME"] . '</option>';
                                 ?>
                             </select></td>
                     </tr>
@@ -63,8 +63,8 @@ $test_id = $_GET['id'];
                         <td>Class</td>
                         <td>
                             <div id='listClass'>
-                                <select disabled="disabled" name="selClass" id="selClass">
-                                    <option value="<?php echo $row1["CLASS_ID"] ?>"><?php echo $row1["CLASS_NAME"] ?></option>
+                                <select  name="selClass" id="selClass">
+                                    <option selected="selected" value="<?php echo $row1["CLASS_ID"] ?>"><?php echo $row1["CLASS_NAME"] ?></option>
                             </div>
                         </td>
                     </tr>
@@ -91,7 +91,7 @@ $test_id = $_GET['id'];
                     </tr>
                 </table>
             </form>
-            
+
         </div>
 
         <div class="clearfix"></div>
