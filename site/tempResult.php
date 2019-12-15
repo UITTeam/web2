@@ -85,11 +85,14 @@ p {
             $result_last = $conn->query($sql_last);
             $sum = 0;
             $count = 0;
+            if (isset($_SESSION["result_"]))
+            {
              foreach ($_SESSION['result_'] as $key => $value) 
              {   
                  $sum += round((10 / $value["num_ques"]) * $value["correct"], 2, PHP_ROUND_HALF_EVEN);
                  $count++;        
              }
+            
         echo '<div name="avg" style="display: none" value='.$sum/$count.'></div>';
         $course_name = array();
         $course_id = array();
@@ -108,6 +111,7 @@ p {
                 }
             }
         }
+            }
         //print_r($course_name);  
        // echo json_encode($course_id);  
 ?>
@@ -115,6 +119,10 @@ p {
             var avg = $('div[name="avg"]').attr('value');
             var list_course = $('div[name="listCourse"]').attr('value');
            // alert((list_course));
+           <?php
+           if (!isset($_SESSION['login']))
+           {
+           ?>
            swal({
               icon: "success",
               title: "Congratulation!",
@@ -122,7 +130,9 @@ p {
                     "Suggestion courses for you:" + "\n" 
                     + <?php echo json_encode($course_name[0]); ?> + "\n" 
             })
- 
+            <?php
+           }
+           ?>
         </script>
     </div>
     <div class="limiter">
@@ -176,7 +186,10 @@ p {
             </div>
         </div>
     </div>
-
+<?php
+    if (isset($_SESSION["result_"]) && !isset($_SESSION['login']))
+    {
+ ?>
 <div class='suggest-course-info'>
           
         <h4 class="title1" style="font-size: 20px;">For more information about courses: 
@@ -187,6 +200,6 @@ p {
         </a></h4>
         
 </div>
-
+        <?php } ?>
 </div>
 </div>

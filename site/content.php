@@ -97,6 +97,11 @@
             include ('site/user-left/user-menu.php');
             include ('site/user-right/user-lo-std.php');
         }
+        else if ($temp == 'chart')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/chart.php');
+        }
         else {
             include ('site/home.php');
         }

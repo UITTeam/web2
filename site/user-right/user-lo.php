@@ -38,6 +38,7 @@ include('admin/modules/result/connection.php');
 		<div class="col-md-8 info_">
 			<div class="s_tittle"><i>Learning Outcome</i></div>
 			<div name='role' role = <?php echo $result_role['role_id'] ; ?>></div>
+			
 		<?php
 		if ($row['role_id'] == 'student')
 		{
@@ -122,6 +123,7 @@ include('admin/modules/result/connection.php');
 			<?php
 		}
 		?>
+		<div><a href='index.php?click=chart&id='>View in chart</a></div>
 		<script>
 			$(document).ready(function($) {
 				$('#course').change(function(event) {

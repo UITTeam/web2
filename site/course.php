@@ -36,7 +36,7 @@
     <?php 
         $content = "
             <code>
-                <pre>".htmlspecialchars(file_get_contents("$filepath/$file"))."</pre>
+                <pre >".htmlspecialchars(file_get_contents("$filepath/$file"))."</pre>
             </code></div></h4>";
         echo $content;
         ?>
