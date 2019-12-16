@@ -1,7 +1,5 @@
 <?php
     include('../connect.php');
-  
-
    if (isset($_GET['acc']) == 'del')
    {
         $class_id = $_GET['id'];
@@ -12,30 +10,21 @@
                 AND RESULT = 0 ";
        if (mysqli_query($conn, $sql)) 
        {
-         //header('location:../../index.php?click=class&id=1');
          header("location:../../index.php?click=studentInClass&id=$class_id");
-         ?>
-              <script>
-                    alert('Deleted student from <?php echo $class_id ?> ');
-              </script>
-         <?php
-        
        }
        else 
        {
-        ?>
-        <script>
-              alert('Error! ');
-        </script>
-   <?php
+           ?>
+          <script>
+               alert('Loi');
+          </script>
+          <?php
        }
        // echo 'hi';
-
    }
-
-
    else
    {
+    //header("location: ../../index.php?click=studentInClass&id=$class_id");
     $class_id = $_POST['class_id'];
     $getArr =  $_POST['arrayStd_checked'];
     $listStd = json_decode($getArr);
@@ -44,19 +33,18 @@
         $username = $listStd[$i];
        $sql = "INSERT INTO `study`(`USERNAME`, `CLASS_ID`, `RESULT`, `RANK`) 
                 VALUES ('$username','$class_id',0,null)";
+               
         if (mysqli_query($conn, $sql)) 
-        {
-            header("location:../../index.php?click=studentInClass&id=$class_id");
+        {   
+           //   
+           echo 'Inserted';
         }
         else 
          {
-            echo "Error ";
+            echo 'Error';
          }
     }
-   }
-
-
- 
+   } 
   // print_r (json_decode($arr));
 
 

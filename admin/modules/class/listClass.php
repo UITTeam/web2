@@ -40,7 +40,7 @@
             <td><?php echo $row['BEGIN'] ?></td>            
             <td><?php echo $row['END'] ?></td>
             
-            <td style='display: flex'>  
+            <td>  
                 <a href="./index.php?click=editClass&ac=edit&id=<?php echo $row['CLASS_ID']?>">
                     <button name='btnEditClass'>Edit</button>
                     </a>                 

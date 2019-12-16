@@ -38,30 +38,24 @@ $classid = $_GET['id'];
         <tr>
             <td><?php echo $row['USERNAME'] ?></td>
             <td><?php echo $row['FULLNAME'] ?></td>
-            <td style='display: flex'>  
-                <a href="./index.php?click=editClass&ac=edit&id=<?php echo $row['USERNAME']?>">
-                    <button name='btnEditClass'>Move</button>
-                    </a>                 
-                </td>
+          
                 <td>
                   <button name='btnDelStudent'>
                     <a href="modules/class/addStudentIntoClass.php?acc=del&id=<?php echo $classid ?>&username=<?php echo $row['USERNAME']?>">
                         Delete
                     </a></button>
             </td>
-            
         </tr> 
         <?php 
         $i++;
         } ?>     
         <tr>
             <td colspan=4>NUMBER OF STUDENT: <?php echo $row1['NUMBER_OF_STD'] ?> </td>
-            
         </tr>
     </table>
 </div>
     <br><br>
-    <a href="./index.php?click=addStdInClass&ac=add&id=<?php echo $classid ?>">
+    <a href="./index.php?click=addStdInClass&id=<?php echo $classid ?>">
       <button name='btnAddStudent'>ADD NEW STUDENT</button>
 </a>
 

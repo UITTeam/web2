@@ -48,13 +48,13 @@ $result1 = $conn->query($sql1);
         ?>
     </table>
     <br><br>
-    <a href="./index.php?click=studentInClass&id=<?php echo $classid ?>">
-        <button name='btnAddStudent'>Submit</button>
-    </a>
+        <button name='btnAddStudent'><a href="./index.php?click=studentInClass&id=<?php echo $classid ?>">
+        Submit</a></button>
+         
 </form>
 
 <script>
-    $(document).ready(function($) {
+    $(document).ready(function() {
         var class_id = $('strong').attr('value');
         $('button[name="btnAddStudent"]').on("click", function() {
             var $checkbox = $('input:checked');
@@ -63,7 +63,6 @@ $result1 = $conn->query($sql1);
                 arrayStd_checked.push(value);
             })
             console.log(arrayStd_checked);
-
 
 
             $.ajax({
@@ -77,7 +76,7 @@ $result1 = $conn->query($sql1);
                     alert(response);
                 }
             });
-
+        
         })
 
     })
