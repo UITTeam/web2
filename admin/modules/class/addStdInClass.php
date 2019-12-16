@@ -34,15 +34,7 @@ $result1 = $conn->query($sql1);
         $i = 0;
         foreach ($result1 as $row1) {
             ?>
-            <tr>
-                <td>
-                    <input type="checkbox" name="username" id="<?php echo $row1['USERNAME'] ?>">
-                </td>
-                <td><?php echo $row1['USERNAME'] ?></td>
-                <td><?php echo $row1['FULLNAME'] ?></td>
-            </tr>
-            <?php
-            ?>
+            
             <tr>
                 <td>
                     <input type="checkbox" name="username" id="<?php echo $row1['USERNAME'] ?>">
