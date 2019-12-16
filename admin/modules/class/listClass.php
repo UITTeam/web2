@@ -22,7 +22,9 @@
             <td>TEACHER</td>
             <td>COURSE ID</td>
             <td>INFO</td>
-            <td colspan=2>CONTROL</td>
+            <td>BEGIN</td>
+            <td>END</td>
+            <td colspan=3>CONTROL</td>
         </tr>
         <?php
         $i = 0;
@@ -35,6 +37,8 @@
             <td><?php echo $row['TEACHER'] ?></td>
             <td><?php echo $row['COURSE_ID'] ?></td>
             <td><?php echo $row['INFO'] ?></td>
+            <td><?php echo $row['BEGIN'] ?></td>            
+            <td><?php echo $row['END'] ?></td>
             
             <td style='display: flex'>  
                 <a href="./index.php?click=editClass&ac=edit&id=<?php echo $row['CLASS_ID']?>">
@@ -47,6 +51,11 @@
                         Delete
                     </a></button>
             </td>
+            <td style='display: flex'>  
+                <a href="./index.php?click=studentInClass&ac=edit&id=<?php echo $row['CLASS_ID']?>">
+                    <button name='btnEditClass'>Student list</button>
+                    </a>                 
+                </td>
         </tr> 
         <?php 
         $i++;
