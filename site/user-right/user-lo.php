@@ -12,13 +12,15 @@ include('admin/modules/result/connection.php');
 		//$sql = "SELECT * FROM `student` WHERE username = '$username'";
 		$sql = "SELECT * FROM COURSE,CLASS, STUDY
 				WHERE COURSE.COURSE_ID=CLASS.COURSE_ID AND STUDY.CLASS_ID = CLASS.CLASS_ID
-				AND STUDY.USERNAME='$username'";
+				AND STUDY.USERNAME='$username'
+				GROUP by course.COURSE_ID";
 	}
 	else if ($result_role['role_id'] == 'teacher')
 	{
 		$sql = "SELECT * FROM COURSE,CLASS 
 				WHERE COURSE.COURSE_ID=CLASS.COURSE_ID 
-				AND CLASS.TEACHER='$username'";
+				AND CLASS.TEACHER='$username'
+				GROUP by course.COURSE_ID";
 	}
 	else 
 	{
@@ -38,7 +40,8 @@ include('admin/modules/result/connection.php');
 		<div class="col-md-8 info_">
 			<div class="s_tittle"><i>Learning Outcome</i></div>
 			<div name='role' role = <?php echo $result_role['role_id'] ; ?>></div>
-			
+			<br>
+			<div style="padding: 15px"><a target="_blank" href='index.php?click=chart&id='>View in chart</a></div>
 		<?php
 		if ($row['role_id'] == 'student')
 		{
@@ -123,7 +126,7 @@ include('admin/modules/result/connection.php');
 			<?php
 		}
 		?>
-		<div><a href='index.php?click=chart&id='>View in chart</a></div>
+		
 		<script>
 			$(document).ready(function($) {
 				$('#course').change(function(event) {

@@ -102,6 +102,11 @@
             include ('site/user-left/user-menu.php');
             include ('site/chart.php');
         }
+        else if ($temp == 'testChart')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/testChart.php');
+        }
         else {
             include ('site/home.php');
         }

@@ -13,10 +13,12 @@
                     WHERE STUDY.CLASS_ID='$tittle' 
                     AND STUDY.USERNAME = RESULT.USERNAME
                     AND RESULT.TEST_ID = TEST.TEST_ID
+                    and study.CLASS_ID = test.CLASS_ID
                     AND STUDY.USERNAME='$username'";
         $query_std = $conn->prepare($sql_std);
         $query_std->execute();
         $result_std = $query_std->fetchAll(PDO::FETCH_ASSOC);
+        
 ?>
 <link rel="stylesheet" type="text/css" href="css/user-manage-cls-std.css">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
@@ -32,6 +34,7 @@
             if ($row['role_id'] == 'student')
             {
                 ?>
+                <div style="padding: 15px"><a target="_blank" href='index.php?click=testChart&id='>View in chart</a></div>
                      <div class="table-std">
                 <table id='list-student'>
                     <tr>

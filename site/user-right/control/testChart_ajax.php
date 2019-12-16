@@ -4,18 +4,22 @@
     session_start();
     $username = $_SESSION['login'];
    
-    $sql = "SELECT * FROM `study`, `class`
-            WHERE study.CLASS_ID = class.CLASS_ID
-            AND `USERNAME` = '$username'
-            ORDER BY END ASC
+    $sql = "SELECT  test.TEST_ID, test.TEST_NAME, TIMES, POINT
+            FROM `test`, `result`
+            WHERE test.TEST_ID = result.TEST_ID
+                AND result.USERNAME = '$username'
             ";
+    
+    
     $result = $conn->query($sql);
+   
     $arrClass = array();
     while ($row = $result->fetch_assoc())
     {
+         
         $arrClass[] = array(
-            "CLASS_ID" => $row['CLASS_ID'],
-            "RESULT" => $row['RESULT']
+            "TEST_NAME" => $row['TEST_NAME'],
+            "POINT" => round($row['POINT'], 2, PHP_ROUND_HALF_EVEN)
         );
         //array_push($arrClass, $row['CLASS_ID']);
     }

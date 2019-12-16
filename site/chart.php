@@ -8,13 +8,14 @@
 		<div class="col-md-4"></div>
 		<div class="col-md-6 info_">
 			<canvas id="myChart"></canvas>
+			<canvas id='myTestChart'></canvas>
 		</div>
 
 	</div>
 </div>
-
-
 <script>
+
+
 	function renderChart(data, labels) {
 		var ctx = document.getElementById("myChart").getContext('2d');
 		var myChart = new Chart(ctx, {
@@ -24,6 +25,9 @@
 				datasets: [{
 					label: 'Your result',
 					data: data,
+					backgroundColor: '#FFB1C0',
+                    borderColor: '#FD6D8B',
+					borderWidth: 2
 				}]
 			},
 		});
@@ -44,11 +48,12 @@
                         label.push(item['CLASS_ID']);
 						data.push(item['RESULT']);
                     });  
+					renderChart(data, label);
 			}
 		});
 		console.log(label);
 		console.log(label.length);
 		//data = [8, 5, 6, 7, 10];
-		renderChart(data, label);
+		
 	})
 </script>

@@ -21,8 +21,9 @@
     {
         $sql ="SELECT * FROM STUDY, CLASS
                 WHERE STUDY.USERNAME = '$teacherid'
-                    AND STUDY.CLASS_ID = CLASS.CLASS_ID";
-        $sql1 ="SELECT * FROM STUDY";
+                    AND STUDY.CLASS_ID = CLASS.CLASS_ID
+                    AND class.COURSE_ID = '$courseid'";
+       
     }
     else 
      {
@@ -42,9 +43,7 @@
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    $query1 = $conn->prepare($sql1);
-    $query1->execute();
-    $result1 = $query1->fetchAll(PDO::FETCH_ASSOC);
+    
     if ($role == 'student') 
     {
         echo '<tr>
@@ -62,6 +61,9 @@
         }
     }
     else {
+        $query1 = $conn->prepare($sql1);
+    $query1->execute();
+    $result1 = $query1->fetchAll(PDO::FETCH_ASSOC);
         echo ' <tr>
             <td>CLASS ID</td>
             <td>CLASS NAME</td>            
