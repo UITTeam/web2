@@ -33,13 +33,15 @@ $result1 = $conn->query($sql1);
         <?php
         $i = 0;
         foreach ($result1 as $row1) {
-
-            echo '<tr>
-<td><center><input type="checkbox" name="username" id="' . $i . '" value="' . $row1['USERNAME'] . '" ></center></td>
-<td>' . $row1['USERNAME'] . '</td>
-<td>' . $row1['FULLNAME'] . '</td>
-</tr>';
-            $i = $i + 2;
+            ?>
+            <tr>
+                <td>
+                    <input type="checkbox" name="username" id="<?php echo $row1['USERNAME'] ?>">
+                </td>
+                <td><?php echo $row1['USERNAME'] ?></td>
+                <td><?php echo $row1['FULLNAME'] ?></td>
+            </tr>
+            <?php
             ?>
 
         <?php
@@ -53,31 +55,19 @@ $result1 = $conn->query($sql1);
 </form>
 
 <script>
-    $(document).ready(function($) {
-
+    $(document).ready(function($) { 
         $('button[name="btnAddClass"]').on("click", function() {
-                if ($('input[name="username"]').is(':checked')) {
-                    $(this).each(function() {
-                        // var n = $("input:checked").length;
-                        var value = $(this).val();
-                        alert(value);
-                        arrayStd_checked.push(value);
-
-                    })
+            var $checkbox = $('input:checked');
+            $checkbox.each(function() 
+            {
+                var value = $(this).attr('id');
+                arrayStd_checked.push(value);  
+            })
                     console.log(arrayStd_checked);
-                    // if($(this).is(':checked')) { 
-                    //     var value = $(this).val();
-                    //     arrayStd_checked.push(value);
-                    //     console.log(arrayStd_checked);
-                    //        }
-                    // else {
-                    //     var value = $(this).val();
-                    //     arrayStd_checked.push(value);
-                    // }
-                    alert('hihi');
-
-                }
-
+                    alert('stop');
+                  
         })
+
+        
     })
 </script>
