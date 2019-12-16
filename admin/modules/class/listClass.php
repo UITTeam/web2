@@ -52,7 +52,7 @@
                     </a></button>
             </td>
             <td style='display: flex'>  
-                <a href="./index.php?click=studentInClass&ac=edit&id=<?php echo $row['CLASS_ID']?>">
+                <a href="./index.php?click=studentInClass&id=<?php echo $row['CLASS_ID']?>">
                     <button name='btnEditClass'>Student list</button>
                     </a>                 
                 </td>

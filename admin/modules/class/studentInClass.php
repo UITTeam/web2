@@ -44,8 +44,8 @@ $classid = $_GET['id'];
                     </a>                 
                 </td>
                 <td>
-                  <button name='btnDelClass'>
-                    <a href="./modules/class/controlClass.php?id1=<?php echo $classid ?>&id2=<?php echo $row['USERNAME']?>">
+                  <button name='btnDelStudent'>
+                    <a href="modules/class/addStudentIntoClass.php?acc=del&id=<?php echo $classid ?>&username=<?php echo $row['USERNAME']?>">
                         Delete
                     </a></button>
             </td>
@@ -62,7 +62,7 @@ $classid = $_GET['id'];
 </div>
     <br><br>
     <a href="./index.php?click=addStdInClass&ac=add&id=<?php echo $classid ?>">
-      <button name='btnAddClass'>ADD NEW STUDENT</button>
+      <button name='btnAddStudent'>ADD NEW STUDENT</button>
 </a>
 
 
