@@ -1,74 +1,69 @@
 
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <style>
-    select {
-    margin: 5px;
-    border: 1px solid #f29393;
-    padding: 10px;
-}
+    td {
+       border: 1px solid #f29393;
+       max-width : max-content;
+       text-align: center;
+        padding: 8px;
+    }
+    
 </style>
-<?php
-     $sql1 = "SELECT * FROM `class`";
-     $sql2 = "SELECT * FROM `course`";
-     $sql3 = "SELECT * FROM  `teacher`";
-     $result1 = $conn->query($sql1);
-     $result2 = $conn->query($sql2);
-     $result3 = $conn->query($sql3);
+ 
+<?php 
+$classid = $_GET['id'];
+    $sql = "SELECT STUDENT.USERNAME, STUDENT.FULLNAME  FROM STUDY, STUDENT 
+    WHERE STUDY.USERNAME=STUDENT.USERNAME
+    AND STUDY.CLASS_ID = '$classid'";
+    $sql1 = "SELECT COUNT(USERNAME) AS NUMBER_OF_STD FROM STUDY
+    WHERE CLASS_ID = '$classid'";
+    $result = $conn->query($sql);
+    $result1 = $conn->query($sql1);
+    $row1 = $result1->fetch_assoc();
 ?>
-<form class="form-add-class" action='./modules/class/controlClass.php' method='POST'
-        enctype="multipart/form-data" >
+<strong> STUDENT LIST OF <?php echo $classid ?> </strong>
+<br><br>
+<div class='list-std'>
     <table>
-        <tr colspan=2> <strong>ADD NEW CLASS</strong> </tr>
+        
         <tr>
-            <td>Class ID</td>
-            <td><input type="text" name='txtClassID' placeholder='ex: ENG001' required></td>
+            <td>USERNAME</td>
+            <td>FULL NAME</td>
+            <td colspan=2>CONTROL</td>
         </tr>
+        <?php
+        $i = 0;
+        while ($row = $result->fetch_assoc()) //Trong khi con dong
+        {
+            ?>
         <tr>
-            <td>Class Name</td>
-            <td><input type="text" name='txtClassName' placeholder='class_name' required></td>
-        </tr>
-
+            <td><?php echo $row['USERNAME'] ?></td>
+            <td><?php echo $row['FULLNAME'] ?></td>
+            <td style='display: flex'>  
+                <a href="./index.php?click=editClass&ac=edit&id=<?php echo $row['USERNAME']?>">
+                    <button name='btnEditClass'>Move</button>
+                    </a>                 
+                </td>
+                <td>
+                  <button name='btnDelClass'>
+                    <a href="./modules/class/controlClass.php?id1=<?php echo $classid ?>&id2=<?php echo $row['USERNAME']?>">
+                        Delete
+                    </a></button>
+            </td>
+            
+        </tr> 
+        <?php 
+        $i++;
+        } ?>     
         <tr>
-            <td>Course</td>
-            <td>
-            <select name="selCourse" id="selCourse">          
-<?php
-    while ($row2 = $result2->fetch_assoc())
-    {
-    ?>
-        <option value="<?php echo $row2['COURSE_ID']?>"><?php echo $row2['COURSE_NAME']?></option>
-<?php
-    }
-
-    ?>
-        </select></td>
-        </tr>
-        <tr>
-            <td>Teacher</td>
-            <td>
-            <select name="selTeacher" id="selTeacher">                 
-<?php
-    while ($row3 = $result3->fetch_assoc())
-    {
-    ?>
-        <option value="<?php echo $row3['USERNAME']?>"><?php echo $row3['FULLNAME']?></option>
-<?php
-    }
-    ?>
-        </select></td>
-        </tr>
-        <tr>
-            <td>Info</td>
-            <td><input type="file" name='fileInfo' accept="text/plain"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td style='font-size: 15px; padding: 5px'>Accept .txt file only</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td colspan=2>
-                <button name='btnSubmitAdd'><strong>Submit</strong></button></td>
+            <td colspan=4>NUMBER OF STUDENT: <?php echo $row1['NUMBER_OF_STD'] ?> </td>
+            
         </tr>
     </table>
-</form>
+</div>
+    <br><br>
+    <a href="./index.php?click=addStdInClass&ac=add&id=<?php echo $classid ?>">
+      <button name='btnAddClass'>ADD NEW STUDENT</button>
+</a>
+
+
+   

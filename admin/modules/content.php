@@ -55,6 +55,10 @@
         case 'studentInClass':
             include('./modules/class/studentInClass.php');
             break;
+        case 'addStdInClass':
+            include('./modules/class/addStdInClass.php');
+            break;
+
         case 'test':
             include('./modules/test/listTest.php');
             break;

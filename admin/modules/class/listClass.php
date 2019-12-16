@@ -1,7 +1,7 @@
 <style>
     td {
        border: 1px solid #f29393;
-       max-width = max-content;
+       max-width : max-content;
        text-align: center;
         padding: 8px;
     }
