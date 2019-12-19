@@ -107,6 +107,11 @@
             include ('site/user-left/user-menu.php');
             include ('site/testChart.php');
         }
+        else if ($temp == 'teacherChart')
+        {
+            include ('site/user-left/user-menu.php');
+            include ('site/teacherChart.php');
+        }
         else {
             include ('site/home.php');
         }

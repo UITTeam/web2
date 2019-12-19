@@ -33,7 +33,7 @@
     {
         $username = $listStd[$i];
        $sql = "INSERT INTO `study`(`USERNAME`, `CLASS_ID`, `RESULT`, `RANK`) 
-                VALUES ('$username','$class_id',0,null)";
+                VALUES ('$username','$class_id',0,'WEAK')";
         $ok = mysqli_query($conn, $sql);
  
     }

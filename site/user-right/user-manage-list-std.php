@@ -10,7 +10,7 @@
             echo '<div class="s_tittle"><i><a style="color: #7eb9be; text-decoration: none" href="./index.php?click=manage">Manage</a> >
             <a style="color: #7eb9be; text-decoration: none" href="./index.php?click=mn-class">Class</a> > ' . $tittle . '</i></div>';
             ?>
-            <div class="table-std">
+            <div class="table-std" style="overflow: auto; height: 500px;">
                 <table id='list-student'>
                     <tr>
                         <td>USERNAME</td>

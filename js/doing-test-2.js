@@ -140,7 +140,7 @@ function stop() {
 
 function SaveResult(correct_answer, test_id, class_id) {
   //Save ket qua doi voi hoc vien
-  alert('hi');
+ 
   var num_question = $('span[name="num_question"]').attr('value');
   var times = $('div[name="times"]').attr('value');
   $.ajax({

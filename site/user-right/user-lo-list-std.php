@@ -59,6 +59,7 @@
             }
 else {
 ?>
+<div style="padding: 15px"><a target="_blank" href='index.php?click=teacherChart&id=<?php echo $tittle?>'>View in chart</a></div>
         <div class="table-std">
                 <table id='list-student'>
                     <tr> 
