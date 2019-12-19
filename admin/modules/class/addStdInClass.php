@@ -65,7 +65,6 @@ $result1 = $conn->query($sql1);
             })
             console.log(arrayStd_checked);
 
-
             $.ajax({
                 type: "POST",
                 url: "./modules/class/addStudentIntoClass.php",
@@ -74,7 +73,8 @@ $result1 = $conn->query($sql1);
                     "class_id": class_id
                 },
                 success: function(response) {
-                    alert(response);
+                    //alert(response);
+                    window.location="../../index.php?click=addClass";
                 }
             });
         
