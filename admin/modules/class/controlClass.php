@@ -2,16 +2,17 @@
     include('../connect.php');
     
   
-    $txtClassName = $_POST['txtClassName'];
-    $txtBegin = $_POST['txtBegin'];
-    $txtEnd = $_POST['txtEnd'];
-    $txtTeacher = $_POST['selTeacher'];
-    $txtCourseID = $_POST['selCourse'];
-    $fileInfo = $_FILES['fileInfo']['name'];
-    $fileInfo_tmp = $_FILES['fileInfo']['tmp_name'];
-    move_uploaded_file($fileInfo_tmp, '../info_class/'.$fileInfo);
+    
     if (isset($_POST['btnSubmitEdit'])) 
-    { 
+        { 
+        $txtClassName = $_POST['txtClassName'];
+        $txtBegin = $_POST['txtBegin'];
+        $txtEnd = $_POST['txtEnd'];
+        $txtTeacher = $_POST['selTeacher'];
+        $txtCourseID = $_POST['selCourse'];
+        $fileInfo = $_FILES['fileInfo']['name'];
+        $fileInfo_tmp = $_FILES['fileInfo']['tmp_name'];
+        move_uploaded_file($fileInfo_tmp, '../info_class/'.$fileInfo);
         $id = $_GET['id'];
         if ($fileInfo != '')
         {
@@ -37,11 +38,19 @@
                  window.location="../../index.php?click=editClass";
             </script>          
 <?php
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+          //  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }
         }
     else if  (isset($_POST['btnSubmitAdd']))  
     {
+        $txtClassName = $_POST['txtClassName'];
+        $txtBegin = $_POST['txtBegin'];
+        $txtEnd = $_POST['txtEnd'];
+        $txtTeacher = $_POST['selTeacher'];
+        $txtCourseID = $_POST['selCourse'];
+        $fileInfo = $_FILES['fileInfo']['name'];
+        $fileInfo_tmp = $_FILES['fileInfo']['tmp_name'];
+        move_uploaded_file($fileInfo_tmp, '../info_class/'.$fileInfo);
         $txtClassID = $_POST['txtClassID'];
         if ($fileInfo != '')
         {
@@ -64,7 +73,7 @@
                  window.location="../../index.php?click=addClass";
             </script>          
 <?php
-           echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+          // echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }      
     }
     else{
@@ -79,10 +88,11 @@
             {
 ?>
     <script>
-        alert('Error! ');
+        alert('Lop dang co sinh vien hoc! ');
+        window.location = "../../index.php?click=class&id=1"; 
     </script>
 <?php
-           // echo "Error: " . $sql1 . "<br>" . mysqli_error($conn);
+            echo "Error: " . $sql1 . "<br>" . mysqli_error($conn);
             }
     }
 

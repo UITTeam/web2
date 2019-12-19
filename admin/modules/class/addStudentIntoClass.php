@@ -16,7 +16,8 @@
        {
            ?>
           <script>
-               alert('Loi');
+               alert('Khong the xoa sinh vien!');
+               window.location="../../index.php?click=addClass";
           </script>
           <?php
        }
