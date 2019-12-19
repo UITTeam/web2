@@ -65,6 +65,14 @@
         </select></td>
         </tr>
         <tr>
+            <td>BEGIN DATE</td>
+            <td><input type="date" name='txtBegin'></td>
+        </tr>
+        <tr>
+            <td>FINISH DATE</td>
+            <td><input type="date" name='txtEnd'></td>
+        </tr>
+        <tr>
             <td>Info</td>
             <td><input type="file" name='fileInfo' accept="text/plain"></td>
         </tr>
