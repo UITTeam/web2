@@ -122,13 +122,18 @@
          }
          else
          {
-            echo "Error: " . $sql0 . "<br>" . mysqli_error($conn);
+            //echo "Error: " . $sql0 . "<br>" . mysqli_error($conn);
+            ?>
+   <script>
+      alert ("Khong xoa duoc do hien tai giao vien dang phu trach lop");
+      window.location = "../../index.php?click=teacher";
+   </script>
+<?php
          }
       }
       else
       {
          //echo "Error: " . $sql00 . "<br>" . mysqli_error($conn);
-       
          ?>
    <script>
       alert ("Khong xoa duoc do hien tai giao vien dang phu trach lop");
