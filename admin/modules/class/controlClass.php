@@ -3,6 +3,8 @@
     
   
     $txtClassName = $_POST['txtClassName'];
+    $txtBegin = $_POST['txtBegin'];
+    $txtEnd = $_POST['txtEnd'];
     $txtTeacher = $_POST['selTeacher'];
     $txtCourseID = $_POST['selCourse'];
     $fileInfo = $_FILES['fileInfo']['name'];
@@ -15,12 +17,13 @@
         {
             $sql = "UPDATE `class` SET `CLASS_NAME` = '$txtClassName', 
                     `TEACHER` = '$txtTeacher', `COURSE_ID` = '$txtCourseID',
-                    `INFO`= '$fileInfo'
+                    `INFO`= '$fileInfo', `BEGIN` = '$txtBegin', `END` = '$txtEnd'
                     WHERE `CLASS_ID` = '$id'" ; 
         }
         else {
             $sql = "UPDATE `class` SET `CLASS_NAME` = '$txtClassName', 
-                  `TEACHER` = '$txtTeacher', `COURSE_ID` = '$txtCourseID'
+                  `TEACHER` = '$txtTeacher', `COURSE_ID` = '$txtCourseID', 
+                  `BEGIN` = '$txtBegin', `END` = '$txtEnd'
                   WHERE `CLASS_ID` = '$id'" ; 
         }
        if (mysqli_query($conn, $sql)) 
@@ -42,12 +45,12 @@
         $txtClassID = $_POST['txtClassID'];
         if ($fileInfo != '')
         {
-            $sql = "INSERT INTO `class` (`CLASS_ID`, `CLASS_NAME`, `TEACHER`,`COURSE_ID`, `INFO`) 
-        VALUES ('$txtClassID','$txtClassName', '$txtTeacher','$txtCourseID','$fileInfo')";
+            $sql = "INSERT INTO `class` (`CLASS_ID`, `CLASS_NAME`, `TEACHER`,`COURSE_ID`, `INFO`, `BEGIN`, `END`) 
+        VALUES ('$txtClassID','$txtClassName', '$txtTeacher','$txtCourseID','$fileInfo', '$txtBegin', '$txtEnd')";
         }
         else {
-            $sql = "INSERT INTO `class` (`CLASS_ID`, `CLASS_NAME`, `TEACHER`,`COURSE_ID`) 
-            VALUES ('$txtClassID','$txtClassName','$txtTeacher','$txtCourseID')";
+            $sql = "INSERT INTO `class` (`CLASS_ID`, `CLASS_NAME`, `TEACHER`,`COURSE_ID`, `BEGIN`, `END`) 
+            VALUES ('$txtClassID','$txtClassName','$txtTeacher','$txtCourseID', '$txtBegin', '$txtEnd')";
         }
 
          if (mysqli_query($conn, $sql)) 

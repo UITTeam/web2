@@ -2,6 +2,9 @@
    <?php
     include('../connect.php');
       $id = $_GET['id'];
+     
+    if (isset($_POST['btnSubmitAdd'])) 
+    {
       $acc_usename = $_POST['txtAccount'];
       $acc_pass = $_POST['txtPassword'];
       $acc_date = $_POST['txtCreateDate'];
@@ -14,8 +17,6 @@
       $sdt_email = $_POST['txtEmail'];
       $sdt_addr = $_POST['txtAddr'];
       $sdt_phone = $_POST['txtPhone'];
-    if (isset($_POST['btnSubmitAdd'])) 
-    {
       $sql1 = "INSERT INTO `account`(`username`, `PASS`, `role_id`,`create_date`, `AVATAR`) 
         VALUES ('$acc_usename','$acc_pass','student', ' $acc_date','$acc_avt')"; 
       $sql2 = "INSERT INTO `student`(`USERNAME`, `FULLNAME`, `DOB`, `SEX`, `EMAIL`, `ADDRESS`, `PHONE`) 
@@ -49,6 +50,18 @@
     }
     else if (isset($_POST['btnSubmitEdit']))
     {   
+      $acc_usename = $_POST['txtAccount'];
+      $acc_pass = $_POST['txtPassword'];
+      $acc_date = $_POST['txtCreateDate'];
+      $acc_avt = $_FILES['fileAvt']['name'];
+      $acc_avt_tmp = $_FILES['fileAvt']['tmp_name'];
+      move_uploaded_file($acc_avt_tmp, '../uploads/'.$acc_avt);
+      $sdt_fullname = $_POST['txtFullname'];
+      $sdt_dob = $_POST['txtDob'];
+      $sdt_sex = $_POST['rbSex'];
+      $sdt_email = $_POST['txtEmail'];
+      $sdt_addr = $_POST['txtAddr'];
+      $sdt_phone = $_POST['txtPhone'];
       if ($acc_avt != '')
         {
             $sql1 = "UPDATE `account` SET `PASS` = '$acc_pass', 
@@ -98,7 +111,16 @@
       }
       else 
             {
-            echo "Error: " . $sql1 . "<br>" . mysqli_error($conn);
+               ?>
+      <script>
+                alert ('Can not delete!');
+               window.location="../../index.php?click=student";
+               </script>
+               <?php 
+
+
+
+          //  echo "Error: " . $sql1 . "<br>" . mysqli_error($conn);
             }
     }
 ?>
