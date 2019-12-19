@@ -12,8 +12,9 @@ $classid = $_GET['id'];
 $sql1 = "SELECT * FROM STUDENT WHERE USERNAME NOT IN (
         SELECT STUDY.USERNAME FROM STUDY,CLASS
         WHERE STUDY.CLASS_ID = CLASS.CLASS_ID
-        AND CURRENT_DATE >= CLASS.BEGIN
-        AND CURRENT_DATE <= CLASS.END)";
+        AND (CURRENT_DATE >= CLASS.BEGIN
+        AND CURRENT_DATE <= CLASS.END)
+        OR STUDY.CLASS_ID = '$classid')";
 
 $result1 = $conn->query($sql1);
 
@@ -49,7 +50,7 @@ $result1 = $conn->query($sql1);
         ?>
     </table>
     <br><br>
-        <button name='btnAddStudent'><a href="./index.php?click=studentInClass&id=<?php echo $classid ?>">
+        <button name='btnAddStudent'><a href="./index.php?click=class">
         Submit</a></button>
          
 </form>
@@ -73,11 +74,14 @@ $result1 = $conn->query($sql1);
                     "class_id": class_id
                 },
                 success: function(response) {
-                    //alert(response);
-                    window.location="../../index.php?click=addClass";
+                    alert(response);
+                    window.location="./index.php?click=class";
+                   
                 }
+               
+                
             });
-        
+            
         })
 
     })
