@@ -3,7 +3,7 @@
 
 <?php
      $sql1 = "SELECT CLASS_ID,CLASS_NAME, course.COURSE_ID as A, course.COURSE_NAME as B,
-                teacher.USERNAME AS C, teacher.FULLNAME AS D 
+                teacher.USERNAME AS C, teacher.FULLNAME AS D, BEGIN, END
                  FROM class , course , teacher
                 WHERE CLASS_ID ='$_GET[id]'
                   AND class.COURSE_ID = course.COURSE_ID
@@ -14,6 +14,11 @@
      $result1 = $conn->query($sql1);
      $row1 = $result1->fetch_assoc();
 
+     $begin = $row1['BEGIN'];
+     $newbegin = date("Y-m-d", strtotime($begin)); 
+
+     $end = $row1['END'];
+     $newend = date("Y-m-d", strtotime($end)); 
 
     
 ?>
@@ -24,7 +29,7 @@
         <tr colspan=2> <strong>EDIT CLASS</strong> </tr>
         <tr>
             <td>Class ID</td>
-            <td><input disabled type="text" name='txtClassID' value='<?php echo $row1['CLASS_ID']?>' required></td>
+            <td><input readonly type="text" name='txtClassID' value='<?php echo $row1['CLASS_ID']?>' required></td>
         </tr>
         <tr>
             <td>Class Name</td>
@@ -66,11 +71,11 @@
         </tr>
         <tr>
             <td>BEGIN DATE</td>
-            <td><input type="date" name='txtBegin'></td>
+            <td><input type="date" name='txtBegin' value='<?php echo $newbegin ?>'></td>
         </tr>
         <tr>
             <td>FINISH DATE</td>
-            <td><input type="date" name='txtEnd'></td>
+            <td><input type="date" name='txtEnd' value='<?php echo $newend ?>'></td>
         </tr>
         <tr>
             <td>Info</td>

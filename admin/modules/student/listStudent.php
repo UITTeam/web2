@@ -2,7 +2,7 @@
 <style>
     td {
        border: 1px solid #f29393;
-       max-width = max-content;
+     
        text-align: center;
        padding: 10px;
     }
@@ -17,6 +17,7 @@
       <button name='btnAddStudent'>Add new Student</button>
 </a>
 <br><br>
+<div style="overflow: auto; height: 500px; width: 1000px;" >
     <table>
         <tr>
             <td>USERNAME</td>
@@ -58,5 +59,5 @@
         $i++;
         } ?>
     </table>
-
+    </div>
    

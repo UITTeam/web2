@@ -10,7 +10,13 @@
                 AND RESULT = 0 ";
        if (mysqli_query($conn, $sql)) 
        {
-         header("location:../../index.php?click=studentInClass&id=$class_id");
+         //header("location:../../index.php?click=studentInClass&id=$class_id");
+         ?>
+         <script>
+              alert('Successfully!');
+              window.location='../../index.php?click=studentInClass&id=<?php echo $class_id ?>';
+         </script>
+         <?php
        }
        else 
        {

@@ -40,7 +40,17 @@ if (isset($_POST['btnEdit'])) {
                WHERE TEST_ID = $id";
     }
     if (mysqli_query($conn, $sql)) {
-        header('location:../../index.php?click=mn-test');
+     //   header('location:../../index.php?click=mn-test');
+    
+ ?>
+                <script>
+                    alert('Successfully');
+                    window.location = "../../index.php?click=mn-test";
+                </script>
+
+        <?php
+
+
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
@@ -113,7 +123,16 @@ if (isset($_POST['btnEdit'])) {
                         VALUES ('$question_id','$id_inserted','$content',
                                 '$option1','$option2','$option3',$answer)";
                 if (mysqli_query($conn, $sql2)) {
-                    header('location:../../index.php?click=mn-test');
+                    //header('location:../../index.php?click=mn-test');
+                    {
+                        ?>
+                        <script>
+                            alert('Successfully');
+                            window.location = "../../index.php?click=mn-test";
+                        </script>
+        
+                <?php
+                    }
                 } else {
                     echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
                 }
@@ -133,7 +152,16 @@ if (isset($_POST['btnEdit'])) {
         $sql2 = "DELETE FROM `test` WHERE TEST_ID=$id";
         if (mysqli_query($conn, $sql1)) {
             if (mysqli_query($conn, $sql2)) {
-               header('location:../../index.php?click=mn-test');
+              // header('location:../../index.php?click=mn-test');
+              {
+                ?>
+                <script>
+                    alert('Successfully');
+                    window.location = "../../index.php?click=mn-test";
+                </script>
+
+        <?php
+              }
             } else {
                 echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
             }

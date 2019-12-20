@@ -1,8 +1,6 @@
 <?php
     include('../connect.php');
     
-  
-    
     if (isset($_POST['btnSubmitEdit'])) 
         { 
         $txtClassName = $_POST['txtClassName'];
@@ -29,13 +27,21 @@
         }
        if (mysqli_query($conn, $sql)) 
             //  echo "New record created successfully";
-                header('location:../../index.php?click=class&id=1');
+               // header('location:../../index.php?click=class&id=1');
+               {
+                ?>
+                <script>
+                     alert('Succesfully'); 
+                     window.location="../../index.php?click=class";
+                </script>          
+    <?php
+               }
         else 
          {
   ?>
             <script>
                  alert('That course is taken. Try another!'); 
-                 window.location="../../index.php?click=editClass";
+                 window.location="../../index.php?click=class";
             </script>          
 <?php
           //  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -64,7 +70,15 @@
 
          if (mysqli_query($conn, $sql)) 
              // echo "New record created successfully";
-                 header('location:../../index.php?click=class&id=4');
+               //  header('location:../../index.php?click=class&id=4');
+               {
+                    ?>
+                <script>
+                     alert('Succesfully'); 
+                     window.location="../../index.php?click=editClass";
+                </script>          
+    <?php
+               }
         else 
          {
  ?>
@@ -81,8 +95,13 @@
         $sql = "DELETE FROM `class` WHERE CLASS_ID='$id'";
       if (mysqli_query($conn, $sql)) 
       {
-        header('location:../../index.php?click=class&id=1');
-        
+        //header('location:../../index.php?click=class&id=1');
+        ?>
+    <script>
+        alert('Successfully ');
+        window.location = "../../index.php?click=class"; 
+    </script>
+<?php
       }
       else 
             {

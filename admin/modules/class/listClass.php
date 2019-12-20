@@ -1,10 +1,10 @@
 <style>
     td {
        border: 1px solid #f29393;
-       max-width : max-content;
        text-align: center;
         padding: 8px;
     }
+    
 </style>
  
 <?php 
@@ -14,8 +14,8 @@
 <a href="./index.php?click=addClass&ac=add">
       <button name='btnAddClass'>ADD NEW CLASS</button>
 </a><br><br>
-<div class='class-info'></div>
-    <table>
+<div class='class-info' style="overflow:auto; height: 400px; margin-left: -150px">
+    <table class='list-class' >
         <tr>
             <td>CLASS ID</td>
             <td>CLASS NAME</td>
@@ -61,5 +61,5 @@
         $i++;
         } ?>     
     </table>
-
+    </div>
    

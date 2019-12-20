@@ -14,14 +14,12 @@
 	</div>
 </div>
 <script>
-
-
-	function renderChart(data, labels) {
+	function renderChart(data, label) {
 		var ctx = document.getElementById("myChart").getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'line',
 			data: {
-				labels: labels,
+				labels: label,
 				datasets: [{
 					label: 'Your result',
 					data: data,

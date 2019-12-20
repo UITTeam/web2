@@ -63,11 +63,11 @@
         </tr>
         <tr>
             <td>Image</td>
-            <td><input type="file" name='imgTest'required ></td>
+            <td><input type="file" name='imgTest'required accept="image/*" ></td>
         </tr>
         <tr>
             <td>Excel file</td>
-            <td><input type="file" name='fileExcel'required ></td>
+            <td><input type="file" name='fileExcel'  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required ></td>
         </tr>
         <tr>
             <td></td>

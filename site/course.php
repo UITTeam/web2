@@ -12,7 +12,7 @@
     <div class='content'>
        
     <div class="info">
-    <?php
+    <?php 
      
     $i = 0;
     while ($row = $result->fetch_assoc()) //Trong khi con dong

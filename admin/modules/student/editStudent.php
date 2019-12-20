@@ -6,7 +6,7 @@
      $sql2 = "SELECT * FROM `account` WHERE username ='$_GET[id]'";
      $result1 = $conn->query($sql1);
      $result2 = $conn->query($sql2);
-     $row1 = $result1->fetch_assoc();
+     $row1 = $result1->fetch_assoc(); 
      $row2 = $result2->fetch_assoc();
      $date= $row1['DOB'];
      $newdate = date("Y-m-d", strtotime($date)); 
@@ -31,7 +31,7 @@ enctype="multipart/form-data" >
         <tr colspan=2> <strong>EDIT STUDENT</strong> </tr>
         <tr>
             <td>ACCOUNT</td>
-            <td><input  disabled type="text" name='txtAccount' value='<?php echo $row1['USERNAME']?>' required></td>
+            <td><input readonly type="text" name='txtAccount' value='<?php echo $row1['USERNAME']?>' required></td>
         </tr>
         <tr>
             <td>PASSWORD</td>
