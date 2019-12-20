@@ -1,24 +1,25 @@
 <?php
     include('../connect.php');
     require_once '../PHPExcel/Classes/PHPExcel.php';
-    $txtCreatedBy = $_POST['txtCreatedBy'];
-    $txtTestName = $_POST['txtTestName'];
-   // $txtQuestions = $_POST['txtQuestions'];
-    $selType = $_POST['selType'];
-    $selCourse = $_POST['selCourse'];
-    $selClass = $_POST['selClass'];
-    $txtTimeLimit = $_POST['txtTimeLimit'];
-    $imgTest = $_FILES['imgTest']['name'];
-    $imgTest_tmp = $_FILES['imgTest']['tmp_name'];
-    move_uploaded_file($imgTest_tmp, '../imgTest/'.$imgTest);
-    
-    $fileExcel = $_FILES['fileExcel']['name'];
-    $fileExcel_tmp = $_FILES['fileExcel']['tmp_name'];
-    move_uploaded_file($fileExcel_tmp, '../fileExcel/'.$fileExcel);
-    $linkFile = "../fileExcel/$fileExcel";
+   
        
     if (isset($_POST['btnEdit'])) 
     { 
+        $txtCreatedBy = $_POST['txtCreatedBy'];
+        $txtTestName = $_POST['txtTestName'];
+       // $txtQuestions = $_POST['txtQuestions'];
+        $selType = $_POST['selType'];
+        $selCourse = $_POST['selCourse'];
+        $selClass = $_POST['selClass'];
+        $txtTimeLimit = $_POST['txtTimeLimit'];
+        $imgTest = $_FILES['imgTest']['name'];
+        $imgTest_tmp = $_FILES['imgTest']['tmp_name'];
+        move_uploaded_file($imgTest_tmp, '../imgTest/'.$imgTest);
+        
+        $fileExcel = $_FILES['fileExcel']['name'];
+        $fileExcel_tmp = $_FILES['fileExcel']['tmp_name'];
+        move_uploaded_file($fileExcel_tmp, '../fileExcel/'.$fileExcel);
+        $linkFile = "../fileExcel/$fileExcel";
         $id = $_GET['id'];
         if ($imgTest != '')
         {
@@ -41,7 +42,13 @@
                WHERE TEST_ID = $id";
         }
         if (mysqli_query($conn, $sql)) {
-            header('location:../../index.php?click=test');
+           // header('location:../../index.php?click=test');
+           ?>
+           <script>
+                alert('Succesfully!'); 
+                window.location="../../index.php?click=test";
+           </script>          
+<?php
         }
         else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -72,7 +79,13 @@
                                    '$option1','$option2','$option3',$answer)";
                        if (mysqli_query($conn, $sql2)) 
                        {
-                           header('location:../../index.php?click=test');
+                         //  header('location:../../index.php?click=test');
+                         ?>
+                         <script>
+                              alert('Sucessfully!'); 
+                              window.location="../../index.php?click=test";
+                         </script>          
+             <?php
                        }
                        else {
                            echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
@@ -93,6 +106,21 @@
         }
     else if  (isset($_POST['btnSubmitAdd']))  
     {
+        $txtCreatedBy = $_POST['txtCreatedBy'];
+        $txtTestName = $_POST['txtTestName'];
+       // $txtQuestions = $_POST['txtQuestions'];
+        $selType = $_POST['selType'];
+        $selCourse = $_POST['selCourse'];
+        $selClass = $_POST['selClass'];
+        $txtTimeLimit = $_POST['txtTimeLimit'];
+        $imgTest = $_FILES['imgTest']['name'];
+        $imgTest_tmp = $_FILES['imgTest']['tmp_name'];
+        move_uploaded_file($imgTest_tmp, '../imgTest/'.$imgTest);
+        
+        $fileExcel = $_FILES['fileExcel']['name'];
+        $fileExcel_tmp = $_FILES['fileExcel']['tmp_name'];
+        move_uploaded_file($fileExcel_tmp, '../fileExcel/'.$fileExcel);
+        $linkFile = "../fileExcel/$fileExcel";
         if ($imgTest != '' )
         {
             $sql = "INSERT INTO `test` 
@@ -128,7 +156,13 @@
                                 '$option1','$option2','$option3',$answer)";
                     if (mysqli_query($conn, $sql2)) 
                     {
-                        header('location:../../index.php?click=test');
+                      //  header('location:../../index.php?click=test');
+                      ?>
+                      <script>
+                           alert('Successfully!'); 
+                           window.location="../../index.php?click=test";
+                      </script>          
+          <?php
                     }
                     else {
                         echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
@@ -154,11 +188,23 @@
       {
          if (mysqli_query($conn, $sql2)) 
             {
-               header('location:../../index.php?click=test');
+             //  header('location:../../index.php?click=test');
+             ?>
+             <script>
+                  alert('Successfully'); 
+                  window.location="../../index.php?click=test";
+             </script>          
+ <?php
             } 
             else 
                {
-               echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+               //echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+               ?>
+               <script>
+                    alert('Error!'); 
+                    window.location="../../index.php?click=test";
+               </script>          
+   <?php
           }
       }
       else 

@@ -16,9 +16,17 @@
 <td>END</td> 
 </tr> ';
     foreach ($result as $row) {
+
+        $filepath = '../../admin/modules/info_class/';
+        $file = $row['INFO'];
+        $content = "
+            
+                <pre style='font-family: Comic Sans MS; font-weight: bold'>".htmlspecialchars(file_get_contents("$filepath/$file"))."</pre>
+            ";
+
         echo '<tr><td><a href=./index.php?click=mn-listStudent&id=' . $row["CLASS_ID"] . '>' . $row["CLASS_ID"] . '</td>
         <td>' . $row["CLASS_NAME"] . '</td>
-        <td>' . $row["INFO"] . '</td>
+        <td>' . $content . '</td>
         <td>' . $row["BEGIN"] . '</td>
         <td>' . $row["END"] . '</td></tr>';
     }

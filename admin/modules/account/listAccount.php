@@ -1,7 +1,7 @@
 <style>
     td {
        border: 1px solid #f29393;
-       max-width = max-content;
+  
        text-align: center;
         padding: 8px;
     }
@@ -14,8 +14,8 @@
 <a href="./index.php?click=addAccount&ac=add">
       <button name='btnAddAccount'>Add new Account</button>
 </a><br><br>
-<div class='account-info'></div>
-    <table>
+<div class='account-info' style="overflow: auto; height: 500px; width: 700px; " >
+    <table >
         <tr>
             <td>USERNAME</td>
             <td>PASS</td>
@@ -45,5 +45,5 @@
         $i++;
         } ?>     
     </table>
-
+    </div>
    

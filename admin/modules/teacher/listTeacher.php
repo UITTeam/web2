@@ -2,13 +2,11 @@
 <style>
     td {
        border: 1px solid #f29393;
-       max-width = max-content;
+      
        text-align: center;
        padding: 10px;
     }
-table {
-    margin-left: -140px;
-}
+
 </style>
 
 <?php
@@ -20,6 +18,7 @@ table {
       <button name='btnAddTeacher'>Add new Teacher</button>
 </a>
 <br><br>
+<div style="overflow: auto; height: 400px; width: 1140px;">
     <table>
         <tr>
             <td>USERNAME</td>
@@ -62,5 +61,5 @@ table {
         $i++;
         } ?>
     </table>
-
+    </div>
    

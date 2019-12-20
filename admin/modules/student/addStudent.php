@@ -20,10 +20,7 @@
             <td><input type="password" name='txtPassword' placeholder='123456' required></td>
         </tr>
 
-        <tr>
-            <td>CREATE DATE</td>
-            <td><input type="date" name='txtCreateDate'></td>
-        </tr>
+      
         <tr>
             <td>PROFILE PICTURE</td>
             <td><input type="file" name='fileAvt'></td>

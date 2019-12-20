@@ -21,10 +21,12 @@
         include('modules/connect.php');
         include('modules/header.php');
         include('modules/menu.php');
-        include('modules/content.php');
-    ?>
-    <div class='content'>
         
+    ?>
+    <div class='content' style="margin-left: -100px;">
+        <?php
+include('modules/content.php');
+?>
     </div>
 </body>
 </html>

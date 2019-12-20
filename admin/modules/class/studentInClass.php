@@ -22,7 +22,7 @@ $classid = $_GET['id'];
 ?>
 <strong> STUDENT LIST OF <?php echo $classid ?> </strong>
 <br><br>
-<div class='list-std'>
+<div class='list-std' style="overflow: auto; height: 400px">
     <table>
         
         <tr>
@@ -53,10 +53,11 @@ $classid = $_GET['id'];
             <td colspan=4>NUMBER OF STUDENT: <?php echo $row1['NUMBER_OF_STD'] ?> </td>
         </tr>
     </table>
-</div>
-    <br><br>
     <a href="./index.php?click=addStdInClass&id=<?php echo $classid ?>">
       <button name='btnAddStudent'>ADD NEW STUDENT</button>
+</div>
+    <br><br>
+   
 </a>
 
 

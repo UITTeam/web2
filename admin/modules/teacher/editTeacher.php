@@ -31,7 +31,7 @@ enctype="multipart/form-data" >
         <tr colspan=2> <strong>EDIT TEACHER</strong> </tr>
         <tr>
             <td>ACCOUNT</td>
-            <td><input  disabled type="text" name='txtAccount' value='<?php echo $row1['USERNAME']?>' required></td>
+            <td><input  readonly type="text" name='txtAccount' value='<?php echo $row1['USERNAME']?>' required></td>
         </tr>
         <tr>
             <td>PASSWORD</td>

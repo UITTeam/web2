@@ -11,7 +11,7 @@ $username = $_SESSION['login'];
 <div class="container">
     <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-6 info_">
+        <div class="col-md-8 info_">
             <div class="s_tittle"><i><a style="color: #7eb9be; text-decoration: none" href="./index.php?click=manage">Manage</a> > class</i></div>
 
             <div class="choose">
@@ -34,6 +34,7 @@ $username = $_SESSION['login'];
 
 
             </div>
+            <div style="overflow: auto; width: 700px; height: 400px">
             <table id='list-class'>
                 <tr>
                     <td>CLASS ID</td>
@@ -43,7 +44,7 @@ $username = $_SESSION['login'];
                     <td>END</td>
                 </tr>
             </table>
-
+            </div>
         </div>
         <script>
             $(document).ready(function($) {

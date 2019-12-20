@@ -24,8 +24,9 @@ $result1 = $conn->query($sql1);
 </script>
 <strong value="<?php echo $classid ?>"> ADD NEW STUDENT(S) INTO <?php echo $classid ?> </strong>
 <br><br>
-<form>
-    <table style="overflow: auto">
+<form >
+    <div style="overflow: auto; height: 400px; max-width: max-content">
+    <table >
         <tr>
             <td>CHOOSE</td>
             <td>USERNAME</td>
@@ -49,8 +50,9 @@ $result1 = $conn->query($sql1);
         }
         ?>
     </table>
+    </div>
     <br><br>
-        <button name='btnAddStudent'><a href="./index.php?click=class">
+        <button name='btnAddStudent'><a href="./index.php?click=studentInClass&id=<?php echo $classid ?>">
         Submit</a></button>
          
 </form>
@@ -74,14 +76,14 @@ $result1 = $conn->query($sql1);
                     "class_id": class_id
                 },
                 success: function(response) {
-                    alert(response);
-                    window.location="./index.php?click=class";
+                  //  alert(response);
+                    window.location="./index.php?click=studentInClass&id=<?php echo $classid ?>";
                    
                 }
                
                 
             });
-            
+            alert('Successfully');  
         })
 
     })

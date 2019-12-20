@@ -39,7 +39,7 @@ $username = $_SESSION['login'];
             <a href="./index.php?click=mn-test-add&ac=add">
                 <button name='btnAddTest'>ADD NEW TEST</button>
             </a><br><br>
-            <div id="list-test" class="listTest" style="margin-bottom: 10px; overflow: auto; height: 400px;">
+            <div id="list-test" class="listTest" style="margin-bottom: 10px; overflow: auto; height: 350px;">
                 <table>
                     <tr>
                         <td>TEST ID</td>

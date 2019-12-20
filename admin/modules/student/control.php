@@ -1,11 +1,11 @@
 <?php
 include('../connect.php');
-$id = $_GET['id'];
+
 
 if (isset($_POST['btnSubmitAdd'])) {
    $acc_usename = $_POST['txtAccount'];
    $acc_pass = $_POST['txtPassword'];
-   $acc_date = $_POST['txtCreateDate'];
+  
    $acc_avt = $_FILES['fileAvt']['name'];
    $acc_avt_tmp = $_FILES['fileAvt']['tmp_name'];
    move_uploaded_file($acc_avt_tmp, '../uploads/' . $acc_avt);
@@ -16,12 +16,21 @@ if (isset($_POST['btnSubmitAdd'])) {
    $sdt_addr = $_POST['txtAddr'];
    $sdt_phone = $_POST['txtPhone'];
    $sql1 = "INSERT INTO `account`(`username`, `PASS`, `role_id`,`create_date`, `AVATAR`) 
-        VALUES ('$acc_usename','$acc_pass','student', ' $acc_date','$acc_avt')";
+        VALUES ('$acc_usename','$acc_pass','student', NOW() ,'$acc_avt')";
    $sql2 = "INSERT INTO `student`(`USERNAME`, `FULLNAME`, `DOB`, `SEX`, `EMAIL`, `ADDRESS`, `PHONE`) 
         VALUES ('$acc_usename','$sdt_fullname',' $sdt_dob', '$sdt_sex','$sdt_email','$sdt_addr','$sdt_phone')";
    if (mysqli_query($conn, $sql1)) {
+   
       if (mysqli_query($conn, $sql2)) {
-         header('location:../../index.php?click=student');
+         
+         {
+            ?>
+         <script>
+            alert('Successfully!');
+            window.location = "../../index.php?click=addStudent";
+         </script>
+      <?php
+         }
       } else {
 ?>
          <script>
@@ -42,9 +51,10 @@ if (isset($_POST['btnSubmitAdd'])) {
    }
 } else if (isset($_POST['btnSubmitEdit'])) 
 {
+   $id = $_GET['id'];
    $acc_usename = $_POST['txtAccount'];
    $acc_pass = $_POST['txtPassword'];
-   $acc_date = $_POST['txtCreateDate'];
+   
    $acc_avt = $_FILES['fileAvt']['name'];
    $acc_avt_tmp = $_FILES['fileAvt']['tmp_name'];
    move_uploaded_file($acc_avt_tmp, '../uploads/' . $acc_avt);
@@ -68,7 +78,15 @@ if (isset($_POST['btnSubmitAdd'])) {
                WHERE `username` = '$id'";
    if (mysqli_query($conn, $sql1)) {
       if (mysqli_query($conn, $sql2)) {
-         header('location:../../index.php?click=student&id=1');
+        //header('location:../../index.php?click=student&id=1');
+        {
+         ?>
+         <script>
+            alert('Successfully');
+            window.location = "../../index.php?click=student";
+         </script>
+      <?php
+        }
       } else {
          echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
       }
@@ -78,6 +96,7 @@ if (isset($_POST['btnSubmitAdd'])) {
 } 
 else 
 {
+   $id = $_GET['id'];
    $sql0 = "DELETE FROM `result` WHERE USERNAME='$id'";
    $sql00 = "DELETE FROM `study` WHERE USERNAME='$id'";
    $sql1 = "DELETE FROM `student` WHERE USERNAME='$id'";
@@ -90,7 +109,15 @@ else
          {
             if (mysqli_query($conn, $sql2)) 
             {
-               header('location:../../index.php?click=student&id=1');
+              // header('location:../../index.php?click=student&id=1');
+              {
+               ?>
+               <script>
+                  alert('Successfully!');
+                  window.location = "../../index.php?click=student";
+               </script>
+            <?php
+              }
             } else {
                echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
             }
