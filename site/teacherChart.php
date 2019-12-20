@@ -43,53 +43,17 @@ foreach ($result as $row) {
 
 ?>
 
-<link rel="stylesheet" type="text/css" href="css/user-locopy.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- 
-<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> -->
-<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-<div class="container">
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-6 info_">
-            <div class="panel panel-default">
-                <div class="panel-heading">Test Result</div>
-                <br>
-                <div class="panel-body">
-                    <center>
-                        <div id="canvas-holder" style="width: 450px;">
-                        <div class=""
-                            <canvas id="chart-area" width="300" height="300"></canvas>
-                            <div id="chartjs-tooltip"></div>
-                        </div>
-
-                        
-                    </center>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div name='exc' value="<?php echo $exc ?>"></div>
-<div name='goo' value="<?php echo $goo ?>"></div>
-<div name='avg' value="<?php echo $avg ?>"></div>
-<div name='beavg' value="<?php echo $be_avg ?>"></div>
-<div name='wea' value="<?php echo $wea ?>"></div>
 <style>
     #canvas-holder {
         width: 100%;
-        margin-top: 10px;
+        margin-top: 5px;
         text-align: center;
     }
 
-
     #chartjs-tooltip {
         opacity: 1;
-        position: relative;
-        background: rgba(0, 0, 0, .7);
-        color: white;
+        position: absolute;
+        color: #73B0C0;
         border-radius: 3px;
         -webkit-transition: all .1s ease;
         transition: all .1s ease;
@@ -105,33 +69,52 @@ foreach ($result as $row) {
         margin-right: 10px;
     }
 </style>
-<!-- <script type="text/javascript">
-   // pie chart data
-  var exc = parseFloat($('div[name="exc"]').attr("value")) ;
-  var goo = parseFloat($('div[name="goo"]').attr("value")) ;
-  var avg = parseFloat($('div[name="avg"]').attr("value")) ;
-  var beavg = parseFloat($('div[name="beavg"]').attr("value")) ;
-  var wea = parseFloat($('div[name="wea"]').attr("value")) ;
-   var pieData = [
-        {
-			value: 25
-			//exc
-			,
-			color:"#CDD6D5"
-		}-->
+<link rel="stylesheet" type="text/css" href="css/user-locopy.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- 
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> -->
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6 info_">
+            <div class="s_tittle">
+                <i>
+                    <a style="color: #7eb9be; text-decoration: none" href="./index.php?click=lo">
+                        Learning Outcome</a> > <?php echo $tittle ?>
+                </i>
+            </div>
+            <center>
+                <div class="pie-chart">
+                    <div id="chartjs-tooltip"></div>
+                    <div id="canvas-holder" style="width: 450px;">
+                        <canvas id="chart-area" width="300" height="300" />
+                    </div>
+                </div>
+            </center>
+        </div>
+    </div>
+</div>
+<div name='exc' value="<?php echo $exc ?>"></div>
+<div name='goo' value="<?php echo $goo ?>"></div>
+<div name='avg' value="<?php echo $avg ?>"></div>
+<div name='beavg' value="<?php echo $be_avg ?>"></div>
+<div name='wea' value="<?php echo $wea ?>"></div>
 
 
 
-<div id="chartjs-tooltip"></div>
 <script>
     window.chartColors = {
-        red: 'rgb(255, 99, 132)',
-        orange: 'rgb(255, 159, 64)',
-        yellow: 'rgb(255, 205, 86)',
         green: 'rgb(75, 192, 192)',
         blue: 'rgb(54, 162, 235)',
-        purple: 'rgb(153, 102, 255)',
-        grey: 'rgb(231,233,237)'
+        yellow: 'rgb(255, 205, 86)',
+        orange: 'rgb(255, 159, 64)',
+        red: 'rgb(255, 99, 132)'
+        
+        
+        
     };
 
     Chart.defaults.global.tooltips.custom = function(tooltip) {
@@ -139,10 +122,10 @@ foreach ($result as $row) {
         var tooltipEl = document.getElementById('chartjs-tooltip');
 
         // Hide if no tooltip
-        // if (tooltip.opacity === 0) {
-        //     tooltipEl.style.opacity = 0;
-        //     return;
-        // }
+        if (tooltip.opacity === 0) {
+            tooltipEl.style.opacity = 0;
+            return;
+        }
 
         // Set Text
         if (tooltip.body) {
@@ -166,33 +149,37 @@ foreach ($result as $row) {
 
         // Display, position, and set styles for font
         tooltipEl.style.opacity = 1;
-        tooltipEl.style.left = centerX + 'px';
-        tooltipEl.style.top = centerY + 'px';
-        tooltipEl.style.fontFamily = tooltip._fontFamily;
-        tooltipEl.style.fontSize = tooltip.fontSize;
-        tooltipEl.style.fontStyle = tooltip._fontStyle;
+        tooltipEl.style.left = 287 + 'px';
+        tooltipEl.style.top = 277 + 'px';
+        // tooltipEl.style.fontFamily = tooltip._fontFamily;
+        // // tooltipEl.style.fontSize = tooltip.fontSize;
+        // tooltipEl.style.fontStyle = tooltip._fontStyle;
         tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
     };
-
+    var exc = parseFloat($('div[name="exc"]').attr("value")) ;
+  var goo = parseFloat($('div[name="goo"]').attr("value")) ;
+  var avg = parseFloat($('div[name="avg"]').attr("value")) ;
+  var beavg = parseFloat($('div[name="beavg"]').attr("value")) ;
+  var wea = parseFloat($('div[name="wea"]').attr("value")) ;
     var config = {
         type: 'doughnut',
         data: {
             datasets: [{
-                data: [300, 50, 100, 40, 10],
+                data: [exc, goo, avg, beavg, wea],
                 backgroundColor: [
-                    window.chartColors.red,
-                    window.chartColors.orange,
-                    window.chartColors.yellow,
                     window.chartColors.green,
                     window.chartColors.blue,
+                    window.chartColors.yellow,
+                    window.chartColors.orange,
+                    window.chartColors.red
                 ],
             }],
             labels: [
-                "Red",
-                "Orange",
-                "Yellow",
-                "Green",
-                "Blue"
+                "Exellent",
+                "Good",
+                "Average",
+                "Below Average",
+                "weak"
             ]
         },
         options: {
@@ -214,3 +201,14 @@ foreach ($result as $row) {
         window.myPie = new Chart(ctx, config);
     };
 </script>
+
+<!-- <script type="text/javascript">
+   // pie chart data
+  
+   var pieData = [
+        {
+			value: 25
+			//exc
+			,
+			color:"#CDD6D5"
+		}-->
