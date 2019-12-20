@@ -89,7 +89,7 @@ $username = $_SESSION['login'];
                     $.ajax({
                         type: "POST",
                         dataType: "json",
-                        url: "admin/modules/test/showClass_ajax.php",
+                        url: "admin/modules/test/showClass_ajax_client.php",
                         data: 'string=' + value,
                         cache: false,
                         success: function(result) {

@@ -19,7 +19,10 @@ $username = $_SESSION['login'];
                 <select name="course" id="course">
                     <option data-tchr="" value="">--choose course--</option>
                     <?php
-                    $sql = "SELECT * FROM COURSE,CLASS WHERE COURSE.COURSE_ID=CLASS.COURSE_ID AND CLASS.TEACHER='$username'";
+                    $sql = "SELECT * FROM COURSE,CLASS 
+                    WHERE COURSE.COURSE_ID=CLASS.COURSE_ID 
+                    AND CLASS.TEACHER='$username'
+                    GROUP BY CLASS.COURSE_ID";
                     $query = $conn->prepare($sql);
                     $query->execute();
                     $result = $query->fetchAll(PDO::FETCH_ASSOC);

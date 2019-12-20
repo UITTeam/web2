@@ -36,8 +36,8 @@ $test_id = $_GET['id'];
             <form class="form-edit-test" action='site/user-right/user-manage-controlTest.php?id=<?php echo $test_id; ?>' enctype="multipart/form-data" method='POST'>
                 <table id='tblTest'>
                     <tr>
-                        <td>Test Name</td>
-                        <td><input type="text" name='txtTestName' placeholder='test_name' value='<?php echo $test_name; ?>' required>
+                        <td>Test Name</td >
+                       <td><input type="text" name='txtTestName' placeholder='test_name' value='<?php echo $test_name; ?>' required>
                         </td>
                     </tr>
                     <tr>
@@ -51,22 +51,15 @@ $test_id = $_GET['id'];
                     </tr>
                     <tr>
                         <td>Course</td>
-                        <td>
-                            <select  name="selCourse" id="selCourse">
-
-                                <?php
-                                echo '<option selected="selected" value="' . $row1["COURSE_ID"] . '">' . $row1["COURSE_NAME"] . '</option>';
-                                ?>
-                            </select></td>
+                        <td><input type="text" readonly name='selCourse' id="selCourse" value="<?php echo $row1["COURSE_ID"] ?>">
+                        </td>
+                        
                     </tr>
                     <tr>
                         <td>Class</td>
-                        <td>
-                            <div id='listClass'>
-                                <select  name="selClass" id="selClass">
-                                    <option selected="selected" value="<?php echo $row1["CLASS_ID"] ?>"><?php echo $row1["CLASS_NAME"] ?></option>
-                            </div>
+                        <td><input type="text" readonly name='selClass' id="selClass" value="<?php echo $row1["CLASS_ID"] ?>">
                         </td>
+                        
                     </tr>
                     <tr>
                         <td>Time limit</td>
