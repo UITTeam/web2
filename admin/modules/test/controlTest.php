@@ -54,21 +54,21 @@
                       //  $id_inserted =  $conn->insert_id;
                 $objReader = PHPExcel_IOFactory::createReaderForFile($linkFile);
                 // $objReader->setLoadSheetsOnly('Question');
-                   $objReader->setReadDataOnly(true);
+                 //  $objReader->setReadDataOnly(true);
                    $objExcel = $objReader->load($linkFile);
              //   $sheet = $objExcel->setActiveSheetIndex(0);
                     $sheetData = $objExcel->getActiveSheet()->toArray('null', true, true, true);
                     $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
                 for ($i = 2; $i <= $highestRow; $i++)
                 {
-                   $question_id = $sheetData[$i]['A'];
+                  // $question_id = $sheetData[$i]['A'];
                    $content = $sheetData[$i]['B'];
                    $option1 = $sheetData[$i]['C'];
                    $option2 = $sheetData[$i]['D'];
                    $option3 = $sheetData[$i]['E'];
                    $answer = $sheetData[$i]['F'];
-                   $sql2 = "INSERT INTO `question`
-                           VALUES ('$question_id',$id,'$content',
+                   $sql2 = "INSERT INTO `question` (`TEST_ID`, `CONTENT`, `OPTION1`, `OPTION2`, `OPTION3`, `ANSWER`)
+                           VALUES ($id,'$content',
                                    '$option1','$option2','$option3',$answer)";
                        if (mysqli_query($conn, $sql2)) 
                        {
@@ -109,21 +109,22 @@
                $id_inserted =  $conn->insert_id;
                 $objReader = PHPExcel_IOFactory::createReaderForFile($linkFile);
              // $objReader->setLoadSheetsOnly('Question');
-                $objReader->setReadDataOnly(true);
+               // $objReader->setReadDataOnly(true);
                 $objExcel = $objReader->load($linkFile);
           //   $sheet = $objExcel->setActiveSheetIndex(0);
                  $sheetData = $objExcel->getActiveSheet()->toArray('null', true, true, true);
                  $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
              for ($i = 2; $i <= $highestRow; $i++)
              {
-                $question_id = $sheetData[$i]['A'];
+                //$question_id = $sheetData[$i]['A'];
                 $content = $sheetData[$i]['B'];
                 $option1 = $sheetData[$i]['C'];
                 $option2 = $sheetData[$i]['D'];
                 $option3 = $sheetData[$i]['E'];
                 $answer = $sheetData[$i]['F'];
-                $sql2 = "INSERT INTO `question`
-                        VALUES ('$question_id','$id_inserted','$content',
+                echo $content;
+                $sql2 = "INSERT INTO `question`  (`TEST_ID`, `CONTENT`, `OPTION1`, `OPTION2`, `OPTION3`, `ANSWER`)
+                        VALUES ('$id_inserted','$content',
                                 '$option1','$option2','$option3',$answer)";
                     if (mysqli_query($conn, $sql2)) 
                     {

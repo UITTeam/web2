@@ -119,7 +119,7 @@
 		<div class="row" >
 			<div class="col-md-3"></div>
 			<div class="col-md-6" style="background: white; border-radius: 15px">
-				 <form  id="q_a"  method=POST >  
+				 <form  id="q_a"  method=POST style="overflow: auto; height: 700px" >  
                      <div name='correct_ans' value=''></div>    
   					<div name='listQuestion'  id="answers">						  
 					  </div>
