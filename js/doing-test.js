@@ -48,7 +48,7 @@ $(function () {
             if (JSON.parse(data)[check].answer === value.value) { correct++; }
           });
           if (correct === 0) {
-            setTimeout('Redirect()', 1000);
+         //   setTimeout('Redirect()', 1000);
             swal("Oh...no!", "Your correct answers: " + correct + ". Try again!", "error");
             if (is_todo === 'todo' && user_role == 'student') {
 
@@ -60,7 +60,7 @@ $(function () {
             }
           }
           else {
-            setTimeout('Redirect()', 1000);
+         //   setTimeout('Redirect()', 1000);
             swal({
               title: "Sweet!",
               text: "Correct answers " + correct
@@ -140,6 +140,7 @@ function stop() {
 
 function SaveResult(correct_answer, test_id, class_id) {
   //Save ket qua doi voi hoc vien
+  alert('hi');
   var num_question = $('span[name="num_question"]').attr('value');
   var times = $('div[name="times"]').attr('value');
   $.ajax({
@@ -153,7 +154,8 @@ function SaveResult(correct_answer, test_id, class_id) {
       "times": times
     },
     success: function (response) {
-      // alert(response);
+       //calert(response)
+       console.log(response);
     }
   });
 }

@@ -41,11 +41,12 @@ include('admin/modules/result/connection.php');
 			<div class="s_tittle"><i>Learning Outcome</i></div>
 			<div name='role' role = <?php echo $result_role['role_id'] ; ?>></div>
 			<br>
-			<div style="padding: 15px"><a target="_blank" href='index.php?click=chart&id='>View in chart</a></div>
+			
 		<?php
 		if ($row['role_id'] == 'student')
 		{
 		?>
+		<div style="padding: 15px"><a target="_blank" href='index.php?click=chart&id='>View in chart</a></div>
 				<div class="choose">
 					<label for="">Course</label>
 					<select name="course" id="course">
@@ -71,6 +72,7 @@ include('admin/modules/result/connection.php');
 		}
 		else if ($row['role_id'] == 'teacher') {
 			?>
+			
 				<div class="choose">
 					<label for="">Course</label>
 					<select name="course" id="course">

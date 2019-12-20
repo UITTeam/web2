@@ -48,7 +48,7 @@ $(function () {
             if (JSON.parse(data)[check].answer === value.value) { correct++; }
           });
           if (correct === 0) {
-            setTimeout('Redirect()', 1000);
+          setTimeout('Redirect()', 1000);
             swal("Oh...no!", "Your correct answers: " + correct + ". Try again!", "error");
             if (is_todo === 'todo' && user_role == 'student') {
 
@@ -60,7 +60,7 @@ $(function () {
             }
           }
           else {
-            setTimeout('Redirect()', 1000);
+           setTimeout('Redirect()', 1000);
             swal({
               title: "Sweet!",
               text: "Correct answers " + correct
@@ -77,13 +77,13 @@ $(function () {
           //alert(correct);
           $('div[name="correct_ans"]').attr('value', correct); // luu lai ket qua
         });
-      
+
       });
     }
   });
 })
 function SaveTemp(test_id, correct) {
-  alert('ham save temp');
+  // alert('ham save temp');
   var num_question = $('span[name="num_question"]').attr('value');
   // var times = $('div[name="times"]').attr('value');
   $.ajax({
@@ -95,16 +95,15 @@ function SaveTemp(test_id, correct) {
       "num_question": num_question,
     },
     success: function (response) {
-     // alert(response);
-      $('#testing').html(response);
+      // alert(response);
+      // $('#testing').html(response);
     }
   });
 
 }
 function Redirect() {
   var test_id = $('div[name="test"]').attr('id');
- // window.location = "index.php?click=tempResult&id=" + test_id;
-
+  window.location = "index.php?click=tempResult&id=" + test_id;
 }
 
 var timeout = null;
@@ -141,6 +140,7 @@ function stop() {
 
 function SaveResult(correct_answer, test_id, class_id) {
   //Save ket qua doi voi hoc vien
+ 
   var num_question = $('span[name="num_question"]').attr('value');
   var times = $('div[name="times"]').attr('value');
   $.ajax({
@@ -154,9 +154,8 @@ function SaveResult(correct_answer, test_id, class_id) {
       "times": times
     },
     success: function (response) {
-      // alert(response);
+       //calert(response)
+      //  console.log(response);
     }
   });
-
-
 }

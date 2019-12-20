@@ -33,18 +33,11 @@
     {
         $username = $listStd[$i];
        $sql = "INSERT INTO `study`(`USERNAME`, `CLASS_ID`, `RESULT`, `RANK`) 
-                VALUES ('$username','$class_id',0,null)";
-               
-        if (mysqli_query($conn, $sql)) 
-        {   
-           //   
-           echo 'Inserted';
-        }
-        else 
-         {
-            echo 'Error';
-         }
+                VALUES ('$username','$class_id',0,'WEAK')";
+        $ok = mysqli_query($conn, $sql);
+ 
     }
+    echo 'Inserted';
    } 
   // print_r (json_decode($arr));
 

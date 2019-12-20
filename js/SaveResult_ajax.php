@@ -20,24 +20,28 @@
          $insert_times = 2;
        }
         $count_test = 0; //so luong cac bai test cua hoc vien theo lop hien tai
+        
         $sql_count = "SELECT COUNT(DISTINCT(test.TEST_ID))  AS B
                           FROM `class`,`test` 
                           WHERE class.CLASS_ID = test.CLASS_ID AND
                            class.CLASS_ID='$class_id' AND
-                          TYPE = 'todo' 
+                          TEST.TYPE = 'todo' 
                           GROUP BY class.CLASS_ID"; //Dem so bai test type todo da lam
         $result_count = $conn->query($sql_count);
         $row_count = $result_count->fetch_assoc();
         $count_test = $row_count['B'];
+       
         $sum_avg_test = 0; // diem trung binh cua tung bai test     
         $sql = "INSERT INTO `result` VALUES ('$username', $test_id, $insert_times,$point)";
         if (mysqli_query($conn, $sql)) 
         {
           
-          $sql_avg = "SELECT AVG(POINT) AS A 
-                     FROM  `result`
-                     WHERE USERNAME='$username' 
-                     GROUP BY  USERNAME,TEST_ID";
+          $sql_avg = "SELECT AVG(RESULT.POINT) AS A 
+                     FROM  `result`, TEST
+                     WHERE RESULT.USERNAME='$username' 
+                     AND RESULT.TEST_ID = TEST.TEST_ID
+                     AND TEST.CLASS_ID = '$class_id'
+                     GROUP BY  RESULT.USERNAME,RESULT.TEST_ID";
            $result_avg = $conn->query($sql_avg);
            while ($row_avg = $result_avg->fetch_assoc()){
             $sum_avg_test += $row_avg['A'];
@@ -45,7 +49,8 @@
         
            $result_point = round($sum_avg_test/$count_test,2,PHP_ROUND_HALF_EVEN) ;   
            $sql2 = "UPDATE `study` SET  `RESULT` = $result_point
-                    WHERE `USERNAME`='$username'";
+                    WHERE `USERNAME`='$username'
+                    AND CLASS_ID='$class_id'";
             if (mysqli_query($conn, $sql2)) {
                 $rank = '';
               //  echo 'Your result have been saved';
@@ -92,4 +97,5 @@
          
     }
    // echo  $class_id;
+   echo $class_id;
 ?>
