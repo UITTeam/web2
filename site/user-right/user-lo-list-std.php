@@ -35,7 +35,7 @@
             {
                 ?>
                 <div style="padding: 15px"><a target="_blank" href='index.php?click=testChart&id='>View in chart</a></div>
-                     <div class="table-std">
+                     <div class="table-std" style="overflow: auto; height: 400px">
                 <table id='list-student'>
                     <tr>
                         <td>TEST NAME </td>

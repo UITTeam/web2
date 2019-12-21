@@ -14,25 +14,11 @@
 	</div>
 </div>
 <script>
-	function renderChart(data, label) {
-		var ctx = document.getElementById("myChart").getContext('2d');
-		var myChart = new Chart(ctx, {
-			type: 'line',
-			data: {
-				labels: label,
-				datasets: [{
-					label: 'Your result',
-					data: data,
-					backgroundColor: '#FFB1C0',
-                    borderColor: '#FD6D8B',
-					borderWidth: 2
-				}]
-			},
-		});
-	}
-
 	$(document).ready(function() {
+		var ctx = document.getElementById("myChart").getContext('2d');
 		var label = [];
+		
+		var label_name = [];
 		var data = [];
 		$.ajax({
 			type: "POST",
@@ -42,15 +28,38 @@
 			success: function(response) {
 				$.each(response, function (key, item)
                     {
-                       // alert(item['CLASS_ID']);
                         label.push(item['CLASS_ID']);
 						data.push(item['RESULT']);
-                    });  
-					renderChart(data, label);
+					}); 
+			  	// test = label;
+					var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: label,
+                            datasets: [{
+                                    label: 'AVG Point',
+                                    data: data,
+                                    backgroundColor: 'rgba(0, 128, 128, 0.3)',
+                                    borderColor: 'rgba(0, 128, 128, 0.7)',
+                                    borderWidth: 2
+                                }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            },
+                        }
+                    });	
 			}
+			
 		});
+	
 		console.log(label);
-		console.log(label.length);
+		//console.log(data.length);
 		//data = [8, 5, 6, 7, 10];
 		
 	})

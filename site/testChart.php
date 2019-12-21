@@ -87,9 +87,9 @@
                     });
                 }
             });
-            console.log(point);
-            console.log(data_first);
-            console.log(data_second);
+       
+            console.log(label);
+            console.log(label_test);
             // alert(label);
             //data = [8, 5, 6, 7, 10];
         })

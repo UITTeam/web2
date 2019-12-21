@@ -19,25 +19,48 @@
 		$sql = "SELECT * 
 				FROM test,  study, class
 				WHERE test.CLASS_ID = class.CLASS_ID 
+				AND TYPE = 'free'
 					AND class.CLASS_ID = study.CLASS_ID
-					and study.USERNAME = '$username'"; 
+					and study.USERNAME = '$username'
+				AND CURRENT_DATE >= class.BEGIN 
+				and CURRENT_DATE <= class.END "; 
+		$sql_ = "SELECT * 
+		FROM test,  study, class
+						WHERE test.CLASS_ID = class.CLASS_ID 
+						AND class.CLASS_ID = study.CLASS_ID
+						and TYPE = 'todo'
+						and study.USERNAME = '$username'
+						AND CURRENT_DATE >= class.BEGIN 
+						and CURRENT_DATE <= class.END
+						AND test.TEST_ID 
+						NOT IN 
+						(
+							SELECT TEST_ID FROM RESULT
+							WHERE TIMES = 2
+						) ";
+		
 		$user_role ='student';
+		$result_ = $conn->query($sql_);
 	}
 	//Hien thi danh sach cai bai test ma giao vien dang day
 	else if ($row_role['role_id'] == 'teacher') {
 		$sql = "SELECT * 
 				FROM test, class
 				WHERE test.CLASS_ID = class.CLASS_ID 
-				and TEACHER = '$username'"; 
+				and TEACHER = '$username'
+				AND CURRENT_DATE >= class.BEGIN 
+                and CURRENT_DATE <= class.END "; 
 		$user_role ='teacher';
 	}
 
 	else {
 		$sql = "SELECT * 
 				FROM test
-				WHERE TYPE='free';"; 
+				WHERE TYPE='free'
+				limit 8 "; 
 	}
 	$result = $conn->query($sql);
+	
 ?>
 	<link rel="stylesheet" type="text/css" href="./css/animate.css">
 	<link rel="stylesheet" type="text/css" href="./css/test.css">
@@ -48,7 +71,7 @@
 	<div name='user_role' user_role='<?php echo $user_role ?>'></div>
     <ul class="menu"> 
 			<?php
-			if ($user_role == 'admin' || $user_role == 'student' || $user_role == 'teacher' )
+			if ($user_role == 'admin' ||$user_role == 'teacher' )
 			{
 					?>
 			<li data-type="free">Free Tests</li>
@@ -56,14 +79,24 @@
 			<li data-type="all">All</li>
 					<?php
 			}
+			else if ($user_role == 'student')
+			{
+				?>
+			<li data-type="free">Free Tests</li>
+		
+			<li id='havent' data-type="havent">Haven't done</li>
+			
+					<?php
+			}
+
 			?>
 		</ul>
-	<div class="test-list">	
+	<div class="test-list" style="overflow: auto; height: 400px">	
 <?php
 	while ($row = $result->fetch_assoc())
 	{	
 ?>
-		<article class="test-listing <?php echo $row['TYPE']; ?> all">
+		<article class="test-listing <?php echo $row['TYPE']; ?> all ">
      			 <a class="test-title" href="index.php?click=test-choosen&id=<?php echo $row['TEST_ID']; ?>">
 				  <?php echo $row['TEST_NAME'];?></a>
     			  <div class="test-image">
@@ -74,6 +107,31 @@
 <?php
 	}
 ?>
+
+
+<?php
+if ($user_role == 'student')
+{
+	
+
+	while ($row_ = $result_->fetch_assoc())
+	{	
+?>
+		<article class="test-listing havent ">
+     			 <a class="test-title" href="index.php?click=test-choosen&id=<?php echo $row_['TEST_ID']; ?>">
+				  <?php echo $row_['TEST_NAME'];?></a>
+    			  <div class="test-image">
+    				    <a href="index.php?click=test-choosen&id=<?php echo $row_['TEST_ID']; ?>">
+							<img  src="admin/modules/imgTest/<?php echo $row_['IMG'];?>"></a>
+    			 </div>
+   		</article>
+<?php
+	}
+	}
+?>
+
+
+
+
 	</div>
 </div>
-

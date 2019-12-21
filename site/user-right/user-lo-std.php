@@ -13,6 +13,7 @@
         $sql_std = "SELECT * FROM STUDY, RESULT, TEST
                     WHERE STUDY.CLASS_ID='$tittle' 
                     AND STUDY.USERNAME = RESULT.USERNAME
+                    AND TEST.CLASS_ID = '$tittle'
                     AND RESULT.TEST_ID = TEST.TEST_ID
                     AND STUDY.USERNAME = '$id_std'";
         $query_std = $conn->prepare($sql_std);
@@ -49,6 +50,7 @@
                             <td>' . $row["POINT"] . '</td>
                             </tr>';
                     }
+                   
 
                     ?>
                 </table>
