@@ -2,6 +2,9 @@
     <link rel="stylesheet" href="./css/about2.css">
     <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
+    <head>
+	<title>COURSE</title>
+</head>
 <?php
     $sql = "SELECT * FROM COURSE";
     $result = $conn->query($sql);
