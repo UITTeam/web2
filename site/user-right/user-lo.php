@@ -58,7 +58,7 @@ include('admin/modules/result/connection.php');
 				?>
 				</select>
 				</div>
-				<div class="table-std">
+				<div class="table-std" style="overflow:auto; height:400px">
 				<table id='list-class'>
 					<tr>
 						<td>CLASS ID</td>
@@ -84,7 +84,7 @@ include('admin/modules/result/connection.php');
 				?>
 				</select>
 				</div>
-				<div class="table-std">
+				<div class="table-std" style="overflow:auto; height:400px">
 				<table id='list-class'>
 					<tr>
 						<td>CLASS ID</td>
@@ -112,7 +112,7 @@ include('admin/modules/result/connection.php');
 					?>
 				</select>
 				</div>
-				<div class="table-std">
+				<div class="table-std" style="overflow:auto; height:400px">
 				<table id='list-class'>
 					<tr>
 						<td>CLASS ID</td>

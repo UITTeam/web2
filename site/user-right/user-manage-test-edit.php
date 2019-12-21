@@ -19,25 +19,37 @@ $test_id = $_GET['id'];
             ?>
 
             <?php
+            $sql = "SELECT * FROM COURSE,CLASS 
+             WHERE COURSE.COURSE_ID=CLASS.COURSE_ID 
+             AND CLASS.TEACHER='$username'
+             GROUP BY CLASS.COURSE_ID";
+            $query = $conn->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
             // include('../connect.php');
             $sql1 = "SELECT * FROM ((TEST
      INNER JOIN CLASS ON TEST.CLASS_ID = CLASS.CLASS_ID)
      INNER JOIN COURSE ON COURSE.COURSE_ID = CLASS.COURSE_ID)
                 WHERE TEST.TEST_ID ='$test_id'";
             $sql2 = "SELECT * FROM `course`";
-            $sql3 = "SELECT * FROM  `class`";
+            $sql3 = "SELECT * FROM CLASS WHERE COURSE_ID IN
+            (SELECT CLASS.COURSE_ID FROM ((TEST
+            INNER JOIN CLASS ON TEST.CLASS_ID = CLASS.CLASS_ID)
+            INNER JOIN COURSE ON COURSE.COURSE_ID = CLASS.COURSE_ID)
+                       WHERE TEST.TEST_ID ='$test_id')
+                       AND TEACHER = '$username'"; // tìm những lớp cùng khóa với lớp có test_id là $test_id
             $result1 = $conn->prepare($sql1);
             $result1->execute();
             $row1 = $result1->fetch(PDO::FETCH_ASSOC);
-            $result3 = $conn->prepare($sql3);
-            $result3->execute();
-            $row3 = $result3->fetchAll(PDO::FETCH_ASSOC);
+            $query3 = $conn->prepare($sql3);
+            $query3->execute();
+            $result3 = $query3->fetchAll(PDO::FETCH_ASSOC);
             ?>
             <form class="form-edit-test" action='site/user-right/user-manage-controlTest.php?id=<?php echo $test_id; ?>' enctype="multipart/form-data" method='POST'>
                 <table id='tblTest'>
                     <tr>
-                        <td>Test Name</td >
-                       <td><input type="text" name='txtTestName' placeholder='test_name' value='<?php echo $test_name; ?>' required>
+                        <td>Test Name</td>
+                        <td><input type="text" name='txtTestName' placeholder='test_name' value='<?php echo $test_name; ?>' required>
                         </td>
                     </tr>
                     <tr>
@@ -51,15 +63,33 @@ $test_id = $_GET['id'];
                     </tr>
                     <tr>
                         <td>Course</td>
-                        <td><input type="text" readonly name='selCourse' id="selCourse" value="<?php echo $row1["COURSE_ID"] ?>">
-                        </td>
-                        
+                        <td>
+                            <select name="selCourse" id="selCourse">
+                                <option data-test="" value="">---Choose course---</option>
+                                <?php
+                                foreach ($result as $row) {
+                                    echo '<option data-test="' . $test_id . '"  ';
+                                    if ($row["COURSE_ID"] === $row1["COURSE_ID"]) echo 'selected="selected"';
+                                    echo ' value="' . $row["COURSE_ID"] . '">' . $row["COURSE_NAME"] . '</option>';
+                                }
+                                ?>
+                            </select></td>
                     </tr>
                     <tr>
                         <td>Class</td>
-                        <td><input type="text" readonly name='selClass' id="selClass" value="<?php echo $row1["CLASS_ID"] ?>">
+                        <td>
+                            <div id='listClass'>
+                                <select name="selClass" id="selClass">
+                                    <option value="">---Choose class---</option>
+                                    <?php
+                                    foreach ($result3 as $row3) {
+                                        echo '<option data-test="' . $test_id . '"  ';
+                                        if ($row3["CLASS_ID"] === $row1["CLASS_ID"]) echo 'selected="selected"';
+                                        echo ' value="' . $row3["CLASS_ID"] . '">' . $row3["CLASS_NAME"] . '</option>';
+                                    }
+                                    ?>
+                            </div>
                         </td>
-                        
                     </tr>
                     <tr>
                         <td>Time limit</td>
@@ -84,7 +114,20 @@ $test_id = $_GET['id'];
                     </tr>
                 </table>
             </form>
-
+            <script>
+                $(document).ready(function($) {
+                    $('#selCourse').change(function(event) {
+                        courseId = $('#selCourse').val();
+                        testId = $('#selCourse').find(':selected').data('test');
+                        $.post('site/user-right/ajax-mn-tstedit-clss.php', {
+                            "courseid": courseId,
+                            "testid": testId
+                        }, function(data) {
+                            $('#selClass').html(data);
+                        })
+                    })
+                })
+            </script>
         </div>
 
         <div class="clearfix"></div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 20, 2019 lúc 08:48 AM
--- Phiên bản máy phục vụ: 10.4.8-MariaDB
--- Phiên bản PHP: 7.1.33
+-- Host: 127.0.0.1
+-- Generation Time: Dec 21, 2019 at 06:32 AM
+-- Server version: 10.1.40-MariaDB
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `eng_online_demo`
+-- Database: `eng_online_demo`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `account`
+-- Table structure for table `account`
 --
 
 CREATE TABLE `account` (
@@ -37,40 +37,42 @@ CREATE TABLE `account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `account`
+-- Dumping data for table `account`
 --
 
 INSERT INTO `account` (`username`, `PASS`, `role_id`, `create_date`, `AVATAR`) VALUES
 ('admin', 'admin', 'admin', '2019-11-19 00:00:00', 'avt.png'),
-('std_anhnh', '123456', 'student', '2018-02-20 00:00:00', ''),
-('std_chinhnd', '123456', 'student', '2018-01-03 00:00:00', NULL),
-('std_colt', '123456', 'student', '2019-12-16 00:00:00', '10.png'),
-('std_dungbt', '123456', 'student', '2018-01-03 00:00:00', NULL),
-('std_duynh', '123456', 'student', '2018-04-30 00:00:00', NULL),
-('std_haudvt', '123456', 'student', '2018-01-03 00:00:00', NULL),
-('std_hoangtt', '123456', 'student', '2019-12-03 00:00:00', '5.png'),
-('std_lamdv', '123456', 'student', '2018-01-03 00:00:00', NULL),
-('std_lamnt', '123456', 'student', '2018-05-11 00:00:00', NULL),
-('std_linhny', '123456', 'student', '2019-05-04 00:00:00', '16.png'),
-('std_ngocmn', '123456', 'student', '2019-12-16 00:00:00', '52453402_3027232217302268_7206800705728806912_n.png'),
-('std_phongth', '123456', 'student', '2019-11-14 00:00:00', '6.png'),
-('std_phongtv', '123456', 'student', '2018-03-11 00:00:00', ''),
-('std_sinhnt', '123456', 'student', '2018-05-12 00:00:00', NULL),
-('std_thont', '123456', 'student', '2018-05-11 00:00:00', NULL),
+('admin2', '123456', 'admin', '2019-12-20 15:01:15', 'join-icon.png'),
+('std_anhnh', '123456', 'student', '2018-02-20 00:00:00', 'avt.png'),
+('std_chinhnd', '123456', 'student', '2018-01-03 00:00:00', 'icon_login.png'),
+('std_colt', '123456', 'student', '2019-12-16 00:00:00', 'icon_login.png'),
+('std_dungbt', '123456', 'student', '2018-01-03 00:00:00', 'icon_login.png'),
+('std_duynh', '123456', 'student', '2018-04-30 00:00:00', 'icon_login.png'),
+('std_haudvt', '123456', 'student', '2018-01-03 00:00:00', 'icon_login.png'),
+('std_hoangtt', '123456', 'student', '2019-12-03 00:00:00', 'icon_login.png'),
+('std_lamdv', '123456', 'student', '2018-01-03 00:00:00', 'icon_login.png'),
+('std_lamnt', '123456', 'student', '2018-05-11 00:00:00', 'icon_login.png'),
+('std_linhny', '123456', 'student', '2019-05-04 00:00:00', 'icon_login.png'),
+('std_ngocmn', '123456', 'student', '2019-12-16 00:00:00', 'icon-student.jpg'),
+('std_phongth', '123456', 'student', '2019-11-14 00:00:00', 'icon_login.png'),
+('std_phongtv', '123456', 'student', '2018-03-11 00:00:00', 'icon_login.png'),
+('std_sinhnt', '123456', 'student', '2018-05-12 00:00:00', 'icon_login.png'),
+('std_thont', '123456', 'student', '2018-05-11 00:00:00', 'icon_login.png'),
 ('std_yennp', '123456', 'student', '2019-12-16 00:00:00', '1f40a291f3cf0a9153de.jpg'),
-('teacher_chinhhd', '123456', 'teacher', '2017-01-03 00:00:00', NULL),
-('teacher_dungnt', '123456', 'teacher', '2017-01-04 00:00:00', NULL),
-('teacher_duylh', '123456', 'teacher', '2015-04-30 00:00:00', NULL),
-('teacher_haudvt', '123456', 'teacher', '2017-01-04 00:00:00', NULL),
-('teacher_lamdv', '123456', 'teacher', '2016-01-03 00:00:00', NULL),
-('teacher_lamtt', '123456', 'teacher', '2016-05-12 00:00:00', NULL),
-('teacher_sinhnt', '123456', 'teacher', '2012-05-10 00:00:00', NULL),
-('teacher_thont', '123456', 'teacher', '2012-05-17 00:00:00', NULL);
+('teacher_chinhhd', '123456', 'teacher', '2017-01-03 00:00:00', 'icon-teacher.jpg'),
+('teacher_dungnt', '123456', 'teacher', '2017-01-04 00:00:00', 'icon-teacher.jpg'),
+('teacher_duylh', '123456', 'teacher', '2015-04-30 00:00:00', 'icon-teacher.jpg'),
+('teacher_haudvt', '123456', 'teacher', '2017-01-04 00:00:00', 'icon-teacher.jpg'),
+('teacher_lamdv', '123456', 'teacher', '2016-01-03 00:00:00', 'icon-teacher.jpg'),
+('teacher_lamtt', '123456', 'teacher', '2016-05-12 00:00:00', 'icon-teacher.jpg'),
+('teacher_ngocmn', '123456', 'teacher', '2019-12-20 16:46:14', 'icon-teacher.jpg'),
+('teacher_sinhnt', '123456', 'teacher', '2012-05-10 00:00:00', 'icon-teacher.jpg'),
+('teacher_thont', '123456', 'teacher', '2012-05-17 00:00:00', 'icon-teacher.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `class`
+-- Table structure for table `class`
 --
 
 CREATE TABLE `class` (
@@ -84,27 +86,27 @@ CREATE TABLE `class` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `class`
+-- Dumping data for table `class`
 --
 
 INSERT INTO `class` (`CLASS_ID`, `CLASS_NAME`, `TEACHER`, `COURSE_ID`, `INFO`, `BEGIN`, `END`) VALUES
-('ADVANCED_ENG01', 'English 1 - Advanced', 'teacher_haudvt', 8, 'ADVANCED_ENG01.txt', '2017-03-01', '2017-05-24'),
-('ADVANCED_ENG02', 'English 2 - Advanced', 'teacher_sinhnt', 8, 'ADVANCED_ENG02.txt', NULL, NULL),
-('ADVANCED_ENG03', 'English 3 - Advanced', 'teacher_sinhnt', 8, 'ADVANCED_ENG03.txt', '2017-08-02', '2017-10-24'),
+('ADVANCED_ENG01', 'English 1 - Advanced', 'teacher_haudvt', 8, 'ADVANCED_ENG01.txt', '2019-03-01', '2019-05-24'),
+('ADVANCED_ENG02', 'English 2 - Advanced', 'teacher_sinhnt', 8, 'ADVANCED_ENG02.txt', '2019-03-02', '2019-05-27'),
+('ADVANCED_ENG03', 'English 3 - Advanced', 'teacher_sinhnt', 8, 'ADVANCED_ENG03.txt', '2019-08-02', '2019-10-24'),
 ('ADVANCED_ENG04', 'English 4 - Advanced', 'teacher_lamtt', 8, 'ADVANCED_ENG04.txt', NULL, NULL),
-('BASIC_ENG01', 'English 1 - Basic', 'teacher_chinhhd', 6, 'BASIC_ENG01.txt', '2017-03-01', '2017-04-26'),
-('BASIC_ENG02', 'English 2 - Basic', 'teacher_dungnt', 6, 'BASIC_ENG02.txt', '2017-03-02', '2017-04-27'),
+('BASIC_ENG01', 'English 1 - Basic', 'teacher_chinhhd', 6, 'BASIC_ENG01.txt', '2019-03-01', '2019-04-26'),
+('BASIC_ENG02', 'English 2 - Basic', 'teacher_dungnt', 6, 'BASIC_ENG02.txt', '2019-03-02', '2019-04-27'),
 ('BASIC_ENG03', 'English 3 - Basic', 'teacher_chinhhd', 6, 'BASIC_ENG03.txt', NULL, NULL),
 ('BASIC_ENG04', 'English 4 - Basic', 'teacher_sinhnt', 6, 'BASIC_ENG04.txt', NULL, NULL),
-('INTERMEDIATE_ENG01', 'English 1 - Intermediate', 'teacher_dungnt', 7, 'INTERMEDIATE_ENG01.txt', '2017-03-01', '2017-05-24'),
-('INTERMEDIATE_ENG02', 'English 2 - Intermediate', 'teacher_duylh', 7, 'INTERMEDIATE_ENG02.txt', NULL, NULL),
-('INTERMEDIATE_ENG03', 'English 3 - Intermediate', 'teacher_thont', 7, 'INTERMEDIATE_ENG03.txt', '2017-05-01', '2017-07-26'),
+('INTERMEDIATE_ENG01', 'English 1 - Intermediate', 'teacher_ngocmn', 7, 'INTERMEDIATE_ENG01.txt', '2019-03-01', '2019-05-24'),
+('INTERMEDIATE_ENG02', 'English 2 - Intermediate', 'teacher_ngocmn', 7, 'INTERMEDIATE_ENG02.txt', '2019-11-01', '2020-01-31'),
+('INTERMEDIATE_ENG03', 'English 3 - Intermediate', 'teacher_thont', 7, 'INTERMEDIATE_ENG03.txt', '2019-05-01', '2019-07-26'),
 ('INTERMEDIATE_ENG04', 'English 4 - Intermediate', 'teacher_lamdv', 7, 'INTERMEDIATE_ENG04.txt', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `course`
+-- Table structure for table `course`
 --
 
 CREATE TABLE `course` (
@@ -116,18 +118,18 @@ CREATE TABLE `course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `course`
+-- Dumping data for table `course`
 --
 
 INSERT INTO `course` (`COURSE_ID`, `COURSE_NAME`, `FEE`, `DESCRIPTION`, `BENCHMARK`) VALUES
-(6, 'BASIC LEVEL', 100, 'basic_lv.txt', 1),
+(6, 'BASIC LEVEL', 100, 'basic_lv.txt', 1.2),
 (7, 'INTERMEDIATE LEVEL', 150, 'intermediate_lv.txt', 4.5),
 (8, 'ADVANCED LEVEL', 180, 'advanced_lv.txt', 7);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `question`
+-- Table structure for table `question`
 --
 
 CREATE TABLE `question` (
@@ -141,95 +143,75 @@ CREATE TABLE `question` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `question`
+-- Dumping data for table `question`
 --
 
 INSERT INTO `question` (`QUESTION_ID`, `TEST_ID`, `CONTENT`, `OPTION1`, `OPTION2`, `OPTION3`, `ANSWER`) VALUES
-(246, 39, 'Solar energy doesn’t cause………..', 'pollution', 'polluted', 'pollute ', 1),
-(247, 39, 'Tet is a festival………… occurs in late January or early February.', 'whom', 'when ', 'which', 3),
-(248, 39, 'It’s raining. …………….., Mr. Nam has to go to work.', 'Although', 'So', 'however', 3),
-(249, 39, 'If I ………….rich, I ……………………….around the world.', 'will be - travel ', 'am - will travel', 'were - would travel ', 3),
-(250, 39, 'The girl wishes she………………… in Hue for the festival next week.', 'had stayed', 'was staying ', 'could stay', 3),
-(251, 39, 'You don’t like watching this film, …………………?', 'don’t you', 'are you ', 'do you ', 3),
-(252, 39, 'When he lived in the city, he …………… to the theater twice a week.', 'uses to go ', 'has gone ', 'used to go', 3),
-(253, 39, 'My house………….. in 1999', 'is built ', 'was building ', 'was built', 3),
-(254, 39, 'The entrance examination will be held………………….June 22nd 2012.', 'in', 'on', 'at', 2),
-(255, 39, 'Hoa: I suggest going camping next Sunday.- Lan: …………………………..', 'That’s a fine day ', 'That’s a good idea', 'That’s a reason ', 2),
-(256, 40, 'Solar energy doesn’t cause………..', 'pollution', 'polluted', 'pollute ', 1),
-(257, 40, 'Tet is a festival………… occurs in late January or early February.', 'whom', 'when ', 'which', 3),
-(258, 40, 'It’s raining. …………….., Mr. Nam has to go to work.', 'Although', 'So', 'however', 3),
-(259, 40, 'If I ………….rich, I ……………………….around the world.', 'will be - travel ', 'am - will travel', 'were - would travel ', 3),
-(260, 40, 'The girl wishes she………………… in Hue for the festival next week.', 'had stayed', 'was staying ', 'could stay', 3),
-(261, 40, 'You don’t like watching this film, …………………?', 'don’t you', 'are you ', 'do you ', 3),
-(262, 40, 'When he lived in the city, he …………… to the theater twice a week.', 'uses to go ', 'has gone ', 'used to go', 3),
-(263, 40, 'My house………….. in 1999', 'is built ', 'was building ', 'was built', 3),
-(264, 40, 'The entrance examination will be held………………….June 22nd 2012.', 'in', 'on', 'at', 2),
-(265, 40, 'Hoa: I suggest going camping next Sunday.- Lan: …………………………..', 'That’s a fine day ', 'That’s a good idea', 'That’s a reason ', 2),
-(266, 41, 'Solar energy doesn’t cause………..', 'pollution', 'polluted', 'pollute ', 1),
-(267, 41, 'Tet is a festival………… occurs in late January or early February.', 'whom', 'when ', 'which', 3),
-(268, 41, 'It’s raining. …………….., Mr. Nam has to go to work.', 'Although', 'So', 'however', 3),
-(269, 41, 'If I ………….rich, I ……………………….around the world.', 'will be - travel ', 'am - will travel', 'were - would travel ', 3),
-(270, 41, 'The girl wishes she………………… in Hue for the festival next week.', 'had stayed', 'was staying ', 'could stay', 3),
-(271, 41, 'You don’t like watching this film, …………………?', 'don’t you', 'are you ', 'do you ', 3),
-(272, 41, 'When he lived in the city, he …………… to the theater twice a week.', 'uses to go ', 'has gone ', 'used to go', 3),
-(273, 41, 'My house………….. in 1999', 'is built ', 'was building ', 'was built', 3),
-(274, 41, 'The entrance examination will be held………………….June 22nd 2012.', 'in', 'on', 'at', 2),
-(275, 41, 'Hoa: I suggest going camping next Sunday.- Lan: …………………………..', 'That’s a fine day ', 'That’s a good idea', 'That’s a reason ', 2),
-(276, 42, 'Solar energy doesn’t cause………..', 'pollution', 'polluted', 'pollute ', 1),
-(277, 42, 'Tet is a festival………… occurs in late January or early February.', 'whom', 'when ', 'which', 3),
-(278, 42, 'It’s raining. …………….., Mr. Nam has to go to work.', 'Although', 'So', 'however', 3),
-(279, 42, 'If I ………….rich, I ……………………….around the world.', 'will be - travel ', 'am - will travel', 'were - would travel ', 3),
-(280, 42, 'The girl wishes she………………… in Hue for the festival next week.', 'had stayed', 'was staying ', 'could stay', 3),
-(281, 42, 'You don’t like watching this film, …………………?', 'don’t you', 'are you ', 'do you ', 3),
-(282, 42, 'When he lived in the city, he …………… to the theater twice a week.', 'uses to go ', 'has gone ', 'used to go', 3),
-(283, 42, 'My house………….. in 1999', 'is built ', 'was building ', 'was built', 3),
-(284, 42, 'The entrance examination will be held………………….June 22nd 2012.', 'in', 'on', 'at', 2),
-(285, 42, 'Hoa: I suggest going camping next Sunday.- Lan: …………………………..', 'That’s a fine day ', 'That’s a good idea', 'That’s a reason ', 2),
-(286, 43, 'Solar energy doesn’t cause………..', 'pollution', 'polluted', 'pollute ', 1),
-(287, 43, 'Tet is a festival………… occurs in late January or early February.', 'whom', 'when ', 'which', 3),
-(288, 43, 'It’s raining. …………….., Mr. Nam has to go to work.', 'Although', 'So', 'however', 3),
-(289, 43, 'If I ………….rich, I ……………………….around the world.', 'will be - travel ', 'am - will travel', 'were - would travel ', 3),
-(290, 43, 'The girl wishes she………………… in Hue for the festival next week.', 'had stayed', 'was staying ', 'could stay', 3),
-(291, 43, 'You don’t like watching this film, …………………?', 'don’t you', 'are you ', 'do you ', 3),
-(292, 43, 'When he lived in the city, he …………… to the theater twice a week.', 'uses to go ', 'has gone ', 'used to go', 3),
-(293, 43, 'My house………….. in 1999', 'is built ', 'was building ', 'was built', 3),
-(294, 43, 'The entrance examination will be held………………….June 22nd 2012.', 'in', 'on', 'at', 2),
-(295, 43, 'Hoa: I suggest going camping next Sunday.- Lan: …………………………..', 'That’s a fine day ', 'That’s a good idea', 'That’s a reason ', 2),
-(296, 44, 'Solar energy doesn’t cause………..', 'pollution', 'polluted', 'pollute ', 1),
-(297, 44, 'Tet is a festival………… occurs in late January or early February.', 'whom', 'when ', 'which', 3),
-(298, 44, 'It’s raining. …………….., Mr. Nam has to go to work.', 'Although', 'So', 'however', 3),
-(299, 44, 'If I ………….rich, I ……………………….around the world.', 'will be - travel ', 'am - will travel', 'were - would travel ', 3),
-(300, 44, 'The girl wishes she………………… in Hue for the festival next week.', 'had stayed', 'was staying ', 'could stay', 3),
-(301, 44, 'You don’t like watching this film, …………………?', 'don’t you', 'are you ', 'do you ', 3),
-(302, 44, 'When he lived in the city, he …………… to the theater twice a week.', 'uses to go ', 'has gone ', 'used to go', 3),
-(303, 44, 'My house………….. in 1999', 'is built ', 'was building ', 'was built', 3),
-(304, 44, 'The entrance examination will be held………………….June 22nd 2012.', 'in', 'on', 'at', 2),
-(305, 44, 'Hoa: I suggest going camping next Sunday.- Lan: …………………………..', 'That’s a fine day ', 'That’s a good idea', 'That’s a reason ', 2),
-(306, 45, 'Solar energy doesn’t cause………..', 'pollution', 'polluted', 'pollute ', 1),
-(307, 45, 'Tet is a festival………… occurs in late January or early February.', 'whom', 'when ', 'which', 3),
-(308, 45, 'It’s raining. …………….., Mr. Nam has to go to work.', 'Although', 'So', 'however', 3),
-(309, 45, 'If I ………….rich, I ……………………….around the world.', 'will be - travel ', 'am - will travel', 'were - would travel ', 3),
-(310, 45, 'The girl wishes she………………… in Hue for the festival next week.', 'had stayed', 'was staying ', 'could stay', 3),
-(311, 45, 'You don’t like watching this film, …………………?', 'don’t you', 'are you ', 'do you ', 3),
-(312, 45, 'When he lived in the city, he …………… to the theater twice a week.', 'uses to go ', 'has gone ', 'used to go', 3),
-(313, 45, 'My house………….. in 1999', 'is built ', 'was building ', 'was built', 3),
-(314, 45, 'The entrance examination will be held………………….June 22nd 2012.', 'in', 'on', 'at', 2),
-(315, 45, 'Hoa: I suggest going camping next Sunday.- Lan: …………………………..', 'That’s a fine day ', 'That’s a good idea', 'That’s a reason ', 2),
-(316, 47, 'Captain Scott is __________ to the South Pole was marked by disappointment and tragedy.', 'excursion', 'visit', 'expedition', 3),
-(317, 47, 'The teacher made a difficult question, but at last, Joe __________ a good answer', 'came up with', 'came up to', 'came up against', 1),
-(318, 47, 'There are a lot of __________ buildings in the centre of the city.', 'many – floored', 'many story', 'multi – storey', 3),
-(319, 47, '“ Make yourself at home.” “ ______________”', 'Yes, can I help you', 'Thanks. Same to you', 'That’ very kind. Thank you.', 3),
-(320, 47, 'Olypiakos ________ 0 – 0 with Real Madrid in the first leg of the semi-final in Athens.', 'drew', 'equalled', 'equalised', 1),
-(321, 47, 'The pop star _________ when the lights _________', 'sang – were going out', 'was singing - went out', 'was singing – were going out', 2),
-(322, 47, ' It was not until she had arrived home ______ remembered her appointment with the doctor', 'wrong', 'flase', 'difficult', 2),
-(323, 47, 'Jane will have to repeat the course because her work has been __________', 'when she', 'that she', 'she', 3),
-(324, 47, 'Jane will have to repeat the course because her work has been __________', 'unpleasant', 'unnecessary', 'unsatisfactory', 3),
-(325, 47, ' I do not know If _________ in my essay.', 'is there a mistake', 'there a mistake is', 'there is a mistake', 3);
+(406, 55, 'In order to check all the telephone calls made during the month I want the account to be ........', 'detailed', 'particular', 'itemized', 3),
+(407, 55, 'All the representatives are allowed to spend money for entertaining with their ....... account', 'expensive', 'expending', 'expense', 3),
+(408, 55, 'To spread the cost of spending on articles you buy many big departments let you open a ........', 'credible', 'credit', 'credited', 2),
+(409, 55, 'Once you are earning money and you want to keep it safe, you can always ....... an account with a bank.', 'open', 'start', 'begin', 1),
+(410, 55, 'At the end of thirty days the company will ask you to ....... the account.', 'arrange', 'finish', 'settle', 3),
+(411, 55, 'The finance director is responsible for ....... the accounts for the business', 'holding', 'keeping', 'taking', 3),
+(412, 55, 'At the end of the financial year it is the responsibility of the chief finance officer to ....... the accounts', 'print', 'edit', 'publish', 3),
+(413, 55, 'Before they got married, they decided to open a ....... account.', 'united', 'joint', 'unified', 2),
+(414, 55, 'If you have saved some money, it is a good idea to put the money into a ....... account.', 'heap', 'pile', 'deposit', 3),
+(415, 55, 'However hard I try, I find it impossible to account ....... this missing sum of money.', 'with', 'to', 'for', 3),
+(416, 56, 'Interviewer: Perhaps you could start by telling us why you have ........', 'obtained for this job', 'applied for this job', 'intended for this job', 2),
+(417, 56, 'Candidate: I think the main reason is because I like working in ........', 'the free air', 'the clear air', 'the open air', 3),
+(418, 56, 'Interviewer: You mean you like the idea of an office with ........', 'air control', 'air managment', 'air conditioning', 3),
+(419, 56, 'Candidate: I am sorry I do not understand what you are ........', 'in about', 'on about', 'for about', 2),
+(420, 56, 'Interviewer: I should have thought this was ........', 'clear obvious', 'mostly obvious', 'pretty obvious', 3),
+(421, 56, 'Candidate: Not to me, ........', 'it is not', 'it can not be', 'it will not be', 1),
+(422, 56, 'Interviewer: I think there must be a mistake, I ........', 'put it you are Mr Johnson', 'take it you are Mr Johnson', 'place it you are Mr Johnson', 2),
+(423, 56, 'Candidate: I am Mr Jensen. I am afraid it is a case of ........', 'mistaken personality', 'mistaken character', 'mistaken identity', 3),
+(424, 56, 'Interviewer: So you are not after the job of guardian........', 'I presume', 'I pretend', 'I prefer', 1),
+(425, 56, 'Candidate: No, sorry as I said I like working outside, I want to be a gardener, ........', 'if you do not care', 'if you don not agree', 'if you do not mind', 3),
+(546, 57, 'It was the third time in six months that the bank had been held______', 'over', 'down', 'up', 3),
+(547, 57, 'I always run ______of money before the end off the month.', 'out', 'back', 'up', 1),
+(548, 57, 'It is taking me longer to get______ the operation than I thought.', 'through', 'by', 'over', 3),
+(549, 57, 'I have just spent two weeks looking_______an aunt of mine who is been ill.', 'at', 'for', 'after', 3),
+(550, 57, 'I have always got_______well with old people.', 'off', 'on', 'in', 2),
+(551, 57, 'It is very cold in here. Do you mind if I turn _________ the heating?', 'down', 'away', 'on', 3),
+(552, 57, 'They have _____ a new tower where that old building used to be.', 'put up', 'put down', 'pushed up', 1),
+(553, 57, 'Stephen always wanted to be an actor when he ________ up.', 'came', 'grew', 'brought', 2),
+(554, 57, 'The bus only stops here to ________ passengers.', 'alight', 'get off', 'pick up', 3),
+(555, 57, 'If anything urgent comes _____, you can contact me at this number.', 'across', 'by', 'up', 3),
+(556, 58, 'Your daughter is just started work, has not she? How is she getting _____?', 'by', 'on', 'out', 2),
+(557, 58, 'We had to turn _______ their invitation to lunch as we had a previous engagement.', 'overestimated', 'out', 'down', 3),
+(558, 58, 'While driving to work, we ran out____ gas.', 'up', 'of', 'in', 2),
+(559, 58, 'He died ____ heart disease.', 'of', 'from', 'because', 1),
+(560, 58, 'The elevator is not running today. It is ________ order.', 'to', 'out', 'out of', 3),
+(561, 58, 'I explained ____ him what it meant', 'to', 'about', 'over', 1),
+(562, 58, 'Pasteur devoted all his life _______ science', 'for', 'in ', 'to', 3),
+(563, 58, 'House cats are distantly related ___ lions and tigers.', 'in', 'to ', 'of', 2),
+(564, 58, 'Is this type of soil suitable ___ growing tomatoes ?', 'for', 'about', 'in', 1),
+(565, 58, 'Were you aware _____ the regulations against smoking in this area ?', 'in', 'with', 'of', 3),
+(566, 59, 'Her latest film_____ its object in a verty short space of time, which was to shock', 'acquired', 'got', 'attained', 3),
+(567, 59, 'We were in a small rowing boat and wer terrified that the steamer had not seen us as it was bearing _____ on us', 'run', 'continue', 'persist', 2),
+(568, 59, 'The film was the first to show conditions in which poor people lived and such was to ____ furture directiors', 'influence', 'hold', 'infect', 1),
+(569, 59, 'The only reason for them going to the cinema on that day was to find some form of_________', 'internment', 'involvement ', 'entertainment', 3),
+(570, 59, 'The diector is intention in making the film was to try and____simplicity as seen by a child.', 'report', 'reprehend', 'represent', 3),
+(571, 59, 'The fans outside the cinema on the first showing of the film were unwilling to ______ until all the stars had gone home. ', 'dispose', 'displace', 'disperse', 3),
+(572, 59, 'The delay in_____the film to get general puclic was because certain scenes were considered  tasteless.', 'replacing', 'repeating', 'releasing', 3),
+(573, 59, 'The theme of the second film is quite simply a ________ of the first. ', 'construction', 'continuation', 'continuum', 2),
+(574, 59, 'In the making of the film the direcrion is quite ________from the financing of the project.', 'separate', 'separation', 'separately', 1),
+(575, 59, 'Someone will five a _____of a film and when you see it for yourself, it is quite.', 'describing', 'describes', 'description', 3),
+(576, 53, 'In order to make a sensible ....... among the different vacuum cleaners available, it is important to do some research.', 'comparing', 'comparison', 'compares', 2),
+(577, 53, 'The local department store has to make a sustained effort at this time of the year to ....... customer demand for summer clothing.', 'satisfy', 'satisfaction', 'satisfies', 1),
+(578, 53, 'A good team leader must be able to ....... his colleagues to face the challenge of a downturn in business.', 'inspiring', 'inspiration (', 'inspire', 3),
+(579, 53, 'I can strongly recommend this ....... as the best available on the market today', 'producer', 'product', 'production', 2),
+(580, 53, 'The.......trend in children is desire to wear designer label clothes should be exploited.', 'currant', 'current', 'occuring', 2),
+(581, 53, 'You have to ....... the public that it is in their own interest to read the instructions on all our medicines', 'convict', 'conviction', 'convince', 3),
+(582, 53, 'In order to survive in this business you must adopt a ....... stance.', 'competition', 'competing', 'competitive', 3),
+(583, 53, 'The ....... of alcohol is not allowed in any of the company is premises in order to present a clean image.', 'consumer', 'consumption', 'consuming', 2),
+(584, 53, 'When you are setting out to ....... new customers in an advertisement, choose the right words.', 'attraction', 'attractive', 'attract', 3),
+(585, 53, 'The really effective television commercial is the one that ....... you of its authenticity.', 'persuades', 'persuasion', 'persuasive', 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `result`
+-- Table structure for table `result`
 --
 
 CREATE TABLE `result` (
@@ -239,24 +221,10 @@ CREATE TABLE `result` (
   `POINT` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `result`
---
-
-INSERT INTO `result` (`USERNAME`, `TEST_ID`, `TIMES`, `POINT`) VALUES
-('std_anhnh', 39, 1, 3),
-('std_anhnh', 39, 2, 0),
-('std_anhnh', 42, 1, 4),
-('std_chinhnd', 39, 1, 9),
-('std_chinhnd', 39, 2, 10),
-('std_chinhnd', 42, 1, 10),
-('std_ngocmn', 39, 1, 9),
-('std_ngocmn', 39, 2, 6);
-
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `role`
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -264,7 +232,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`ROLE_ID`) VALUES
@@ -275,7 +243,7 @@ INSERT INTO `role` (`ROLE_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `student`
+-- Table structure for table `student`
 --
 
 CREATE TABLE `student` (
@@ -289,7 +257,7 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `student`
+-- Dumping data for table `student`
 --
 
 INSERT INTO `student` (`USERNAME`, `FULLNAME`, `DOB`, `SEX`, `EMAIL`, `ADDRESS`, `PHONE`) VALUES
@@ -303,7 +271,7 @@ INSERT INTO `student` (`USERNAME`, `FULLNAME`, `DOB`, `SEX`, `EMAIL`, `ADDRESS`,
 ('std_lamdv', 'Dang Van Lam', '2003-08-23', 'male', 'lamdv@gmail.com', 'HCM city', '0123600978'),
 ('std_lamnt', 'Nguyen Truc Lam', '1999-04-06', 'female', 'lamnt@gmail.com', 'HCM city', '0123654948'),
 ('std_linhny', 'Nguyen Yen Linh', '2004-08-18', 'female', 'linhny@gmail.com', 'HCM city', '0901882004'),
-('std_ngocmn', 'Mai Nhu Ngoc', '1999-05-10', 'female', 'ngocmn@gmail.com', 'Da Lat ', '0123456789'),
+('std_ngocmn', 'Mai Nhu Ngoc', '1999-05-10', 'female', 'ngocmn@gmail.com', 'HCM City', '0123456789'),
 ('std_phongth', 'Tran Hoang Phong', '2002-09-02', 'male', 'phongth@gmail.com', 'HCM city', '0321654987'),
 ('std_phongtv', 'Tran Vuong Phong', '1995-06-15', 'male', 'phongtv@gmail.com', 'HCM city', '0123456788'),
 ('std_sinhnt', 'Nguyen Truong Sinh', '2001-09-12', 'male', 'sinhnt@gmail.com', 'Dong Nai', '0123654558'),
@@ -313,7 +281,7 @@ INSERT INTO `student` (`USERNAME`, `FULLNAME`, `DOB`, `SEX`, `EMAIL`, `ADDRESS`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `study`
+-- Table structure for table `study`
 --
 
 CREATE TABLE `study` (
@@ -324,10 +292,11 @@ CREATE TABLE `study` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `study`
+-- Dumping data for table `study`
 --
 
 INSERT INTO `study` (`USERNAME`, `CLASS_ID`, `RESULT`, `RANK`) VALUES
+('std_anhnh', 'ADVANCED_ENG01', 0, 'WEAK'),
 ('std_anhnh', 'ADVANCED_ENG03', 0, 'WEAK'),
 ('std_anhnh', 'BASIC_ENG01', 1.5, 'WEAK'),
 ('std_anhnh', 'INTERMEDIATE_ENG03', 4, 'BELOW AVERAGE'),
@@ -336,9 +305,12 @@ INSERT INTO `study` (`USERNAME`, `CLASS_ID`, `RESULT`, `RANK`) VALUES
 ('std_chinhnd', 'INTERMEDIATE_ENG03', 10, 'EXCELLENT'),
 ('std_colt', 'ADVANCED_ENG03', 0, 'WEAK'),
 ('std_colt', 'BASIC_ENG01', 0, 'WEAK'),
+('std_colt', 'INTERMEDIATE_ENG02', 0, 'WEAK'),
 ('std_colt', 'INTERMEDIATE_ENG03', 0, 'WEAK'),
+('std_colt', 'INTERMEDIATE_ENG04', 0, 'WEAK'),
 ('std_dungbt', 'ADVANCED_ENG03', 0, 'WEAK'),
 ('std_dungbt', 'BASIC_ENG01', 0, 'WEAK'),
+('std_dungbt', 'INTERMEDIATE_ENG02', 0, 'WEAK'),
 ('std_dungbt', 'INTERMEDIATE_ENG03', 0, 'WEAK'),
 ('std_duynh', 'ADVANCED_ENG01', 0, 'WEAK'),
 ('std_duynh', 'ADVANCED_ENG03', 0, 'WEAK'),
@@ -348,18 +320,24 @@ INSERT INTO `study` (`USERNAME`, `CLASS_ID`, `RESULT`, `RANK`) VALUES
 ('std_hoangtt', 'ADVANCED_ENG01', 0, 'WEAK'),
 ('std_lamnt', 'BASIC_ENG02', 0, 'WEAK'),
 ('std_linhny', 'INTERMEDIATE_ENG01', 0, 'WEAK'),
-('std_ngocmn', 'BASIC_ENG01', 7.5, 'GOOD'),
+('std_linhny', 'INTERMEDIATE_ENG02', 0, 'WEAK'),
+('std_ngocmn', 'BASIC_ENG01', 7.4, 'AVGRAGE'),
+('std_ngocmn', 'BASIC_ENG02', 8.3, 'GOOD'),
+('std_ngocmn', 'INTERMEDIATE_ENG02', 0, 'WEAK'),
 ('std_ngocmn', 'INTERMEDIATE_ENG03', 0, 'WEAK'),
 ('std_phongth', 'BASIC_ENG02', 0, 'WEAK'),
 ('std_phongtv', 'BASIC_ENG02', 0, 'WEAK'),
 ('std_sinhnt', 'BASIC_ENG02', 0, 'WEAK'),
 ('std_thont', 'BASIC_ENG02', 0, 'WEAK'),
-('std_yennp', 'BASIC_ENG02', 0, 'WEAK');
+('std_thont', 'INTERMEDIATE_ENG02', 0, 'WEAK'),
+('std_yennp', 'ADVANCED_ENG01', 0, 'WEAK'),
+('std_yennp', 'BASIC_ENG02', 0, 'WEAK'),
+('std_yennp', 'INTERMEDIATE_ENG02', 0, 'WEAK');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `teacher`
+-- Table structure for table `teacher`
 --
 
 CREATE TABLE `teacher` (
@@ -374,7 +352,7 @@ CREATE TABLE `teacher` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `teacher`
+-- Dumping data for table `teacher`
 --
 
 INSERT INTO `teacher` (`USERNAME`, `FULLNAME`, `DOB`, `SEX`, `EMAIL`, `ADDRESS`, `PHONE`, `CERTIFICATE`) VALUES
@@ -384,13 +362,14 @@ INSERT INTO `teacher` (`USERNAME`, `FULLNAME`, `DOB`, `SEX`, `EMAIL`, `ADDRESS`,
 ('teacher_haudvt', 'Dang Van Trung Hau', '1989-04-01', 'male', 'haudvt@gmail.com', 'Dong Nai', '0123654712', 'TOEIC 850'),
 ('teacher_lamdv', 'Dang Viet Lam', '1989-08-18', 'femal', 'lamdv@gmail.com', 'HCM city', '0901882013', 'IELTS 8.0'),
 ('teacher_lamtt', 'Tran Truc Lam', '1987-05-10', 'femal', 'lamtt@gmail.com', 'HCM city', '0123451289', 'TOEIC 850'),
+('teacher_ngocmn', 'Mai Ngoc ', '1994-10-05', 'female', 'gvNgocmn@gmail.com', 'Ho Chi Minh City', '0388197156', 'IELTS 7.0'),
 ('teacher_sinhnt', 'Nguyen Truong Sinh', '1985-09-02', 'male', 'sinhnt@gmail.com', 'HCM city', '0321655687', 'IELTS 8.5'),
 ('teacher_thont', 'Nguyen Trung Tho', '1991-06-15', 'male', 'thont@gmail.com', 'HCM city', '0123457778', 'IELTS 8.5');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `test`
+-- Table structure for table `test`
 --
 
 CREATE TABLE `test` (
@@ -404,32 +383,30 @@ CREATE TABLE `test` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `test`
+-- Dumping data for table `test`
 --
 
 INSERT INTO `test` (`TEST_ID`, `TEST_NAME`, `IMG`, `CLASS_ID`, `TYPE`, `TIMELIMMIT`, `USERNAME`) VALUES
-(39, 'basic1', '2.png', 'BASIC_ENG01', 'todo', 10, 'admin'),
-(40, 'basic1', '9.png', 'BASIC_ENG02', 'todo', 10, 'admin'),
-(41, 'intermediate1', '12.png', 'INTERMEDIATE_ENG01', 'todo', 10, 'admin'),
-(42, 'intermediate1', '18.png', 'INTERMEDIATE_ENG03', 'todo', 10, 'admin'),
-(43, 'advanced1', '16.png', 'ADVANCED_ENG01', 'todo', 10, 'admin'),
-(44, 'advanced1', '19.png', 'ADVANCED_ENG03', 'todo', 10, 'admin'),
-(45, 'freetest1', '2.png', 'BASIC_ENG01', 'free', 5, 'admin'),
-(47, 'ft2', '1.png', 'BASIC_ENG02', 'free', 5, 'admin');
+(53, 'Advertising', '12.png', 'INTERMEDIATE_ENG02', 'todo', 6, 'admin'),
+(55, 'Accounts', '5.png', 'BASIC_ENG02', 'free', 5, 'teacher_ngocmn'),
+(56, 'Test 1 ', '5.png', 'INTERMEDIATE_ENG02', 'free', 5, 'teacher_ngocmn'),
+(57, 'Pharsal Verb 1', '10.png', 'INTERMEDIATE_ENG02', 'free', 5, 'admin'),
+(58, 'Pharsal Verb 2', '18.png', 'INTERMEDIATE_ENG02', 'todo', 5, 'admin'),
+(59, 'Cinemas', '17.png', 'INTERMEDIATE_ENG02', 'todo', 5, 'admin');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `account`
+-- Indexes for table `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`username`),
   ADD KEY `account_role_FK` (`role_id`);
 
 --
--- Chỉ mục cho bảng `class`
+-- Indexes for table `class`
 --
 ALTER TABLE `class`
   ADD PRIMARY KEY (`CLASS_ID`),
@@ -437,52 +414,52 @@ ALTER TABLE `class`
   ADD KEY `CLASS_COURSE_FK` (`COURSE_ID`);
 
 --
--- Chỉ mục cho bảng `course`
+-- Indexes for table `course`
 --
 ALTER TABLE `course`
   ADD PRIMARY KEY (`COURSE_ID`);
 
 --
--- Chỉ mục cho bảng `question`
+-- Indexes for table `question`
 --
 ALTER TABLE `question`
   ADD PRIMARY KEY (`QUESTION_ID`,`TEST_ID`),
   ADD KEY `q_t_FK` (`TEST_ID`);
 
 --
--- Chỉ mục cho bảng `result`
+-- Indexes for table `result`
 --
 ALTER TABLE `result`
   ADD PRIMARY KEY (`USERNAME`,`TEST_ID`,`TIMES`),
   ADD KEY `KQ_BT_FK` (`TEST_ID`);
 
 --
--- Chỉ mục cho bảng `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`ROLE_ID`);
 
 --
--- Chỉ mục cho bảng `student`
+-- Indexes for table `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`USERNAME`);
 
 --
--- Chỉ mục cho bảng `study`
+-- Indexes for table `study`
 --
 ALTER TABLE `study`
   ADD PRIMARY KEY (`USERNAME`,`CLASS_ID`),
   ADD KEY `STUDY_CLASS_FK` (`CLASS_ID`);
 
 --
--- Chỉ mục cho bảng `teacher`
+-- Indexes for table `teacher`
 --
 ALTER TABLE `teacher`
   ADD PRIMARY KEY (`USERNAME`);
 
 --
--- Chỉ mục cho bảng `test`
+-- Indexes for table `test`
 --
 ALTER TABLE `test`
   ADD PRIMARY KEY (`TEST_ID`),
@@ -490,78 +467,78 @@ ALTER TABLE `test`
   ADD KEY `TEST_ACCOUNT_FK` (`USERNAME`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `course`
+-- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
   MODIFY `COURSE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `question`
+-- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `QUESTION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=326;
+  MODIFY `QUESTION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=586;
 
 --
--- AUTO_INCREMENT cho bảng `test`
+-- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
-  MODIFY `TEST_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `TEST_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `account`
+-- Constraints for table `account`
 --
 ALTER TABLE `account`
   ADD CONSTRAINT `account_role_FK` FOREIGN KEY (`role_id`) REFERENCES `role` (`ROLE_ID`);
 
 --
--- Các ràng buộc cho bảng `class`
+-- Constraints for table `class`
 --
 ALTER TABLE `class`
   ADD CONSTRAINT `CLASS_COURSE_FK` FOREIGN KEY (`COURSE_ID`) REFERENCES `course` (`COURSE_ID`),
   ADD CONSTRAINT `CLASS_TEACHER_FK` FOREIGN KEY (`TEACHER`) REFERENCES `teacher` (`USERNAME`);
 
 --
--- Các ràng buộc cho bảng `question`
+-- Constraints for table `question`
 --
 ALTER TABLE `question`
   ADD CONSTRAINT `q_t_FK` FOREIGN KEY (`TEST_ID`) REFERENCES `test` (`TEST_ID`);
 
 --
--- Các ràng buộc cho bảng `result`
+-- Constraints for table `result`
 --
 ALTER TABLE `result`
   ADD CONSTRAINT `KQ_BT_FK` FOREIGN KEY (`TEST_ID`) REFERENCES `test` (`TEST_ID`),
   ADD CONSTRAINT `KQ_TK_FK` FOREIGN KEY (`USERNAME`) REFERENCES `account` (`username`);
 
 --
--- Các ràng buộc cho bảng `student`
+-- Constraints for table `student`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `STU_ACC_FK` FOREIGN KEY (`USERNAME`) REFERENCES `account` (`username`);
 
 --
--- Các ràng buộc cho bảng `study`
+-- Constraints for table `study`
 --
 ALTER TABLE `study`
   ADD CONSTRAINT `STUDY_CLASS_FK` FOREIGN KEY (`CLASS_ID`) REFERENCES `class` (`CLASS_ID`),
   ADD CONSTRAINT `STUDY_STUDENT_FK` FOREIGN KEY (`USERNAME`) REFERENCES `student` (`USERNAME`);
 
 --
--- Các ràng buộc cho bảng `teacher`
+-- Constraints for table `teacher`
 --
 ALTER TABLE `teacher`
   ADD CONSTRAINT `TEACHER_ACC_FK` FOREIGN KEY (`USERNAME`) REFERENCES `account` (`username`);
 
 --
--- Các ràng buộc cho bảng `test`
+-- Constraints for table `test`
 --
 ALTER TABLE `test`
   ADD CONSTRAINT `TEST_ACCOUNT_FK` FOREIGN KEY (`USERNAME`) REFERENCES `account` (`username`),

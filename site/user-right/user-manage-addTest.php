@@ -17,11 +17,13 @@ $username = $_SESSION['login'];
             <?php
             // include('../connect.php');
 
-            $sql = "SELECT * FROM `course`";
-            $result = $conn->prepare($sql);
-            $result->execute();
-            $result = $result->fetchAll(PDO::FETCH_ASSOC);
-
+            $sql = "SELECT * FROM COURSE,CLASS 
+            WHERE COURSE.COURSE_ID=CLASS.COURSE_ID 
+            AND CLASS.TEACHER='$username'
+            GROUP BY CLASS.COURSE_ID";
+            $query = $conn->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
             ?>
            
             <form class="form-add-test" action='site/user-right/user-manage-controlTest.php' enctype="multipart/form-data" method='POST'>

@@ -3,7 +3,10 @@ include('../../admin/modules/connect.php');
 require_once '../../admin/modules/PHPExcel/Classes/PHPExcel.php';
 session_start();
 $username = $_SESSION['login'];
-$txtCreatedBy = $username;
+
+
+if (isset($_POST['btnEdit'])) {
+    $txtCreatedBy = $username;
 $txtTestName = $_POST['txtTestName'];
 // $txtQuestions = $_POST['txtQuestions'];
 $selType = $_POST['selType'];
@@ -18,8 +21,6 @@ $fileExcel = $_FILES['fileExcel']['name'];
 $fileExcel_tmp = $_FILES['fileExcel']['tmp_name'];
 move_uploaded_file($fileExcel_tmp, '../../admin/modules/fileExcel/' . $fileExcel);
 $linkFile = "../../admin/modules/fileExcel/$fileExcel";
-
-if (isset($_POST['btnEdit'])) {
     $id = $_GET['id'];
     if ($imgTest != '') {
         $sql = "UPDATE `test` SET
@@ -41,18 +42,21 @@ if (isset($_POST['btnEdit'])) {
     }
     if (mysqli_query($conn, $sql)) {
      //   header('location:../../index.php?click=mn-test');
-    
  ?>
                 <script>
                     alert('Successfully');
                     window.location = "../../index.php?click=mn-test";
                 </script>
-
         <?php
 
 
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        ?>
+                <script>
+                    alert('Error');
+                    window.location = "../../index.php?click=mn-test";
+                </script>
+        <?php
     }
 
     if (mysqli_query($conn, $sql) ) {
@@ -77,9 +81,19 @@ if (isset($_POST['btnEdit'])) {
                            VALUES ('$question_id',$id,'$content',
                                    '$option1','$option2','$option3',$answer)";
                 if (mysqli_query($conn, $sql2)) {
-                    header('location:../../index.php?click=mn-test');
+                    ?>
+                <script>
+                    alert('Successfully');
+                    window.location = "../../index.php?click=mn-test";
+                </script>
+        <?php
                 } else {
-                    echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+                    ?>
+                <script>
+                    alert('Error');
+                    window.location = "../../index.php?click=mn-test";
+                </script>
+        <?php
                 }
             }
         }
@@ -91,9 +105,23 @@ if (isset($_POST['btnEdit'])) {
             window.location = "../../index.php";
         </script>
     <?php
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
     } else if (isset($_POST['btnSubmitAdd'])) {
+        $txtCreatedBy = $username;
+$txtTestName = $_POST['txtTestName'];
+// $txtQuestions = $_POST['txtQuestions'];
+$selType = $_POST['selType'];
+$selCourse = $_POST['selCourse'];
+$selClass = $_POST['selClass'];
+$txtTimeLimit = $_POST['txtTimeLimit'];
+$imgTest = $_FILES['imgTest']['name'];
+$imgTest_tmp = $_FILES['imgTest']['tmp_name'];
+move_uploaded_file($imgTest_tmp, '../../admin/modules/imgTest/' . $imgTest);
+
+$fileExcel = $_FILES['fileExcel']['name'];
+$fileExcel_tmp = $_FILES['fileExcel']['tmp_name'];
+move_uploaded_file($fileExcel_tmp, '../../admin/modules/fileExcel/' . $fileExcel);
+$linkFile = "../../admin/modules/fileExcel/$fileExcel";
         if ($imgTest != '') {
             $sql = "INSERT INTO `test` 
             (`TEST_NAME`,  `IMG`, `CLASS_ID`, `TYPE`, `TIMELIMMIT`, `USERNAME`) 
@@ -124,7 +152,7 @@ if (isset($_POST['btnEdit'])) {
                                 '$option1','$option2','$option3',$answer)";
                 if (mysqli_query($conn, $sql2)) {
                     //header('location:../../index.php?click=mn-test');
-                    {
+                    
                         ?>
                         <script>
                             alert('Successfully');
@@ -132,9 +160,14 @@ if (isset($_POST['btnEdit'])) {
                         </script>
         
                 <?php
-                    }
+                    
                 } else {
-                    echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+                    ?>
+                    <script>
+                        alert('Error');
+                        window.location = "../../index.php?click=mn-test";
+                    </script>
+            <?php
                 }
             }
         } else {
@@ -144,7 +177,7 @@ if (isset($_POST['btnEdit'])) {
             window.location = "../../index.php?click=mn-test-add";
         </script>
     <?php
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+           
         }
     } else {
         $id = $_GET['id'];
@@ -153,7 +186,7 @@ if (isset($_POST['btnEdit'])) {
         if (mysqli_query($conn, $sql1)) {
             if (mysqli_query($conn, $sql2)) {
               // header('location:../../index.php?click=mn-test');
-              {
+              
                 ?>
                 <script>
                     alert('Successfully');
@@ -161,9 +194,14 @@ if (isset($_POST['btnEdit'])) {
                 </script>
 
         <?php
-              }
+              
             } else {
-                echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+                ?>
+                <script>
+                    alert('Error');
+                    window.location = "../../index.php?click=mn-test";
+                </script>
+        <?php
             }
         } else {
             ?>
