@@ -18,16 +18,16 @@
 					<ul class="ul_pass">
 						<li class="li_current row">
 							<div class="ul_info_1"><span class="label_info  col-md-4">Current</span></div>
-							<input name='currentPass' id='currentPass' class="form-input col-md-6" type="Password" oninput=CheckPass()>
+							<input name='currentPass' id='currentPass' class="form-input col-md-6" required type="Password" oninput=CheckPass()>
 							<span id='notice'></span>
 						</li>
 						<li class="li_new row">
 							<div class="ul_info_1"><span class="label_info  col-md-4">New</span></div>
-							<input name='newPass' class="form-input col-md-6" type="Password" id='newPass'>
+							<input name='newPass' class="form-input col-md-6" required type="Password" id='newPass'>
 						</li>
 						<li class="li_retype row">
 							<div class="ul_info_1 "><span class="label_info col-md-4">Confirm</span></div>
-							<input name='retypePass' class="form-input col-md-6" type="Password" id='retypePass' oninput=CheckRetype()><span id='notice2'></span>
+							<input name='retypePass' class="form-input col-md-6" required type="Password" id='retypePass' oninput=CheckRetype()><span id='notice2'></span>
 						</li>
 					</ul>
 					<input id='submitChange' type="submit" class="btn-sub" value="Save">

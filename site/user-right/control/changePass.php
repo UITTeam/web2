@@ -14,7 +14,14 @@
             $sql2 = "UPDATE`account` SET PASS = '$newPass' WHERE username='$id'";
             if (mysqli_query($conn, $sql2)) 
                    {
-                     header('location: ../../../index.php?click=editPass');
+                    // header('location: ../../../index.php?click=editPass');
+                    ?>
+                    <script>
+                        window.location="../../../index.php?click=info";
+                        alert('Successfully');
+                        
+                    </script>
+                <?php
                   } 
             else {
                 echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);

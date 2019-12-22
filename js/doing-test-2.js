@@ -121,7 +121,14 @@ function start() {
   }
   if (minutes == -1) {
     clearTimeout(timeout);
-    alert('Time out');
+    swal({
+      title: "Sweet!",
+      text: "Correct answers " + correct
+    }).then((result) => {
+      console.log('hi');
+    } )
+    
+    
     window.location = "index.php";
     return false;
   }
@@ -132,6 +139,52 @@ function start() {
     seconds--;
     start();
   }, 1000);
+}
+
+function Time_Out()
+{
+  var correct = 0;
+  var test_id = $('div[name="test"]').attr('id');
+  var class_id = $('div[name="test"]').attr('class_id');
+  var is_todo = $('div[name="test"]').attr('is_todo');
+  var user_role = $('div[name="user_role"]').attr('user_role');
+ //  alert(user_role);
+
+  $.each($(this).serializeArray(), function (index, value) {
+    var check = value.name.match(/\d/)[0],
+      $q = $("#q" + check);
+    if (JSON.parse(data)[check].answer === value.value) { correct++; }
+  });
+  if (correct === 0) {
+  setTimeout('Redirect()', 1000);
+    swal("Oh...no!", "Your correct answers: " + correct + ". Try again!", "error");
+    if (is_todo === 'todo' && user_role == 'student') {
+
+      SaveResult(correct, test_id, class_id);
+      SaveTemp(test_id, correct);
+    }
+    else {
+      SaveTemp(test_id, correct);
+    }
+  }
+  else {
+   setTimeout('Redirect()', 1000);
+    swal({
+      title: "Sweet!",
+      text: "Correct answers " + correct
+    });
+    if (is_todo === 'todo' && user_role == 'student') {
+      SaveResult(correct, test_id, class_id);
+      SaveTemp(test_id, correct);
+    }
+    else {
+      // Luu tam ket qua 
+      SaveTemp(test_id, correct);
+    }
+  }
+  //alert(correct);
+  $('div[name="correct_ans"]').attr('value', correct); // luu lai ket qua
+
 }
 
 function stop() {

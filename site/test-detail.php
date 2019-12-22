@@ -82,7 +82,7 @@
 <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
-<script src="./js/doing-test-2.js"></script>
+<script src="./js/doing-test.js"></script>
 <head>
 	<title><?php echo $row['TEST_NAME'];?></title>
 </head>

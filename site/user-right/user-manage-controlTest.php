@@ -59,7 +59,7 @@ $linkFile = "../../admin/modules/fileExcel/$fileExcel";
         <?php
     }
 
-    if (mysqli_query($conn, $sql) ) {
+    if (mysqli_query($conn, $sql) &&  $fileExcel != '' ) {
         $sql3 = "DELETE FROM `question` WHERE TEST_ID=$id";
         if (mysqli_query($conn, $sql3)) {
             //  $id_inserted =  $conn->insert_id;

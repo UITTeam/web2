@@ -48,7 +48,7 @@ $(function () {
             if (JSON.parse(data)[check].answer === value.value) { correct++; }
           });
           if (correct === 0) {
-         //   setTimeout('Redirect()', 1000);
+          setTimeout('Redirect()', 1000);
             swal("Oh...no!", "Your correct answers: " + correct + ". Try again!", "error");
             if (is_todo === 'todo' && user_role == 'student') {
 
@@ -60,7 +60,7 @@ $(function () {
             }
           }
           else {
-         //   setTimeout('Redirect()', 1000);
+           setTimeout('Redirect()', 1000);
             swal({
               title: "Sweet!",
               text: "Correct answers " + correct
@@ -112,6 +112,7 @@ var seconds = null;
 function start() {
   if (minutes === null) {
     minutes = parseInt($('#timelimmit').attr('value')) - 1;
+   
     seconds = 59;
   }
 
@@ -121,8 +122,16 @@ function start() {
   }
   if (minutes == -1) {
     clearTimeout(timeout);
-    alert('Time out');
-    window.location = "index.php";
+    swal({
+      title: "Oops...!",
+      text: "Time out" 
+    }).then((result) => {
+      Time_Out();
+      //console.log('hi');
+    } )
+    
+    
+   //window.location = "index.php";
     return false;
   }
   $('#m').text(minutes);
@@ -134,13 +143,59 @@ function start() {
   }, 1000);
 }
 
+function Time_Out()
+{
+  var correct = 0;
+  var test_id = $('div[name="test"]').attr('id');
+  var class_id = $('div[name="test"]').attr('class_id');
+  var is_todo = $('div[name="test"]').attr('is_todo');
+  var user_role = $('div[name="user_role"]').attr('user_role');
+ //  alert(user_role);
+
+  $.each($(this).serializeArray(), function (index, value) {
+    var check = value.name.match(/\d/)[0],
+      $q = $("#q" + check);
+    if (JSON.parse(data)[check].answer === value.value) { correct++; }
+  });
+  if (correct === 0) {
+  setTimeout('Redirect()', 1000);
+    swal("Oh...no!", "Your correct answers: " + correct + ". Try again!", "error");
+    if (is_todo === 'todo' && user_role == 'student') {
+
+      SaveResult(correct, test_id, class_id);
+      SaveTemp(test_id, correct);
+    }
+    else {
+      SaveTemp(test_id, correct);
+    }
+  }
+  else {
+   setTimeout('Redirect()', 1000);
+    swal({
+      title: "Sweet!",
+      text: "Correct answers " + correct
+    });
+    if (is_todo === 'todo' && user_role == 'student') {
+      SaveResult(correct, test_id, class_id);
+      SaveTemp(test_id, correct);
+    }
+    else {
+      // Luu tam ket qua 
+      SaveTemp(test_id, correct);
+    }
+  }
+  //alert(correct);
+  $('div[name="correct_ans"]').attr('value', correct); // luu lai ket qua
+
+}
+
 function stop() {
   clearTimeout(timeout);
 }
 
 function SaveResult(correct_answer, test_id, class_id) {
   //Save ket qua doi voi hoc vien
-  alert('hi');
+ 
   var num_question = $('span[name="num_question"]').attr('value');
   var times = $('div[name="times"]').attr('value');
   $.ajax({
@@ -155,7 +210,7 @@ function SaveResult(correct_answer, test_id, class_id) {
     },
     success: function (response) {
        //calert(response)
-       console.log(response);
+      //  console.log(response);
     }
   });
 }

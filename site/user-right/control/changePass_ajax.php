@@ -7,7 +7,7 @@
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     if ($row['PASS'] == $pass) {
-        echo '<span style="color:green">Invalid</span>';
+        echo '<span style="color:green">Valid</span>';
     }
     else {
         echo '<span style="color:red">Invalid</span>';

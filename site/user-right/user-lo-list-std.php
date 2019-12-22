@@ -36,7 +36,7 @@ $result_std = $query_std->fetchAll(PDO::FETCH_ASSOC);
 
             if ($row['role_id'] == 'student') {
             ?>
-                <div style="padding: 15px"><a target="_blank" href='index.php?click=testChart&id='>View in chart</a></div>
+                <div style="padding: 15px"><a target="_blank" href='index.php?click=testChart&id=<?php echo $tittle ?>'>View in chart</a></div>
                 <div class="table-std" style="overflow: auto; height: 400px">
                     <table id='list-student'>
                         <tr>
