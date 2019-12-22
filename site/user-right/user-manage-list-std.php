@@ -1,6 +1,9 @@
 <link rel="stylesheet" type="text/css" href="css/user-manage-cls-std.css">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+<head>
+	<title>List students</title>
+</head>
 <div class="container">
     <div class="row">
         <div class="col-md-4"></div>

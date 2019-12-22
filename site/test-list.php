@@ -17,13 +17,10 @@
 	}
 	else if ($row_role['role_id'] == 'student') {
 		$sql = "SELECT * 
-				FROM test,  study, class
-				WHERE test.CLASS_ID = class.CLASS_ID 
-				AND TYPE = 'free'
-					AND class.CLASS_ID = study.CLASS_ID
-					and study.USERNAME = '$username'
-				AND CURRENT_DATE >= class.BEGIN 
-				and CURRENT_DATE <= class.END "; 
+				FROM test, class
+				WHERE TYPE = 'free'
+					AND test.CLASS_ID = class.CLASS_ID
+				ORDER BY BEGIN DESC"; 
 		$sql_ = "SELECT * 
 		FROM test,  study, class
 						WHERE test.CLASS_ID = class.CLASS_ID 
@@ -67,6 +64,9 @@
 	<script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
 	<script type="text/javascript" src="./js/js_test.js"></script>
+	<head>
+	<title>TEST</title>
+</head>	
 <div class='content' style='margin-top: 0px'>
 	<div name='user_role' user_role='<?php echo $user_role ?>'></div>
     <ul class="menu"> 
@@ -91,7 +91,7 @@
 
 			?>
 		</ul>
-	<div class="test-list" style="overflow: auto; height: 400px">	
+	<div class="test-list" style="overflow: auto; height: 500px; width: 1300px">	
 <?php
 	while ($row = $result->fetch_assoc())
 	{	
@@ -113,7 +113,6 @@
 if ($user_role == 'student')
 {
 	
-
 	while ($row_ = $result_->fetch_assoc())
 	{	
 ?>

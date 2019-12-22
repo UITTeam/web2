@@ -18,8 +18,9 @@ p {
 }
 
 </style>
-<script>
-</script>
+    <head>
+	<title>RESULT</title>
+</head>
 <div class='content'>
     <?php
     // include('admin/connect.php');

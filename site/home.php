@@ -1,6 +1,10 @@
 <?php
 	include('admin/connect.php');
-	$sql = "SELECT * FROM `test` WHERE TYPE='free'";
+	$sql = "SELECT * FROM `test`,`class` 
+			WHERE test.CLASS_ID = class.CLASS_ID 
+					AND TYPE='free' 
+			ORDER BY BEGIN DESC
+			LIMIT 4";
 	$result = $conn->query($sql);
 ?>
 <!doctype html>
@@ -58,6 +62,9 @@
 	}); */
 
 </script>
+    <head>
+	<title>HOME</title>
+</head>
     <section class="billboard dark">
             <div class="caption dark animated wow fadeInDown " data-wow-delay=".4s">
                 <h1>Dear learners!</h1>

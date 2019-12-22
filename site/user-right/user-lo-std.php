@@ -35,7 +35,7 @@
             if ($row['role_id'] != 'student')
             {
                 ?>
-                     <div class="table-std">
+                     <div class="table-std" style="overflow: auto; height: 470px">
                 <table id='list-student'>
                     <tr>
                         <td>TEST NAME</td>

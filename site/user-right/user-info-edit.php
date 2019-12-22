@@ -31,6 +31,9 @@
     <link rel="stylesheet" type="text/css" href="css/user-info-edit.css">
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<head>
+	<title>Edit Profiles</title>
+</head>
 <div class="container">
 	<div class="row">
 		<div class="col-md-4"></div>

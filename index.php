@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>HOME</title>
+  <link rel="shortcut icon" type="image/x-icon" href="img/study.png" />
 </head>
 <body style="background-size: auto 1700px">
   <?php

@@ -112,7 +112,7 @@ include('admin/modules/result/connection.php');
 					?>
 				</select>
 				</div>
-				<div class="table-std" style="overflow:auto; height:400px">
+				<div class="table-std" style="overflow:auto; height:380px">
 				<table id='list-class'>
 					<tr>
 						<td>CLASS ID</td>

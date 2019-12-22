@@ -3,6 +3,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+<head>
+	<title>CHART</title>
+</head>
 <div class="container">
 	<div class="row">
 		<div class="col-md-4"></div>
@@ -39,8 +42,8 @@
                             datasets: [{
                                     label: 'AVG Point',
                                     data: data,
-                                    backgroundColor: 'rgba(0, 128, 128, 0.3)',
-                                    borderColor: 'rgba(0, 128, 128, 0.7)',
+                                    backgroundColor: '#FFB1C0',
+                                    borderColor: '#FD6D8B',
                                     borderWidth: 2
                                 }]
                         },
