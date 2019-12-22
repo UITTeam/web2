@@ -104,17 +104,14 @@ p {
                 array_push($course_name,$row_course['COURSE_NAME'] );
                 array_push($course_id,$row_course['COURSE_ID'] );
             }
-            else{
-                while ($row_last = $result_last->fetch_assoc())
-                {
+            $row_last = $result_last->fetch_assoc();
+            if($sum/$count <= $row_last['BENCHMARK']) {
                 array_push($course_name,$row_last['COURSE_NAME'] );
                 array_push($course_id,$row_last['COURSE_ID'] );
-                }
+                
             }
         }
             }
-        //print_r($course_name);  
-       // echo json_encode($course_id);  
 ?>
         <script>
             var avg = $('div[name="avg"]').attr('value');
