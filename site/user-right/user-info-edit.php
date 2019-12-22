@@ -51,15 +51,15 @@
 						</li>
 						<li class="li_email row">
 							<div class="ul_info_1"><span class="label_info  col-md-4">E-mail</span></div>
-							<input name='txtEmail' class="form-input col-md-6" type="E-mail" value="<?php echo $row2['EMAIL']; ?>"> 
+							<input name='txtEmail' class="form-input col-md-6" required type="E-mail" value="<?php echo $row2['EMAIL']; ?>"> 
 						</li>
 						<li class="li_Hoten row">
 							<div class="ul_info_1 "><span class="label_info col-md-4">Full name</span></div>
-							<input name='txtFullname' class="form-input col-md-6" type="text" value="<?php echo $row2['FULLNAME']; ?>"  >
+							<input name='txtFullname' class="form-input col-md-6" required type="text" value="<?php echo $row2['FULLNAME']; ?>"  >
 						</li>
 						<li class="li_birth row">
 							<div class="ul_info_1 "><span class="label_info col-md-4">Date of birth</span></div>
-							<input name='txtDob' class="form-input col-md-6" type="Date" value="<?php echo $row2['DOB']; ?>"  >
+							<input name='txtDob' class="form-input col-md-6" type="Date" required value="<?php echo $row2['DOB']; ?>"  >
 						</li>
 						<li class="li_gender row">
 							<div class="ul_info_1 "><span class="label_info col-md-3">Gender</span></div>
@@ -70,11 +70,11 @@
 						</li>
 						<li class="li_addr row">
 							<div class="ul_info_1 "><span class="label_info col-md-4">Address</span></div>
-							<input name='txtAddr' class="form-input col-md-6" type="text" value="<?php echo $row2['ADDRESS']; ?>">
+							<input name='txtAddr' class="form-input col-md-6" type="text" required value="<?php echo $row2['ADDRESS']; ?>">
 						</li>
 						<li class="li_phone row">
 							<div class="ul_info_1 "><span class="label_info col-md-4">Phone</span></div>
-							<input name='txtPhone' class="form-input col-md-6" type="Phone" value="<?php echo $row2['PHONE']; ?>">
+							<input name='txtPhone' class="form-input col-md-6" type="Phone" required value="<?php echo $row2['PHONE']; ?>">
 						</li>
 					</ul>
 				</div>

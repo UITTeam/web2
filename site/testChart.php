@@ -2,6 +2,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+<?php
+$tittle = $_GET['id'];
+
+
+?>
 <head>
 	<title>CHART</title>
 </head>
@@ -13,6 +18,7 @@
                 <div class="panel-heading">Test Result</div>
                 <br>
                 <div class="panel-body">
+                <div name='class_id' value ='<?php echo $tittle; ?>'></div>
                     <canvas id="testChart"></canvas>
                 </div>
             </div>
@@ -21,6 +27,8 @@
 </div>
 
 <script type="text/javascript">
+    var class_id = $('div[name="class_id"]').attr('value');
+    //alert(class_id);
     var label = [];
     var label_test =[];
    // var times = [];
@@ -35,6 +43,7 @@
         $(document).ready(function() {
             $.ajax({
                 type: "POST",
+                data: {"class_id": class_id},
                 dataType: "json",
                 async: false,
                 url: "site/user-right/control/testChart_ajax.php",

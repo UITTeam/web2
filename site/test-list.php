@@ -53,8 +53,7 @@
 	else {
 		$sql = "SELECT * 
 				FROM test
-				WHERE TYPE='free'
-				limit 8 "; 
+				WHERE TYPE='free' "; 
 	}
 	$result = $conn->query($sql);
 	
@@ -84,7 +83,7 @@
 				?>
 			<li data-type="free">Free Tests</li>
 		
-			<li id='havent' data-type="havent">Haven't done</li>
+			<li id='havent' data-type="havent">Todo Tests</li>
 			
 					<?php
 			}

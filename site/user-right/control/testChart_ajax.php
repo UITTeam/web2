@@ -3,11 +3,12 @@
 
     session_start();
     $username = $_SESSION['login'];
-   
+   $tittle = $_POST['class_id'];
     $sql = "SELECT  test.TEST_ID, test.TEST_NAME, TIMES, POINT
             FROM `test`, `result`
             WHERE test.TEST_ID = result.TEST_ID
                 AND result.USERNAME = '$username'
+                AND test.CLASS_ID = '$tittle'
             ";
     
     
