@@ -14,7 +14,7 @@
 <a href="./index.php?click=addTest&ac=add">
       <button name='btnAddTest'>ADD NEW TEST</button>
 </a><br><br>
-<div class='test-info'></div>
+<div class='test-info' style="overflow: auto; height: 500px; width: 1000px;" >
     <table>
         <tr>
             <td>TEST ID</td>
@@ -54,5 +54,5 @@
         $i++;
         } ?>     
 </table>
-
+</div>
    
